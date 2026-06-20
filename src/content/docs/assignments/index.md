@@ -16,4 +16,4 @@ Late assignments are given half credit up until a week.
 |------------|------|-----|
 | [**Pre-course checklist**](/26SU-ASIAAM-191A/assignments/week0/) | Setup | Before the first day of class |
 
-More assignments will be added here once the quarter begins.
+More assignments will be added here once the summer session begins.
