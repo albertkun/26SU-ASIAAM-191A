@@ -1,9 +1,9 @@
 ---
+// Custom Starlight header: mimics the previous course-site header with a
+// compact utility row above the primary navigation.
 import config from 'virtual:starlight/user-config';
 
-import { Icon } from '@astrojs/starlight/components';
 import Search from 'virtual:starlight/components/Search';
-import { logos } from 'virtual:starlight/user-images';
 
 const shouldRenderSearch =
 	config.pagefind ||
@@ -11,6 +11,10 @@ const shouldRenderSearch =
 
 // Base path, no trailing slash (e.g. "/26SU-ASIAAM-191A").
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const courseTitle =
+	typeof config.title === 'string' ? config.title : 'AA191A-Web Development and GIS for Social Change';
+const pageTitle = Astro.locals.starlightRoute.entry.data.title ?? courseTitle;
+const githubHref = 'https://github.com/albertkun/26SU-ASIAAM-191A/';
 
 const navLinks = [
 	{ label: 'Home', href: `${base}/` },
@@ -18,7 +22,7 @@ const navLinks = [
 	{ label: 'Assignments', href: `${base}/assignments/` },
 	{ label: 'Labs', href: `${base}/labs/` },
 	{
-		label: 'Discussion ↗',
+		label: 'Discussion 🔗',
 		href: 'https://github.com/albertkun/26SU-ASIAAM-191A/discussions',
 		external: true,
 	},
@@ -27,63 +31,41 @@ const navLinks = [
 ];
 
 const current = Astro.url.pathname.replace(/\/$/, '');
-const { entry, siteTitle, siteTitleHref } = Astro.locals.starlightRoute;
-const pageTitle = entry.data.title;
-const githubLink = config.social?.find((link) => link.icon === 'github');
-
 function isActive(href: string) {
 	const target = href.replace(/\/$/, '');
-	if (target === base) return current === base; // Home matches only the root
+	if (target === base) return current === base;
 	return current === target || current.startsWith(target + '/');
 }
 ---
 
-<div class="course-header">
+<div class="header">
 	<div class="header-main">
-		<a href={siteTitleHref} class="brand-link" aria-label={siteTitle}>
-			{
-				config.logo && logos.dark && (
-					<img
-						class="brand-logo"
-						alt={config.logo.alt ?? ''}
-						src={logos.dark.src}
-						width={logos.dark.width}
-						height={logos.dark.height}
-					/>
-				)
-			}
-			<span class="brand-text">AA191A-Web Development and GIS for Social Change</span>
+		<a class="brand" href={`${base}/`}>
+			<img
+				class="brand-logo"
+				src="https://albertkun.github.io/24SU-ASIAAM-191A/etc/media/favicon.png"
+				alt=""
+				width="32"
+				height="32"
+			/>
+			<span class="brand-title">{courseTitle}</span>
 		</a>
 
-		<div class="page-title" aria-hidden={pageTitle === 'Home' ? 'true' : undefined}>
-			{pageTitle === 'Home' ? '' : pageTitle}
-		</div>
+		<div class="current-page" aria-current="page">{pageTitle}</div>
 
 		<div class="header-actions print:hidden">
-			<course-theme-switch class="theme-switch" data-label={Astro.locals.t('themeSelect.accessibleLabel')}>
-				<label>
-					<span class="sr-only">{Astro.locals.t('themeSelect.accessibleLabel')}</span>
-					<input type="checkbox" aria-label={Astro.locals.t('themeSelect.accessibleLabel')} />
-					<span class="switch-track" aria-hidden="true">
-						<span class="switch-thumb"></span>
-					</span>
-				</label>
-			</course-theme-switch>
-
+			<header-theme-switch>
+				<button class="theme-switch" type="button" role="switch" aria-checked="false">
+					<span class="sr-only">Toggle dark mode</span>
+					<span class="switch-thumb" aria-hidden="true"></span>
+				</button>
+			</header-theme-switch>
 			{shouldRenderSearch && <Search />}
-
-			{
-				githubLink && (
-					<a class="github-link" href={githubLink.href} rel="me" aria-label={githubLink.label}>
-						<Icon name="github" />
-						<span>{githubLink.label}</span>
-					</a>
-				)
-			}
+			<a class="github-link" href={githubHref} rel="me">GitHub</a>
 		</div>
 	</div>
 
-	<nav class="top-nav" aria-label="Main">
+	<nav class="top-nav print:hidden" aria-label="Main">
 		{
 			navLinks.map((link) => (
 				<a
@@ -100,266 +82,226 @@ function isActive(href: string) {
 </div>
 
 <script>
-	const storageKey = 'starlight-theme';
-	type Theme = 'dark' | 'light';
-
-	const parseTheme = (theme: unknown): Theme | undefined =>
-		theme === 'dark' || theme === 'light' ? theme : undefined;
-
-	const preferredTheme = (): Theme =>
-		matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-
-	class CourseThemeSwitch extends HTMLElement {
-		input = this.querySelector<HTMLInputElement>('input')!;
+	class HeaderThemeSwitch extends HTMLElement {
+		button = this.querySelector<HTMLButtonElement>('button')!;
+		storageKey = 'starlight-theme';
 
 		constructor() {
 			super();
-			this.setTheme(this.loadTheme());
-			this.input.addEventListener('change', () => this.setTheme(this.input.checked ? 'dark' : 'light'));
+			this.sync();
+			this.button.addEventListener('click', () => this.toggle());
 		}
 
-		loadTheme(): Theme {
-			return (
-				parseTheme(localStorage.getItem(storageKey)) ??
-				parseTheme(document.documentElement.dataset.theme) ??
-				preferredTheme()
-			);
+		getTheme() {
+			return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
 		}
 
-		setTheme(theme: Theme) {
-			document.documentElement.dataset.theme = theme;
-			localStorage.setItem(storageKey, theme);
-			this.input.checked = theme === 'dark';
+		sync() {
+			this.button.setAttribute('aria-checked', String(this.getTheme() === 'dark'));
+		}
+
+		toggle() {
+			const nextTheme = this.getTheme() === 'dark' ? 'light' : 'dark';
+			document.documentElement.dataset.theme = nextTheme;
+			localStorage.setItem(this.storageKey, nextTheme);
+			(globalThis as any).StarlightThemeProvider?.updatePickers(nextTheme);
+			this.sync();
 		}
 	}
 
-	customElements.define('course-theme-switch', CourseThemeSwitch);
+	if (!customElements.get('header-theme-switch')) {
+		customElements.define('header-theme-switch', HeaderThemeSwitch);
+	}
 </script>
 
 <style>
-	.course-header {
+	.header {
 		--header-bg: #2774ae;
 		--header-fg: #ffffff;
-		--header-fg-muted: #ffffff;
 		--header-hover-bg: rgb(255 255 255 / 16%);
-		--header-active-bg: rgb(0 0 0 / 18%);
-		--header-active-fg: #ffffff;
+		--header-active-bg: #ffffff;
+		--header-active-fg: #1a5276;
 
-		height: 100%;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		gap: 0.55rem;
+		height: 100%;
 		background-color: var(--header-bg);
 		color: var(--header-fg);
 	}
 
 	.header-main {
 		display: grid;
-		grid-template-columns: minmax(16rem, 1fr) minmax(10rem, 0.9fr) minmax(22rem, 1fr);
+		grid-template-columns: minmax(15rem, 1.2fr) minmax(12rem, 1fr) auto;
+		gap: 1.5rem;
 		align-items: center;
-		gap: 1.25rem;
-		min-width: 0;
+		min-height: 2.25rem;
 	}
 
-	.brand-link,
-	.github-link,
-	.top-nav-link {
+	.brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75rem;
+		min-width: 0;
 		color: var(--header-fg);
+		font-size: var(--sl-text-lg);
+		font-weight: 700;
+		line-height: 1.1;
 		text-decoration: none;
 	}
 
-	.brand-link {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.8rem;
-		min-width: 0;
-		font-weight: 700;
-		font-size: 1.125rem;
-		line-height: 1.2;
-	}
-
-	.brand-link:hover,
-	.github-link:hover,
-	.top-nav-link:hover {
-		background-color: var(--header-hover-bg);
+	.brand:hover,
+	.github-link:hover {
 		color: var(--header-fg);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
 	}
 
 	.brand-logo {
 		width: 2rem;
 		height: 2rem;
 		border-radius: 50%;
-		object-fit: contain;
 		flex: 0 0 auto;
 	}
 
-	.brand-text {
+	.brand-title,
+	.current-page {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
 
-	.page-title {
-		overflow: hidden;
-		text-align: center;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		font-size: 1rem;
+	.current-page {
+		color: var(--header-fg);
+		font-size: var(--sl-text-base);
 		font-weight: 600;
-		color: rgb(255 255 255 / 78%);
+		text-align: center;
 	}
 
 	.header-actions {
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
-		gap: 0.8rem;
+		gap: 1rem;
 		min-width: 0;
 	}
 
-	.course-header :global(button[data-open-modal]) {
-		min-width: 13.5rem;
-		border: 0;
-		border-radius: 0.1rem;
-		background-color: rgb(0 0 0 / 24%);
+	.header :global(button[data-open-modal]) {
+		border-color: rgb(255 255 255 / 36%);
+		background-color: rgb(0 0 0 / 18%);
 		color: var(--header-fg);
 	}
 
-	.course-header :global(button[data-open-modal]:hover) {
+	.header :global(button[data-open-modal]:hover) {
+		border-color: rgb(255 255 255 / 72%);
 		background-color: var(--header-hover-bg);
 		color: var(--header-fg);
 	}
 
-	.course-header :global(button[data-open-modal] > kbd) {
+	.header :global(button[data-open-modal] > kbd) {
 		background-color: rgb(255 255 255 / 18%);
 		color: var(--header-fg);
 	}
 
-	.github-link {
+	.theme-switch {
+		position: relative;
 		display: inline-flex;
 		align-items: center;
-		gap: 0.35rem;
-		padding: 0.4rem 0.55rem;
-		border-radius: 0.25rem;
-		font-weight: 700;
-		line-height: 1;
-	}
-
-	.github-link :global(svg) {
-		font-size: 1.35rem;
-	}
-
-	.theme-switch label {
-		display: flex;
-		align-items: center;
+		width: 2.25rem;
+		height: 1.15rem;
+		border: 1px solid rgb(255 255 255 / 50%);
+		border-radius: 999px;
+		padding: 0.125rem;
+		background-color: rgb(0 0 0 / 24%);
 		cursor: pointer;
 	}
 
-	.theme-switch input {
-		position: absolute;
-		opacity: 0;
-		pointer-events: none;
-	}
-
-	.switch-track {
-		display: inline-flex;
-		align-items: center;
-		width: 1.45rem;
-		height: 0.75rem;
-		padding: 0.12rem;
-		border-radius: 999px;
-		background-color: rgb(255 255 255 / 82%);
-		box-shadow: inset 0 0 0 1px rgb(0 0 0 / 12%);
+	.theme-switch:hover {
+		background-color: var(--header-hover-bg);
 	}
 
 	.switch-thumb {
-		width: 0.5rem;
-		height: 0.5rem;
+		display: block;
+		width: 0.75rem;
+		height: 0.75rem;
 		border-radius: 50%;
-		background-color: #2774ae;
-		transition: transform 160ms ease;
+		background-color: #ffffff;
+		transition: transform 150ms ease;
 	}
 
-	.theme-switch input:focus-visible + .switch-track {
-		outline: 2px solid #ffffff;
-		outline-offset: 3px;
+	.theme-switch[aria-checked='true'] .switch-thumb {
+		transform: translateX(1.05rem);
 	}
 
-	.theme-switch input:checked + .switch-track .switch-thumb {
-		transform: translateX(0.7rem);
+	.github-link {
+		color: var(--header-fg);
+		font-size: var(--sl-text-sm);
+		font-weight: 700;
+		text-decoration: none;
 	}
 
 	.top-nav {
 		display: flex;
 		align-items: center;
-		gap: 0.15rem;
+		justify-content: center;
+		gap: 0.4rem;
 		min-width: 0;
 		overflow-x: auto;
 		scrollbar-width: none;
 	}
-
 	.top-nav::-webkit-scrollbar {
 		display: none;
 	}
 
 	.top-nav-link {
 		white-space: nowrap;
-		padding: 0.35rem 0.7rem;
-		border-radius: 0.25rem;
-		font-size: var(--sl-text-base);
-		font-weight: 500;
-		color: var(--header-fg-muted);
+		padding: 0.4rem 0.7rem;
+		border-radius: 0.5rem;
+		font-size: var(--sl-text-sm);
+		font-weight: 600;
+		color: var(--header-fg);
+		text-decoration: none;
 		line-height: 1.1;
 	}
-
+	.top-nav-link:hover {
+		color: var(--header-fg);
+		background-color: var(--header-hover-bg);
+	}
 	.top-nav-link.active {
 		color: var(--header-active-fg);
 		background-color: var(--header-active-bg);
-		font-weight: 700;
 	}
 
-	@media (max-width: 72rem) {
+	@media (max-width: 64rem) {
 		.header-main {
-			grid-template-columns: minmax(14rem, 1fr) minmax(16rem, auto);
+			grid-template-columns: 1fr auto;
+			gap: 1rem;
 		}
 
-		.page-title {
+		.current-page {
 			display: none;
 		}
 	}
 
 	@media (max-width: 50rem) {
-		.course-header {
-			gap: 0.4rem;
-		}
-
-		.header-main {
-			display: flex;
-			gap: 0.75rem;
-		}
-
-		.brand-text,
-		.github-link span,
-		.course-header :global(button[data-open-modal] span),
-		.course-header :global(button[data-open-modal] kbd) {
-			display: none;
-		}
-
-		.course-header :global(button[data-open-modal]) {
-			min-width: 0;
-			width: 2.25rem;
-			justify-content: center;
-		}
-
-		.header-actions {
-			margin-inline-start: auto;
+		.header {
 			gap: 0.45rem;
 		}
 
-		.top-nav-link {
-			font-size: var(--sl-text-sm);
-			padding-inline: 0.55rem;
+		.header-main {
+			grid-template-columns: 1fr;
+		}
+
+		.brand {
+			font-size: var(--sl-text-base);
+		}
+
+		.header-actions {
+			display: none;
+		}
+
+		.top-nav {
+			justify-content: flex-start;
 		}
 	}
 </style>

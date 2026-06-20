@@ -1,5 +1,6 @@
 /* UCLA blue branding */
 :root {
+  --sl-nav-height: 5.7rem;
   --sl-color-accent-low: #ccdff0;
   --sl-color-accent: #2774ae;
   --sl-color-accent-high: #1a5276;
