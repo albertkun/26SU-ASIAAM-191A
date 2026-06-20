@@ -7,7 +7,7 @@ title: "Week 0"
 :::caution
 Due **before** the first day of class.
 :::
-- Fill out the [pre-course survey](https://cloud.albertmaps.com/apps/forms/s/tNL9DqDRY8ZQ8gLjZBfixT83)
+- Fill out the [pre-course survey](https://cloud.albertmaps.com/apps/forms/embed/DJjGZSzqFYjpqr9saoLHbo8k)
 
 ## Optional: Pre-lab #1
 
