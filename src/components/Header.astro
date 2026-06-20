@@ -52,9 +52,26 @@ function isActive(href: string) {
 
 		<div class="header-actions print:hidden">
 			<header-theme-switch>
-				<button class="theme-switch" type="button" role="switch" aria-checked="false">
-					<span class="sr-only">Toggle dark mode</span>
-					<span class="switch-thumb" aria-hidden="true"></span>
+				<button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+					<svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+						<circle cx="12" cy="12" r="4.2" fill="currentColor" />
+						<g stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+							<line x1="12" y1="2.5" x2="12" y2="5" />
+							<line x1="12" y1="19" x2="12" y2="21.5" />
+							<line x1="2.5" y1="12" x2="5" y2="12" />
+							<line x1="19" y1="12" x2="21.5" y2="12" />
+							<line x1="5.1" y1="5.1" x2="6.9" y2="6.9" />
+							<line x1="17.1" y1="17.1" x2="18.9" y2="18.9" />
+							<line x1="5.1" y1="18.9" x2="6.9" y2="17.1" />
+							<line x1="17.1" y1="6.9" x2="18.9" y2="5.1" />
+						</g>
+					</svg>
+					<svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+						<path
+							fill="currentColor"
+							d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z"
+						></path>
+					</svg>
 				</button>
 			</header-theme-switch>
 			{shouldRenderSearch && <Search />}
@@ -133,7 +150,10 @@ function isActive(href: string) {
 		}
 
 		sync() {
-			this.button.setAttribute('aria-checked', String(this.getTheme() === 'dark'));
+			const label =
+				this.getTheme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
+			this.button.setAttribute('aria-label', label);
+			this.button.setAttribute('title', label);
 		}
 
 		toggle() {
@@ -252,34 +272,41 @@ function isActive(href: string) {
 		color: var(--header-fg);
 	}
 
-	.theme-switch {
-		position: relative;
+	.theme-toggle {
 		display: inline-flex;
 		align-items: center;
-		width: 2.25rem;
-		height: 1.15rem;
-		border: 1px solid rgb(255 255 255 / 50%);
-		border-radius: 999px;
-		padding: 0.125rem;
-		background-color: rgb(0 0 0 / 24%);
+		justify-content: center;
+		width: 2rem;
+		height: 2rem;
+		padding: 0;
+		border: 1px solid rgb(255 255 255 / 36%);
+		border-radius: 50%;
+		background-color: rgb(0 0 0 / 18%);
+		color: var(--header-fg);
 		cursor: pointer;
 	}
 
-	.theme-switch:hover {
+	.theme-toggle:hover {
+		border-color: rgb(255 255 255 / 72%);
 		background-color: var(--header-hover-bg);
 	}
 
-	.switch-thumb {
+	.theme-icon {
 		display: block;
-		width: 0.75rem;
-		height: 0.75rem;
-		border-radius: 50%;
-		background-color: #ffffff;
-		transition: transform 150ms ease;
+		width: 1.15rem;
+		height: 1.15rem;
 	}
 
-	.theme-switch[aria-checked='true'] .switch-thumb {
-		transform: translateX(1.05rem);
+	/* Show the sun while dark mode is active (click → light) and the moon while
+	   light mode is active (click → dark). Starlight defaults to dark. */
+	.theme-icon--moon {
+		display: none;
+	}
+	:global(html[data-theme='light']) .theme-icon--sun {
+		display: none;
+	}
+	:global(html[data-theme='light']) .theme-icon--moon {
+		display: block;
 	}
 
 	.github-link {
