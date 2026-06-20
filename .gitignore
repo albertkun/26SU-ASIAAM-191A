@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+
+# MkDocs (legacy)
+site/
+encryptcontent.cache
+
+# Misc
+**/unused/*
+.DS_Store

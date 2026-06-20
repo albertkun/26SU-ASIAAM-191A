@@ -1,0 +1,38 @@
+---
+// The main sections live in the top navigation bar (Header.astro), so the left
+// sidebar now hosts the page's "On this page" table of contents instead of the
+// site nav. The right-hand TOC panel is removed (see TwoColumnContent.astro).
+import TableOfContents from 'virtual:starlight/components/TableOfContents';
+
+const { toc } = Astro.locals.starlightRoute;
+---
+
+{
+	toc && (
+		<div class="toc-sidebar">
+			<TableOfContents />
+		</div>
+	)
+}
+
+<style>
+	.toc-sidebar :global(h2) {
+		color: var(--sl-color-white);
+		font-size: var(--sl-text-h5);
+		font-weight: 600;
+		line-height: var(--sl-line-height-headings);
+		margin-bottom: 0.5rem;
+	}
+	.toc-sidebar :global(a) {
+		color: var(--sl-color-gray-3);
+		font-size: var(--sl-text-sm);
+		text-decoration: none;
+	}
+	.toc-sidebar :global(a:hover) {
+		color: var(--sl-color-white);
+	}
+	.toc-sidebar :global(a[aria-current='true']) {
+		color: var(--sl-color-text-accent);
+		font-weight: 600;
+	}
+</style>

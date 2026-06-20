@@ -1,0 +1,82 @@
+/* UCLA blue branding */
+:root {
+  --sl-color-accent-low: #ccdff0;
+  --sl-color-accent: #2774ae;
+  --sl-color-accent-high: #1a5276;
+}
+
+[data-theme='dark'] {
+  --sl-color-accent-low: #1a3a52;
+  --sl-color-accent: #5ba3d9;
+  --sl-color-accent-high: #9fcde8;
+}
+
+.page > header.header {
+  background-color: #2774ae;
+  border-bottom-color: rgb(255 255 255 / 24%);
+}
+
+starlight-menu-button button,
+[data-theme='light'] starlight-menu-button button,
+starlight-menu-button[aria-expanded='true'] button,
+[data-theme='light'] starlight-menu-button[aria-expanded='true'] button {
+  background-color: #ffffff;
+  color: #1a5276;
+}
+
+starlight-menu-button button:hover {
+  background-color: #eaf4fb;
+}
+
+/* Clean code block headers */
+.sl-markdown-content pre {
+  border-radius: 6px;
+}
+
+/* Table styling */
+.sl-markdown-content table {
+  display: table;
+  width: 100%;
+}
+
+/* Checkpoint / milestone callout styling */
+.sl-markdown-content .starlight-aside--tip {
+  border-color: var(--sl-color-accent);
+}
+
+/* Keep screenshots/images responsive within the content column */
+.sl-markdown-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Home (splash) page: center the hero and intro copy. Starlight left-aligns the
+   hero on wide screens to make room for an image; we have no hero image, so
+   keep it centered at every width. (data-has-hero is set on <html>.) */
+html[data-has-hero] .hero {
+  grid-template-columns: 1fr;
+}
+html[data-has-hero] .stack {
+  text-align: center;
+}
+html[data-has-hero] .copy {
+  align-items: center;
+}
+html[data-has-hero] .actions {
+  justify-content: center;
+}
+html[data-has-hero] .main-pane {
+  --sl-content-margin-inline: auto;
+}
+html[data-has-hero] .sl-markdown-content {
+  margin-inline: auto;
+}
+html[data-has-hero] .sl-markdown-content > h2,
+html[data-has-hero] .sl-markdown-content > p {
+  text-align: center;
+}
+html[data-has-hero] .card-grid {
+  max-width: 56rem;
+  margin-inline: auto;
+}

@@ -1,0 +1,19 @@
+{
+  "name": "26su-asiaam-191a",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.33.0",
+    "astro": "^5.7.0",
+    "sharp": "^0.33.5"
+  }
+}

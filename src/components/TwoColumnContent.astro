@@ -1,0 +1,25 @@
+---
+// The right-hand "On this page" panel is intentionally removed — the table of
+// contents now lives in the left sidebar (see Sidebar.astro). We simply don't
+// render the `right-sidebar` slot, and let the content fill the column.
+---
+
+<div class="main-pane"><slot /></div>
+
+<style>
+	.main-pane {
+		isolation: isolate;
+	}
+
+	/* Without the right TOC panel, align the content column to the left
+	   (next to the sidebar) instead of centering it in the wider area. */
+	@media (min-width: 72rem) {
+		.main-pane {
+			--sl-content-margin-inline: 0 auto;
+		}
+
+		:global(html[data-has-hero]) .main-pane {
+			--sl-content-margin-inline: auto;
+		}
+	}
+</style>
