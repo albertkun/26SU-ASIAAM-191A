@@ -2,6 +2,7 @@
 // Custom Starlight header: mimics the previous course-site header with a
 // compact utility row above the primary navigation.
 import config from 'virtual:starlight/user-config';
+import logo from '../assets/favicon.png';
 
 import Search from 'virtual:starlight/components/Search';
 
@@ -11,9 +12,7 @@ const shouldRenderSearch =
 
 // Base path, no trailing slash (e.g. "/26SU-ASIAAM-191A").
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const courseTitle =
-	typeof config.title === 'string' ? config.title : 'AA191A-Web Development and GIS for Social Change';
-const pageTitle = Astro.locals.starlightRoute.entry.data.title ?? courseTitle;
+const courseTitle = 'AA191A-Web Development and GIS for Social Change';
 const githubHref = 'https://github.com/albertkun/26SU-ASIAAM-191A/';
 
 const navLinks = [
@@ -43,15 +42,13 @@ function isActive(href: string) {
 		<a class="brand" href={`${base}/`}>
 			<img
 				class="brand-logo"
-				src="https://albertkun.github.io/24SU-ASIAAM-191A/etc/media/favicon.png"
+				src={logo.src}
 				alt=""
 				width="32"
 				height="32"
 			/>
 			<span class="brand-title">{courseTitle}</span>
 		</a>
-
-		<div class="current-page" aria-current="page">{pageTitle}</div>
 
 		<div class="header-actions print:hidden">
 			<header-theme-switch>
@@ -61,7 +58,46 @@ function isActive(href: string) {
 				</button>
 			</header-theme-switch>
 			{shouldRenderSearch && <Search />}
-			<a class="github-link" href={githubHref} rel="me">GitHub</a>
+			<a class="github-link" href={githubHref} rel="me" aria-label="GitHub repository">
+				<svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+					<path
+						fill="currentColor"
+						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.86c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+					/>
+				</svg>
+				<span class="github-copy">
+					<span class="github-label">GitHub</span>
+					<span class="github-stats" data-github-stats>
+						<span class="github-stat">
+							<svg class="github-stat-icon" viewBox="0 0 16 16" aria-hidden="true">
+								<path
+									fill="currentColor"
+									d="M8 1.2 9.9 5.3l4.5.5-3.3 3 1 4.4L8 10.9l-4.1 2.3 1-4.4-3.3-3 4.5-.5L8 1.2Z"
+								/>
+							</svg>
+							<span class="sr-only">Stars</span>
+							<span data-github-stars>0</span>
+						</span>
+						<span class="github-stat">
+							<svg class="github-stat-icon" viewBox="0 0 16 16" aria-hidden="true">
+								<path
+									fill="none"
+									stroke="currentColor"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.7"
+									d="M5 4.2v3.1c0 1.4 1.1 2.5 2.5 2.5H11M11 3.7v8.6"
+								/>
+								<circle cx="5" cy="3" r="1.7" fill="currentColor" />
+								<circle cx="11" cy="3" r="1.7" fill="currentColor" />
+								<circle cx="11" cy="13" r="1.7" fill="currentColor" />
+							</svg>
+							<span class="sr-only">Forks</span>
+							<span data-github-forks>0</span>
+						</span>
+					</span>
+				</span>
+			</a>
 		</div>
 	</div>
 
@@ -112,27 +148,43 @@ function isActive(href: string) {
 	if (!customElements.get('header-theme-switch')) {
 		customElements.define('header-theme-switch', HeaderThemeSwitch);
 	}
+
+	const stars = document.querySelector<HTMLElement>('[data-github-stars]');
+	const forks = document.querySelector<HTMLElement>('[data-github-forks]');
+	if (stars && forks) {
+		fetch('https://api.github.com/repos/albertkun/26SU-ASIAAM-191A')
+			.then((response) => (response.ok ? response.json() : undefined))
+			.then((repo) => {
+				if (!repo) return;
+				stars.textContent = String(repo.stargazers_count ?? 0);
+				forks.textContent = String(repo.forks_count ?? 0);
+			})
+			.catch(() => {});
+	}
 </script>
 
 <style>
 	.header {
 		--header-bg: #2774ae;
 		--header-fg: #ffffff;
+		--header-fg-muted: rgb(255 255 255 / 72%);
 		--header-hover-bg: rgb(255 255 255 / 16%);
-		--header-active-bg: #ffffff;
-		--header-active-fg: #1a5276;
 
 		display: flex;
 		flex-direction: column;
 		gap: 0.55rem;
+		box-sizing: border-box;
+		width: 100%;
+		max-width: 86rem;
 		height: 100%;
+		margin-inline: auto;
 		background-color: var(--header-bg);
 		color: var(--header-fg);
 	}
 
 	.header-main {
 		display: grid;
-		grid-template-columns: minmax(15rem, 1.2fr) minmax(12rem, 1fr) auto;
+		grid-template-columns: minmax(0, 1fr) auto;
 		gap: 1.5rem;
 		align-items: center;
 		min-height: 2.25rem;
@@ -142,6 +194,9 @@ function isActive(href: string) {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.75rem;
+		justify-self: start;
+		width: fit-content;
+		max-width: 100%;
 		min-width: 0;
 		color: var(--header-fg);
 		font-size: var(--sl-text-lg);
@@ -164,18 +219,10 @@ function isActive(href: string) {
 		flex: 0 0 auto;
 	}
 
-	.brand-title,
-	.current-page {
+	.brand-title {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-	}
-
-	.current-page {
-		color: var(--header-fg);
-		font-size: var(--sl-text-base);
-		font-weight: 600;
-		text-align: center;
 	}
 
 	.header-actions {
@@ -183,6 +230,7 @@ function isActive(href: string) {
 		align-items: center;
 		justify-content: flex-end;
 		gap: 1rem;
+		flex: 0 0 auto;
 		min-width: 0;
 	}
 
@@ -190,6 +238,7 @@ function isActive(href: string) {
 		border-color: rgb(255 255 255 / 36%);
 		background-color: rgb(0 0 0 / 18%);
 		color: var(--header-fg);
+		max-width: 17rem;
 	}
 
 	.header :global(button[data-open-modal]:hover) {
@@ -234,16 +283,59 @@ function isActive(href: string) {
 	}
 
 	.github-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		flex: 0 0 auto;
+		min-width: 5.5rem;
 		color: var(--header-fg);
 		font-size: var(--sl-text-sm);
 		font-weight: 700;
+		line-height: 1;
 		text-decoration: none;
+	}
+
+	.github-icon {
+		width: 1.5rem;
+		height: 1.5rem;
+		flex: 0 0 auto;
+	}
+
+	.github-copy {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+	}
+
+	.github-label {
+		white-space: nowrap;
+	}
+
+	.github-stats {
+		display: flex;
+		gap: 0.45rem;
+		color: var(--header-fg-muted);
+		font-size: var(--sl-text-xs);
+		font-weight: 600;
+		white-space: nowrap;
+	}
+
+	.github-stat {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.2rem;
+	}
+
+	.github-stat-icon {
+		width: 0.9rem;
+		height: 0.9rem;
+		flex: 0 0 auto;
 	}
 
 	.top-nav {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-start;
 		gap: 0.4rem;
 		min-width: 0;
 		overflow-x: auto;
@@ -259,7 +351,7 @@ function isActive(href: string) {
 		border-radius: 0.5rem;
 		font-size: var(--sl-text-sm);
 		font-weight: 600;
-		color: var(--header-fg);
+		color: var(--header-fg-muted);
 		text-decoration: none;
 		line-height: 1.1;
 	}
@@ -268,18 +360,14 @@ function isActive(href: string) {
 		background-color: var(--header-hover-bg);
 	}
 	.top-nav-link.active {
-		color: var(--header-active-fg);
-		background-color: var(--header-active-bg);
+		color: var(--header-fg);
+		background-color: transparent;
 	}
 
 	@media (max-width: 64rem) {
 		.header-main {
 			grid-template-columns: 1fr auto;
 			gap: 1rem;
-		}
-
-		.current-page {
-			display: none;
 		}
 	}
 
