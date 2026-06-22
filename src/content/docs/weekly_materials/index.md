@@ -2,11 +2,16 @@
 title: Weekly Materials
 description: Lecture and lab overviews for each week of AA191A.
 ---
+# Summary
 
-Each week's lecture slides, lab walkthroughs, and recordings will be posted
-here as the course progresses.
+## Weekly overview
 
-:::note[The course hasn't started yet]
-Check back once the summer session begins; weekly materials will appear here week by week.
-In the meantime, get set up with the [Week 0 pre-course checklist](/26SU-ASIAAM-191A/assignments/week0/).
-:::
+|Week|Topic|
+|----|-----|
+|#1|[GIS, Data, and Ethics :link:](week01.md)|
+
+## Course Materials
+
+|Week | Title | Content | Slides | Recording |
+|-----|-------|------|--------|-----------|
+|1|Introducing the course, GIS, data, and ethics|Lecture|TBD|TBD|
