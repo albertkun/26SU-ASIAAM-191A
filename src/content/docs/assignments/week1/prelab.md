@@ -7,7 +7,7 @@ Pre-labs consist of the following:
 #### 1. Checking if your applications and/or data is ready for the labs.
 #### 2. Short readings that provide additional technical information or more background.
 :::
-## Due before Lab #1 on 6/26
+## Due before Lab #1 on 6/24
 
 Please have this completed before the lab:
 
@@ -27,7 +27,7 @@ Here are guides to help with signing-up with GitHub and installing GitSCM:
 1. [How to sign-up for GitHub](/26SU-ASIAAM-191A/help/github_sign_up/)
 2. [How to install GitSCM](/26SU-ASIAAM-191A/help/gitscm/)
 
-If you have any further trouble with these steps, be sure reach out to me [albertkun@ucla.edu](mailto:albertkun@ucla.edu) before the lab session.
+If you have any further trouble with these steps, be sure reach out to me [albertk@asianam.ucla.edu](mailto:albertk@asianam.ucla.edu) before the lab session.
 
 ### Optional Technical Readings
 

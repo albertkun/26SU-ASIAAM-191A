@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const pkg = require\\('c:/Users/hikou/repos/26SU-ASIAAM-191A/node_modules/@astrojs/starlight/package.json'\\); console.log\\(JSON.stringify\\(Object.keys\\(pkg.exports || {}\\), null, 2\\)\\)\")"
+    ]
+  }
+}

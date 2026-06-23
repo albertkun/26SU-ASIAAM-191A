@@ -1,11 +1,10 @@
 ---
 import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
-import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
 import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
+import SidebarNav from './SidebarNav.astro';
 
-const { sidebar } = Astro.locals.starlightRoute;
+const { sidebar, toc } = Astro.locals.starlightRoute;
 
-// Strip the site base and grab the first path segment (e.g. "labs", "assignments").
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const currentSection = Astro.url.pathname.replace(base, '').replace(/^\//, '').split('/')[0];
 
@@ -25,7 +24,6 @@ function groupContainsSection(entries: typeof sidebar, section: string): boolean
 	});
 }
 
-// "Weekly Materials" → "weekly-materials" or "weekly_materials"
 function labelMatchesSection(label: string, section: string): boolean {
 	return (
 		label.toLowerCase().replace(/\s+/g, '-') === section ||
@@ -41,12 +39,19 @@ const currentGroup = sidebar.find(entry => {
 	return false;
 });
 
-// Empty array on home page / no match — sidebar is hidden entirely.
 const activeSidebar = currentGroup ? [currentGroup] : [];
+
+// Flatten TOC items, skipping the auto-generated "Overview" entry.
+const tocItems = toc?.items
+	.filter(item => item.text.toLowerCase() !== 'overview')
+	.flatMap(item => [
+		{ id: item.id, text: item.text },
+		...(item.children ?? []).map(c => ({ id: c.id, text: c.text })),
+	]) ?? [];
 ---
 
 <SidebarPersister>
-	<SidebarSublist sublist={activeSidebar} />
+	<SidebarNav entries={activeSidebar} tocItems={tocItems} />
 </SidebarPersister>
 
 <div class="md:sl-hidden">
