@@ -25,7 +25,7 @@ export default defineConfig({
       components: {
         // Adds the horizontal top navigation bar (class-site style).
         Header: './src/components/Header.astro',
-        // Left sidebar shows the page table of contents instead of site nav.
+        // Left sidebar shows weekly navigation.
         Sidebar: './src/components/Sidebar.astro',
         // Removes the right-hand "On this page" panel (TOC moved to the left).
         TwoColumnContent: './src/components/TwoColumnContent.astro',
@@ -37,10 +37,12 @@ export default defineConfig({
       editLink: {
         baseUrl: 'https://github.com/albertkun/26SU-ASIAAM-191A/edit/main/',
       },
-      // No site-nav sidebar: the main sections live in the top navigation bar
-      // (Header.astro) and the left sidebar shows the page's table of contents
-      // (Sidebar.astro).
-      sidebar: [],
+      sidebar: [
+        {
+          label: 'Weekly Materials',
+          autogenerate: { directory: 'weekly_materials' },
+        },
+      ],
     }),
   ],
 });

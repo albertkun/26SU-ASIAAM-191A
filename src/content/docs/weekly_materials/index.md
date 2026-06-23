@@ -1,8 +1,9 @@
 ---
 title: Weekly Materials
 description: Lecture and lab overviews for each week of AA191A.
+sidebar:
+  label: Summary
 ---
-# Summary
 
 ## Weekly overview
 

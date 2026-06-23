@@ -8,4 +8,4 @@ title: "Weekly Reading #1"
 
 This 15-page article summarizes critical cartography by introducing ethics and modern mapmaking technologies. It should take around 10 - 20 minutes to finish reading.
 
-[Download PDF 📥 ](../../materials/readings/An_Introduction_to_Critical_Cartography.pdf)
+[Download PDF 📥 ](/26SU-ASIAAM-191A/materials/readings/An_Introduction_to_Critical_Cartography.pdf)

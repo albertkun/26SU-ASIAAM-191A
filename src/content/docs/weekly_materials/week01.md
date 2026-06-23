@@ -2,8 +2,6 @@
 title: "Week 1 - GIS, Data, and Ethics"
 ---
 
-# Week 1 - GIS, Data, and Ethics
-
 Date|Type|Description|Slides|Recording|
 |---|----|-----------|------|---------|
 |6/24|Lecture|Introducing the course, GIS, data, and ethics|TBD|TBD|
@@ -18,7 +16,7 @@ Charting the course for the class and how it relates to GIS, data, and ethics.
 
 Learning how to use GitHub, VSCode, and some JavaScript.
 
-- [GITting Used to Web Development and JavaScript](../labs/)
+- [GITting Used to Web Development and JavaScript](/26SU-ASIAAM-191A/labs/)
 
 
 ## Group Work
@@ -29,12 +27,12 @@ Start to form teams based on initially pre-assigned groups on this spreadsheet:
 
 ## Getting Started help
 
-1. [Signing-up with GitHub](../help/github_sign_up/)
-2. [Git Cloning: Downloading a repo to your computer](../help/git_cloning/)
-3. [Git Committing: Saving your changes to a repo](../help/git_commit/)
-4. [Git Creating: Creating a new repo and inviting group members](../help/git_creating/)
-5. [Submitting assginments](../help/submit/)
-6. [Subtmitting Thinking Caps](../help/thinking_caps/)
+1. [Signing-up with GitHub](/26SU-ASIAAM-191A/help/github_sign_up/)
+2. [Git Cloning: Downloading a repo to your computer](/26SU-ASIAAM-191A/help/git_cloning/)
+3. [Git Committing: Saving your changes to a repo](/26SU-ASIAAM-191A/help/git_commit/)
+4. [Git Creating: Creating a new repo and inviting group members](/26SU-ASIAAM-191A/help/git_creating/)
+5. [Submitting assginments](/26SU-ASIAAM-191A/help/submit/)
+6. [Subtmitting Thinking Caps](/26SU-ASIAAM-191A/help/thinking_caps/)
 <!-- [Introduction to GIS](./Materials/a_optional_gis.md) -->
 
 ## Assignments
@@ -47,12 +45,12 @@ Unless specified otherwise, all assignments are **due at the beginning of class*
 
 ### Due Wednesday 6/24
 
-- [**Pre-lab #1**](../assignments/week1/prelab/)
+- [**Pre-lab #1**](/26SU-ASIAAM-191A/assignments/week1/prelab/)
 
 ### Due Monday 6/29
 
-- [**Thinking Cap: What are problems with the way we use data and GIS?**](../assignments/week1/thinking_cap/)
-- [**Finish the weekly reading**](../assignments/week1/reading/) [[PDF]](../materials/readings/An_Introduction_to_Critical_Cartography.pdf)
+- [**Thinking Cap: What are problems with the way we use data and GIS?**](/26SU-ASIAAM-191A/assignments/week1/thinking_cap/)
+- [**Finish the weekly reading**](/26SU-ASIAAM-191A/assignments/week1/reading/) [[PDF]](/26SU-ASIAAM-191A/materials/readings/An_Introduction_to_Critical_Cartography.pdf)
 
 ### Due Wednesday 7/1
 
