@@ -2,8 +2,6 @@
 title: "Thinking cap #1"
 ---
 
-# Thinking cap #1
-
 :::note[Prompt]
 ## What do you think are problems with the way we use data and GIS?
 :::

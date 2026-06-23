@@ -2,8 +2,6 @@
 title: "Pre-Lab #1"
 ---
 
-# Pre-Lab #1
-
 :::note
 Pre-labs consist of the following:
 #### 1. Checking if your applications and/or data is ready for the labs.

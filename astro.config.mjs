@@ -53,10 +53,6 @@ export default defineConfig({
           label: 'Help',
           autogenerate: { directory: 'help' },
         },
-        {
-          label: 'Syllabus',
-          items: [{ label: 'Syllabus', link: '/syllabus/' }],
-        },
       ],
     }),
   ],
