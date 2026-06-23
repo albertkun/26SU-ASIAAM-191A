@@ -18,7 +18,7 @@ Charting the course for the class and how it relates to GIS, data, and ethics.
 
 Learning how to use GitHub, VSCode, and some JavaScript.
 
-- [GITting Used to Web Development and JavaScript](../labs/week1/)
+- [GITting Used to Web Development and JavaScript](../labs/)
 
 
 ## Group Work
@@ -57,5 +57,5 @@ Unless specified otherwise, all assignments are **due at the beginning of class*
 ### Due Wednesday 7/1
 
 <!-- - [**Lab #1: Portfolio**](../assignments/week1/lab_assignment/) -->
-- [**Group Assignment #1: Repository and Readme**](../assignments/week1/group_assignment/)
+<!-- - [**Group Assignment #1: Repository and Readme**](../assignments/week1/group_assignment/) -->
 <!-- - [Pre-lab](../assignments/week2/prelab/) -->

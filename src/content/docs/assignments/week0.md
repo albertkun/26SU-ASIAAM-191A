@@ -25,4 +25,4 @@ You can get a head start by doing the following pre-lab before the first lab ses
 [^1]:
     Please be sure to sign-up with a [GitHub account](https://github.com/signup) before installing Git
 
-Feel free to [reach out](../help#instructor-contact) if you have trouble installing any of the software.
+Feel free to [reach out](../help/#instructor-contact) if you have trouble installing any of the software.
