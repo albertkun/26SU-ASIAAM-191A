@@ -50,7 +50,7 @@ Unless specified otherwise, all assignments are **due at the beginning of class*
 ### Due Monday 6/29
 
 - [**Thinking Cap: What are problems with the way we use data and GIS?**](../../assignments/week1/thinking_cap/)
-- [**Finish the weekly reading**](../../assignments/week1/reading/) [[PDF]](../../materials/readings/An_Introduction_to_Critical_Cartography.pdf)
+- [**Finish the weekly reading**](../../assignments/week1/reading/) [[PDF]](../../readings/An_Introduction_to_Critical_Cartography.pdf)
 
 ### Due Wednesday 7/1
 

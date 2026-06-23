@@ -5,17 +5,16 @@ sidebar:
   hidden: true
 ---
 
-All assignments will be listed here as they are released.
+## Current Assignments
 
-:::caution[Remember!]
-Unless specified otherwise, all assignments are **due at the beginning of class**.
-Late assignments are given half credit up until a week.
-:::
+| Assignment | Type | Due |
+|------------|------|-----|
+| [**Pre-Lab #1**](week1/prelab/) | Pre-Lab | Wednesday 6/24 |
+| [**Thinking Cap #1**](week1/thinking_cap/) | Thinking Cap | Monday 6/29 |
+| [**Weekly Reading #1**](week1/reading/) | Reading | Monday 6/29 |
 
-## Current
+## Past Assignments
 
 | Assignment | Type | Due |
 |------------|------|-----|
 | [**Pre-course checklist**](week0/) | Setup | Before the first day of class |
-
-More assignments will be added here once the summer session begins.
