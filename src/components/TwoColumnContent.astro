@@ -1,25 +1,52 @@
----
-// The right-hand "On this page" panel is intentionally removed — the table of
-// contents now lives in the left sidebar (see Sidebar.astro). We simply don't
-// render the `right-sidebar` slot, and let the content fill the column.
----
-
-<div class="main-pane"><slot /></div>
+<div class="lg:sl-flex">
+	{
+		Astro.locals.starlightRoute.toc && (
+			<aside class="right-sidebar-container print:hidden">
+				<div class="right-sidebar">
+					<slot name="right-sidebar" />
+				</div>
+			</aside>
+		)
+	}
+	<div class="main-pane"><slot /></div>
+</div>
 
 <style>
 	.main-pane {
 		isolation: isolate;
 	}
 
-	/* Without the right TOC panel, align the content column to the left
-	   (next to the sidebar) instead of centering it in the wider area. */
 	@media (min-width: 72rem) {
-		.main-pane {
-			--sl-content-margin-inline: 0 auto;
+		.right-sidebar-container {
+			order: 2;
+			position: relative;
+			width: calc(
+				var(--sl-sidebar-width) + (100% - var(--sl-content-width) - var(--sl-sidebar-width)) / 2
+			);
 		}
 
-		:global(html[data-has-hero]) .main-pane {
-			--sl-content-margin-inline: auto;
+		.right-sidebar {
+			position: fixed;
+			top: 0;
+			border-inline-start: 1px solid var(--sl-color-hairline);
+			padding-top: var(--sl-nav-height);
+			width: 100%;
+			height: 100vh;
+			overflow-y: auto;
+			scrollbar-width: none;
+		}
+
+		.main-pane {
+			width: 100%;
+		}
+
+		:global([data-has-sidebar][data-has-toc]) .main-pane {
+			--sl-content-margin-inline: auto 0;
+
+			order: 1;
+			width: calc(
+				var(--sl-content-width) + (100% - var(--sl-content-width) - var(--sl-sidebar-width)) / 2
+			);
 		}
 	}
 </style>

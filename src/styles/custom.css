@@ -82,7 +82,12 @@ html[data-has-hero] .card-grid {
   margin-inline: auto;
 }
 
-/* Hide the right-hand "On this page" TOC panel */
-.right-sidebar-panel {
+/* Hide the "On this page" heading — keep just the section links */
+#starlight__on-this-page {
+  display: none;
+}
+
+/* Hide the auto-generated "Overview" (#_top) item from the right-side TOC */
+.right-sidebar a[href="#_top"] {
   display: none;
 }

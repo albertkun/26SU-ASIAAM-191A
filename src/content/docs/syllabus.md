@@ -1,5 +1,8 @@
 ---
 title: "Syllabus"
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
 ---
 
 Welcome to the syllabus for Asian American Studies 191A - Web Development and GIS for Social Change: Critical Data for Transforming Civil Society.
@@ -171,7 +174,7 @@ for academic honesty and integrity in your work.
 - Download and install [VS Code](https://code.visualstudio.com/)
 - Download and install [Firefox](https://www.firefox.com/)
 
-If you have any issues with installing the above, please do not hesitate to contact me at albertkun@oarc.ucla.edu.
+If you have any issues with installing the above, please do not hesitate to contact me at albertk@asianam.ucla.edu.
 
 <table>
 <thead>

@@ -41,16 +41,19 @@ const currentGroup = sidebar.find(entry => {
 
 const activeSidebar = currentGroup ? [currentGroup] : [];
 
-// Only show h2 headings (top-level TOC items), skip auto-generated "Overview".
 const tocItems = toc?.items
 	.filter(item => item.text.toLowerCase() !== 'overview')
 	.map(item => ({ id: item.id, text: item.text })) ?? [];
+
 ---
 
 <SidebarPersister>
-	<SidebarNav entries={activeSidebar} tocItems={tocItems} />
+	{activeSidebar.length > 0 && (
+		<SidebarNav entries={activeSidebar} tocItems={tocItems} />
+	)}
 </SidebarPersister>
 
 <div class="md:sl-hidden">
 	<MobileMenuFooter />
 </div>
+

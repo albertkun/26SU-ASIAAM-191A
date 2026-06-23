@@ -4,7 +4,7 @@ title: "Week 1 - GIS, Data, and Ethics"
 
 Date|Type|Description|Slides|Recording|
 |---|----|-----------|------|---------|
-|6/24|Lecture|Introducing the course, GIS, data, and ethics|[Here](../../materials/AA191_S_W1_Lecture_1.pdf)|[Here](https://ucla.zoom.us/rec/share/rUlo0e8ybNttvw1JbVebR9AZ9ak1lw7ABp0gWRn1EQ2IkukQ6adtdAqLBrHBLW-_.y_qcbbRYaZDplqPR?startTime=1782166810000)|
+|6/22|Lecture|Introducing the course, GIS, data, and ethics|[Here](../../materials/AA191_S_W1_Lecture_1.pdf)|[Here](https://ucla.zoom.us/rec/share/rUlo0e8ybNttvw1JbVebR9AZ9ak1lw7ABp0gWRn1EQ2IkukQ6adtdAqLBrHBLW-_.y_qcbbRYaZDplqPR?startTime=1782166810000)|
 
 ## Lecture
 

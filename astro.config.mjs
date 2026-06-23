@@ -38,6 +38,7 @@ export default defineConfig({
         baseUrl: 'https://github.com/albertkun/26SU-ASIAAM-191A/edit/main/',
       },
       pagination: false,
+      tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 2 },
       sidebar: [
         {
           label: 'Weekly Materials',
@@ -45,7 +46,17 @@ export default defineConfig({
         },
         {
           label: 'Assignments',
-          autogenerate: { directory: 'assignments' },
+          items: [
+            { label: 'Week 0', link: '/assignments/week0/' },
+            {
+              label: 'Week 1',
+              items: [
+                { label: 'Pre-Lab #1', link: '/assignments/week1/prelab/' },
+                { label: 'Weekly Reading #1', link: '/assignments/week1/reading/' },
+                { label: 'Thinking Cap #1', link: '/assignments/week1/thinking_cap/' },
+              ],
+            },
+          ],
         },
         {
           label: 'Help',
