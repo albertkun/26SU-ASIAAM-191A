@@ -2,14 +2,33 @@
 import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
 import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
 import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
+import TableOfContents from 'virtual:starlight/components/TableOfContents';
 
-const { sidebar } = Astro.locals.starlightRoute;
+const { sidebar, toc } = Astro.locals.starlightRoute;
 ---
 
 <SidebarPersister>
 	<SidebarSublist sublist={sidebar} />
 </SidebarPersister>
 
+{toc && (
+	<div class="toc-section">
+		<hr />
+		<TableOfContents />
+	</div>
+)}
+
 <div class="md:sl-hidden">
 	<MobileMenuFooter />
 </div>
+
+<style>
+	.toc-section {
+		margin-top: 1rem;
+	}
+	.toc-section hr {
+		border: none;
+		border-top: 1px solid var(--sl-color-hairline-light);
+		margin-bottom: 1rem;
+	}
+</style>

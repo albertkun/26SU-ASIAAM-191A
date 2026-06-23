@@ -25,9 +25,9 @@ export default defineConfig({
       components: {
         // Adds the horizontal top navigation bar (class-site style).
         Header: './src/components/Header.astro',
-        // Left sidebar shows weekly navigation.
+        // Left sidebar shows weekly navigation + page TOC.
         Sidebar: './src/components/Sidebar.astro',
-        // Removes the right-hand "On this page" panel (TOC moved to the left).
+        // Removes the right-hand "On this page" panel (TOC is in the left sidebar).
         TwoColumnContent: './src/components/TwoColumnContent.astro',
       },
       social: [
