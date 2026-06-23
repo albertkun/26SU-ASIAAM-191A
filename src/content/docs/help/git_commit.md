@@ -3,7 +3,7 @@ title: "Guide for using Git Commit in VS Code"
 ---
 
 ### Requirements:
-- [Git Clone completed](/help/git_cloning.md)
+- [Git Clone completed](/help/git_cloning/)
 
 This guide will walk you through how to push to your lab assignment repo after you have finished your assignments.
 

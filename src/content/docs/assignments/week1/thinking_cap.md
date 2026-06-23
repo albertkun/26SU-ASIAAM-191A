@@ -15,7 +15,7 @@ Respond to the above prompt on [GitHub](https://github.com/albertkun/26SU-ASIAAM
 
 - Feel free to include links and images
 
-For more info see [how to submit thinking caps, part 1](../../help/thinking_caps.md).
+For more info see [how to submit thinking caps, part 1](../../help/thinking_caps/).
 
 :::caution[Reminder!]
 To be eligible for extra credit, you **must** complete this part one day **before** the due date (e.g. 6/28 at 3pm PST).
@@ -29,4 +29,4 @@ Leave a reply on the posts of two other students, reflecting on what you think o
 :::note
 Try to respond to students posts with no replies.
 :::
-For more details see [how to submit thinking caps, part 2](../../help/thinking_caps.md#part-2-responding-to-discussions)
+For more details see [how to submit thinking caps, part 2](../../help/thinking_caps/#part-2-responding-to-discussions)

@@ -23,20 +23,20 @@ Below are step-by-step guides on getting started with the course.
 
 ### Course Related
 
-1. [Posting a Thinking Cap](thinking_caps.md)
+1. [Posting a Thinking Cap](thinking_caps/)
 
-2. [Submit Lab Assignments](submit.md)
+2. [Submit Lab Assignments](submit/)
 
 ### Git Related
-1. [GitHub Sign-Up](github_sign_up.md)
+1. [GitHub Sign-Up](github_sign_up/)
 
-2. [Installing Git SCM](gitscm.md)
+2. [Installing Git SCM](gitscm/)
 
-3. [ Creating a Repository in GitHub](git_creating.md)
+3. [ Creating a Repository in GitHub](git_creating/)
 
-4. [Git Clone in VS Code](git_cloning.md)
+4. [Git Clone in VS Code](git_cloning/)
 
-5. [Committing code to GitHub in VS Code](git_commit.md)
+5. [Committing code to GitHub in VS Code](git_commit/)
 
 <!-- ### [6. Git Forking in VS Code](git_forking.md) -->
 

@@ -18,4 +18,4 @@ title: "Guide for signing up to GitHub"
 
 <img src="/26SU-ASIAAM-191A/help/media/image4.png" alt="">
 
-5.  Remember your username and email! It will be necessary for setting up [GitSCM](gitscm.md)!
+5.  Remember your username and email! It will be necessary for setting up [GitSCM](gitscm/)!

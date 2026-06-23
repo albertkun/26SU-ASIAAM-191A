@@ -80,4 +80,4 @@ Make sure you have [Homebrew installed](https://brew.sh/). If you can run the co
    ```
 
 4. If you had any issues, please check this documentation for more details or reach out for help.
-5. Now you are ready to [clone a repository](git_cloning.md) in [VS Code](https://code.visualstudio.com/)!
+5. Now you are ready to [clone a repository](git_cloning/) in [VS Code](https://code.visualstudio.com/)!

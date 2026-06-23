@@ -8,7 +8,7 @@ description: Lecture and lab overviews for each week of AA191A.
 
 |Week|Topic|
 |----|-----|
-|#1|[GIS, Data, and Ethics :link:](week01.md)|
+|#1|[GIS, Data, and Ethics :link:](week01/)|
 
 ## Course Materials
 
