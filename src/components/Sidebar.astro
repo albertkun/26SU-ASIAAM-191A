@@ -41,13 +41,10 @@ const currentGroup = sidebar.find(entry => {
 
 const activeSidebar = currentGroup ? [currentGroup] : [];
 
-// Flatten TOC items, skipping the auto-generated "Overview" entry.
+// Only show h2 headings (top-level TOC items), skip auto-generated "Overview".
 const tocItems = toc?.items
 	.filter(item => item.text.toLowerCase() !== 'overview')
-	.flatMap(item => [
-		{ id: item.id, text: item.text },
-		...(item.children ?? []).map(c => ({ id: c.id, text: c.text })),
-	]) ?? [];
+	.map(item => ({ id: item.id, text: item.text })) ?? [];
 ---
 
 <SidebarPersister>

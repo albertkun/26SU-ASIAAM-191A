@@ -25,8 +25,10 @@ export default defineConfig({
       components: {
         // Adds the horizontal top navigation bar (class-site style).
         Header: './src/components/Header.astro',
-        // Left sidebar shows weekly navigation.
+        // Left sidebar shows weekly navigation + page TOC sub-items.
         Sidebar: './src/components/Sidebar.astro',
+        // Removes the empty right column.
+        TwoColumnContent: './src/components/TwoColumnContent.astro',
       },
       social: [
         { icon: 'github', label: 'GitHub', href: 'https://github.com/albertkun/26SU-ASIAAM-191A' },
@@ -44,10 +46,6 @@ export default defineConfig({
         {
           label: 'Assignments',
           autogenerate: { directory: 'assignments' },
-        },
-        {
-          label: 'Labs',
-          autogenerate: { directory: 'labs' },
         },
         {
           label: 'Help',
