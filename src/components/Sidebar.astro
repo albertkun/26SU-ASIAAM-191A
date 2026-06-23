@@ -5,13 +5,15 @@ import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
 import TableOfContents from 'virtual:starlight/components/TableOfContents';
 
 const { sidebar, toc } = Astro.locals.starlightRoute;
+// Only show the TOC when the page has more than 2 top-level headings.
+const showToc = toc && toc.items.length > 2;
 ---
 
 <SidebarPersister>
 	<SidebarSublist sublist={sidebar} />
 </SidebarPersister>
 
-{toc && (
+{showToc && (
 	<div class="toc-section">
 		<hr />
 		<TableOfContents />
