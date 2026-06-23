@@ -8,7 +8,7 @@ title: "How to submit Lab assignments"
 ✅ You enabled GitHub pages
 :::
 
-If you have not done these steps yet, refer back to your [lab walkthroughs](../labs/).
+If you have not done these steps yet, refer back to your [lab walkthroughs](../../labs/).
 
 ## Go to the Discussion board
 

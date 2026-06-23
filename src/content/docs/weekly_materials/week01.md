@@ -4,7 +4,7 @@ title: "Week 1 - GIS, Data, and Ethics"
 
 Date|Type|Description|Slides|Recording|
 |---|----|-----------|------|---------|
-|6/24|Lecture|Introducing the course, GIS, data, and ethics|[Here](../../AA191_S_W1_Lecture_1.pdf)|[Here](https://ucla.zoom.us/rec/share/rUlo0e8ybNttvw1JbVebR9AZ9ak1lw7ABp0gWRn1EQ2IkukQ6adtdAqLBrHBLW-_.y_qcbbRYaZDplqPR?startTime=1782166810000)|
+|6/24|Lecture|Introducing the course, GIS, data, and ethics|[Here](../../materials/AA191_S_W1_Lecture_1.pdf)|[Here](https://ucla.zoom.us/rec/share/rUlo0e8ybNttvw1JbVebR9AZ9ak1lw7ABp0gWRn1EQ2IkukQ6adtdAqLBrHBLW-_.y_qcbbRYaZDplqPR?startTime=1782166810000)|
 
 ## Lecture
 
@@ -27,12 +27,12 @@ Start to form teams based on initially pre-assigned groups on this spreadsheet:
 
 ## Getting Started help
 
-1. [Signing-up with GitHub](../help/github_sign_up/)
-2. [Git Cloning: Downloading a repo to your computer](../help/git_cloning/)
-3. [Git Committing: Saving your changes to a repo](../help/git_commit/)
-4. [Git Creating: Creating a new repo and inviting group members](../help/git_creating/)
-5. [Submitting assginments](../help/submit/)
-6. [Subtmitting Thinking Caps](../help/thinking_caps/)
+1. [Signing-up with GitHub](../../help/github_sign_up/)
+2. [Git Cloning: Downloading a repo to your computer](../../help/git_cloning/)
+3. [Git Committing: Saving your changes to a repo](../../help/git_commit/)
+4. [Git Creating: Creating a new repo and inviting group members](../../help/git_creating/)
+5. [Submitting assginments](../../help/submit/)
+6. [Subtmitting Thinking Caps](../../help/thinking_caps/)
 <!-- [Introduction to GIS](./Materials/a_optional_gis.md) -->
 
 ## Assignments
@@ -45,15 +45,15 @@ Unless specified otherwise, all assignments are **due at the beginning of class*
 
 ### Due Wednesday 6/24
 
-- [**Pre-lab #1**](../assignments/week1/prelab/)
+- [**Pre-lab #1**](../../assignments/week1/prelab/)
 
 ### Due Monday 6/29
 
-- [**Thinking Cap: What are problems with the way we use data and GIS?**](../assignments/week1/thinking_cap/)
-- [**Finish the weekly reading**](../assignments/week1/reading/) [[PDF]](../materials/readings/An_Introduction_to_Critical_Cartography.pdf)
+- [**Thinking Cap: What are problems with the way we use data and GIS?**](../../assignments/week1/thinking_cap/)
+- [**Finish the weekly reading**](../../assignments/week1/reading/) [[PDF]](../../materials/readings/An_Introduction_to_Critical_Cartography.pdf)
 
 ### Due Wednesday 7/1
 
-<!-- - [**Lab #1: Portfolio**](../assignments/week1/lab_assignment/) -->
-<!-- - [**Group Assignment #1: Repository and Readme**](../assignments/week1/group_assignment/) -->
-<!-- - [Pre-lab](../assignments/week2/prelab/) -->
+<!-- - [**Lab #1: Portfolio**](../../assignments/week1/lab_assignment/) -->
+<!-- - [**Group Assignment #1: Repository and Readme**](../../assignments/week1/group_assignment/) -->
+<!-- - [Pre-lab](../../assignments/week2/prelab/) -->

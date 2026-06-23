@@ -9,10 +9,10 @@ sidebar:
 
 |Week|Topic|
 |----|-----|
-|#1|[GIS, Data, and Ethics :link:](week01/)|
+|#1|[GIS, Data, and Ethics](week01/)|
 
 ## Course Materials
 
 |Week | Title | Content | Slides | Recording |
 |-----|-------|------|--------|-----------|
-|1|Introducing the course, GIS, data, and ethics|Lecture|TBD|TBD|
+|1|Introducing the course, GIS, data, and ethics|Lecture|[Here]|TBD|
