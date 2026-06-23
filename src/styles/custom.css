@@ -81,3 +81,8 @@ html[data-has-hero] .card-grid {
   max-width: 56rem;
   margin-inline: auto;
 }
+
+/* Hide the right-hand "On this page" TOC panel */
+.right-sidebar-panel {
+  display: none;
+}

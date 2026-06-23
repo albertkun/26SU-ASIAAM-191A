@@ -2,35 +2,53 @@
 import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
 import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
 import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
-import TableOfContents from 'virtual:starlight/components/TableOfContents';
 
-const { sidebar, toc } = Astro.locals.starlightRoute;
-// Only show the TOC when the page has more than 2 top-level headings.
-const showToc = toc && toc.items.length > 2;
+const { sidebar } = Astro.locals.starlightRoute;
+
+// Strip the site base and grab the first path segment (e.g. "labs", "assignments").
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const currentSection = Astro.url.pathname.replace(base, '').replace(/^\//, '').split('/')[0];
+
+function hasCurrentPage(entries: typeof sidebar): boolean {
+	return entries.some(entry =>
+		entry.type === 'link' ? entry.isCurrent : hasCurrentPage(entry.entries)
+	);
+}
+
+function groupContainsSection(entries: typeof sidebar, section: string): boolean {
+	return entries.some(entry => {
+		if (entry.type === 'link') {
+			const hrefSection = entry.href.replace(base, '').replace(/^\//, '').split('/')[0];
+			return hrefSection === section;
+		}
+		return groupContainsSection(entry.entries, section);
+	});
+}
+
+// "Weekly Materials" → "weekly-materials" or "weekly_materials"
+function labelMatchesSection(label: string, section: string): boolean {
+	return (
+		label.toLowerCase().replace(/\s+/g, '-') === section ||
+		label.toLowerCase().replace(/\s+/g, '_') === section
+	);
+}
+
+const currentGroup = sidebar.find(entry => {
+	if (entry.type === 'link') return false;
+	if (hasCurrentPage(entry.entries)) return true;
+	if (currentSection && groupContainsSection(entry.entries, currentSection)) return true;
+	if (currentSection && labelMatchesSection(entry.label, currentSection)) return true;
+	return false;
+});
+
+// Empty array on home page / no match — sidebar is hidden entirely.
+const activeSidebar = currentGroup ? [currentGroup] : [];
 ---
 
 <SidebarPersister>
-	<SidebarSublist sublist={sidebar} />
+	<SidebarSublist sublist={activeSidebar} />
 </SidebarPersister>
-
-{showToc && (
-	<div class="toc-section">
-		<hr />
-		<TableOfContents />
-	</div>
-)}
 
 <div class="md:sl-hidden">
 	<MobileMenuFooter />
 </div>
-
-<style>
-	.toc-section {
-		margin-top: 1rem;
-	}
-	.toc-section hr {
-		border: none;
-		border-top: 1px solid var(--sl-color-hairline-light);
-		margin-bottom: 1rem;
-	}
-</style>

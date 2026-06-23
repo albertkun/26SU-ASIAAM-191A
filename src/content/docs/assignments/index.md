@@ -1,6 +1,8 @@
 ---
 title: Assignments
 description: Current and upcoming assignments for AA191A.
+sidebar:
+  hidden: true
 ---
 
 All assignments will be listed here as they are released.
