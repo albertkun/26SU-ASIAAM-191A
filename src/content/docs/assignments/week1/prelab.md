@@ -4,8 +4,8 @@ title: "Pre-Lab #1"
 
 :::note
 Pre-labs consist of the following:
-#### 1. Checking if your applications and/or data is ready for the labs.
-#### 2. Short readings that provide additional technical information or more background.
+1. Checking if your applications and/or data is ready for the labs.
+2. Short readings that provide additional technical information or more background.
 :::
 ## Due before Lab #1 on 6/24
 
