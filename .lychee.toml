@@ -23,7 +23,5 @@ timeout = 20          # seconds per request
 max_retries = 3
 retry_wait_time = 5
 
-# Skip mailto: links
-exclude_mail = true
 
 # Use GITHUB_TOKEN for github.com links to avoid rate-limiting
