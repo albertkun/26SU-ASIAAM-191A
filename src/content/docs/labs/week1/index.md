@@ -1,11 +1,10 @@
 ---
-title: "Overiview - GITting down with labs and code"
+title: "Overview - GITting down with labs and code"
 hide:
   - tags
 tags:
   - Lab 1
 ---
-# Overiview - GITting down with labs and code
 
 <img src="/26SU-ASIAAM-191A/labs/week1/media/hello_world.png" alt="">{: style="max-width:300px"}
 
