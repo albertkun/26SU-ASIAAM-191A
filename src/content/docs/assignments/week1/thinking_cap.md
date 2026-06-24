@@ -1,5 +1,8 @@
 ---
-title: "Thinking cap #1"
+title: "Thinking Cap #1"
+sidebar:
+  label: "Thinking Cap #1"
+  order: 3
 ---
 
 :::note[Prompt]

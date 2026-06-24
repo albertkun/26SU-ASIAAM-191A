@@ -10,15 +10,17 @@ interface Props {
 }
 
 const { prev, next } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const resolve = (href: string) => href.startsWith('/') ? base + href : href;
 ---
 
 <nav class="lab-nav" aria-label="Lab navigation">
   {prev
-    ? <a href={prev.href} class="lab-nav-btn lab-nav-prev">← {prev.label}</a>
+    ? <a href={resolve(prev.href)} class="lab-nav-btn lab-nav-prev">← {prev.label}</a>
     : <span class="lab-nav-spacer"></span>
   }
   {next
-    ? <a href={next.href} class="lab-nav-btn lab-nav-next">{next.label} →</a>
+    ? <a href={resolve(next.href)} class="lab-nav-btn lab-nav-next">{next.label} →</a>
     : <span class="lab-nav-spacer"></span>
   }
 </nav>

@@ -1,5 +1,8 @@
 ---
 title: "Pre-Lab #1"
+sidebar:
+  label: "Pre-Lab #1"
+  order: 1
 ---
 
 :::note

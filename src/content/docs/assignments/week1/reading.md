@@ -1,5 +1,8 @@
 ---
 title: "Weekly Reading #1"
+sidebar:
+  label: "Weekly Reading #1"
+  order: 2
 ---
 
 > J. W. Crampton and J. Krygier (2010) “An Introduction to Critical Cartography”. https://www.researchgate.net/publication/241435510_An_Introduction_to_Critical_Cartography

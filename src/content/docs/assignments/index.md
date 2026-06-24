@@ -9,7 +9,6 @@ sidebar:
 
 | Assignment | Type | Due |
 |------------|------|-----|
-| [**Pre-Lab #1**](week1/prelab/) | Pre-Lab | Wednesday 6/24 |
 | [**Thinking Cap #1**](week1/thinking_cap/) | Thinking Cap | Monday 6/29 |
 | [**Weekly Reading #1**](week1/reading/) | Reading | Monday 6/29 |
 | [**Lab #1**](week1/lab_assignment/) | Lab | Wednesday 7/1 |
@@ -19,4 +18,5 @@ sidebar:
 
 | Assignment | Type | Due |
 |------------|------|-----|
+| [**Pre-Lab #1**](week1/prelab/) | Pre-Lab | Wednesday 6/24 |
 | [**Pre-course checklist**](week0/) | Setup | Before the first day of class |

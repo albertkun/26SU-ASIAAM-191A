@@ -1,5 +1,8 @@
 ---
 title: "Lab Assignment #1 - Map and Portfolio"
+sidebar:
+  label: "Lab Assignment #1"
+  order: 4
 ---
 
 ### Due 7/1

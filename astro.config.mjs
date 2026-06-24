@@ -211,20 +211,7 @@ export default defineConfig({
       sidebar: [
         { label: 'Weekly Materials', autogenerate: { directory: 'weekly_materials' } },
         { label: 'Labs', autogenerate: { directory: 'labs' } },
-        {
-          label: 'Assignments',
-          items: [
-            { label: 'Week 0', link: '/assignments/week0/' },
-            {
-              label: 'Week 1',
-              items: [
-                { label: 'Pre-Lab #1', link: '/assignments/week1/prelab/' },
-                { label: 'Weekly Reading #1', link: '/assignments/week1/reading/' },
-                { label: 'Thinking Cap #1', link: '/assignments/week1/thinking_cap/' },
-              ],
-            },
-          ],
-        },
+        { label: 'Assignments', autogenerate: { directory: 'assignments' } },
         { label: 'Help', autogenerate: { directory: 'help' } },
       ],
     }),
