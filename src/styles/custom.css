@@ -91,3 +91,82 @@ html[data-has-hero] .card-grid {
 .right-sidebar a[href="#_top"] {
   display: none;
 }
+
+/* ==highlighted== mark syntax */
+.sl-markdown-content mark {
+  background: #fff3b0;
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+[data-theme='dark'] .sl-markdown-content mark {
+  background: #7a6a00;
+  color: #fff;
+}
+
+/* Keyboard shortcut rendering for ++key++ */
+.sl-markdown-content kbd {
+  display: inline-block;
+  padding: 0.1em 0.4em;
+  font-size: 0.8em;
+  font-family: var(--sl-font-mono, monospace);
+  background: var(--sl-color-gray-6, #f0f0f0);
+  border: 1px solid var(--sl-color-gray-4, #ccc);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+[data-theme='dark'] .sl-markdown-content kbd {
+  background: var(--sl-color-gray-5, #333);
+  border-color: var(--sl-color-gray-3, #555);
+}
+.sl-markdown-content .kbd-combo {
+  white-space: nowrap;
+}
+
+/* Iconify web-component icons from :icon-name: syntax */
+.sl-markdown-content iconify-icon.doc-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: 1.1em;
+  height: 1.1em;
+}
+
+/* Prev / Next lab navigation bar */
+.lab-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--sl-color-gray-5, #e0e0e0);
+  gap: 1rem;
+}
+
+.lab-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--sl-color-accent, #2774ae);
+  color: var(--sl-color-accent, #2774ae);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.lab-nav-btn:hover {
+  background: var(--sl-color-accent, #2774ae);
+  color: #fff;
+  text-decoration: none;
+}
+
+.lab-nav-spacer {
+  flex: 1;
+}

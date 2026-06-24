@@ -170,7 +170,7 @@ for academic honesty and integrity in your work.
 
 ## **Course Outline**
 ### Preparation:
-- Fill out the [pre-course survey](https://forms.gle/nifb6shCtFvEftZY7)
+- Fill out the [pre-course survey](https://cloud.albertmaps.com/apps/forms/embed/DJjGZSzqFYjpqr9saoLHbo8k)
 - Download and install [VS Code](https://code.visualstudio.com/)
 - Download and install [Firefox](https://www.firefox.com/)
 

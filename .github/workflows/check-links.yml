@@ -1,0 +1,53 @@
+name: Check Links & Images
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      # Serve dist/ under the same base path the site expects (/26SU-ASIAAM-191A/)
+      # so that absolute internal links like /26SU-ASIAAM-191A/labs/week1/ resolve correctly.
+      - name: Serve built site at base path
+        run: |
+          mkdir -p /tmp/serve
+          cp -r dist /tmp/serve/26SU-ASIAAM-191A
+          python3 -m http.server --directory /tmp/serve 4000 &
+          until curl -sf http://localhost:4000/26SU-ASIAAM-191A/ > /dev/null; do sleep 1; done
+
+      - name: Check links and images
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Pass HTML files as inputs; lychee resolves absolute hrefs against --base.
+          # The local server handles /26SU-ASIAAM-191A/* so internal links are checkable.
+          args: >-
+            --config .lychee.toml
+            --base 'http://localhost:4000'
+            'dist/**/*.html'
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload link-check report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lychee-report
+          path: lychee/out.md
+          if-no-files-found: ignore

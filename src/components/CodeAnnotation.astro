@@ -1,0 +1,179 @@
+---
+import { Code } from '@astrojs/starlight/components';
+
+interface Annotation {
+  line: number;
+  text: string;
+}
+
+interface Props {
+  code: string;
+  lang?: string;
+  title?: string;
+  annotations?: Annotation[];
+}
+
+const { code, lang = 'text', title, annotations = [] } = Astro.props;
+---
+
+<div class="ca-wrapper" data-annotations={JSON.stringify(annotations)}>
+  <Code code={code} lang={lang} title={title} showLineNumbers />
+</div>
+
+<script>
+  function initAnnotations() {
+    document.querySelectorAll<HTMLElement>('.ca-wrapper[data-annotations]').forEach(wrapper => {
+      const raw = wrapper.dataset.annotations;
+      if (!raw) return;
+      const annotations: Array<{line: number; text: string}> = JSON.parse(raw);
+      wrapper.removeAttribute('data-annotations');
+      if (!annotations.length) return;
+
+      let lines: NodeListOf<Element> | Element[] = wrapper.querySelectorAll('.ec-line');
+      if (!lines.length) lines = Array.from(wrapper.querySelectorAll('code .line'));
+      if (!lines.length) lines = Array.from(wrapper.querySelectorAll('pre code > span'));
+      if (!lines.length) return;
+
+      const pre = wrapper.querySelector('pre') as HTMLElement | null;
+      if (!pre) return;
+      pre.style.position = 'relative';
+
+      // Tips are appended to <body> with position:fixed so they escape pre's overflow clipping
+      const tips: HTMLElement[] = [];
+      const buttons: HTMLButtonElement[] = [];
+
+      function closeAll() {
+        buttons.forEach((btn, i) => {
+          btn.setAttribute('aria-expanded', 'false');
+          btn.textContent = '+';
+          btn.style.opacity = '0.75';
+          btn.style.transform = '';
+          tips[i].style.display = 'none';
+        });
+      }
+
+      annotations.forEach((ann, idx) => {
+        const lineEl = lines[ann.line - 1] as HTMLElement | undefined;
+        if (!lineEl) return;
+
+        const tokenSpans = Array.from(lineEl.querySelectorAll('span'))
+          .filter(s => s.textContent && s.textContent.trim().length > 0) as HTMLElement[];
+        const lastToken = tokenSpans[tokenSpans.length - 1] ?? lineEl;
+
+        const preRect = pre.getBoundingClientRect();
+        const tokenRect = lastToken.getBoundingClientRect();
+        const lineRect  = lineEl.getBoundingClientRect();
+
+        const leftPx = tokenRect.right - preRect.left + pre.scrollLeft + 6;
+        const topPx  = lineRect.top   - preRect.top  + pre.scrollTop  + lineRect.height / 2;
+
+        // ── bubble container ──────────────────────────────────────────
+        const bubble = document.createElement('div');
+        bubble.style.cssText = [
+          'position:absolute',
+          `left:${leftPx}px`,
+          `top:${topPx}px`,
+          'transform:translateY(-50%)',
+          'z-index:10',
+          'display:inline-flex',
+          'align-items:center',
+        ].join(';');
+
+        // ── + button ─────────────────────────────────────────────────
+        const btn = document.createElement('button');
+        btn.textContent = '+';
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', `Annotation ${idx + 1}: ${ann.text}`);
+        btn.classList.add('ca-btn');
+        btn.style.cssText = [
+          'display:inline-flex',
+          'align-items:center',
+          'justify-content:center',
+          'width:1.15rem',
+          'height:1.15rem',
+          'border-radius:50%',
+          'background:var(--sl-color-accent,#2774ae)',
+          'color:#fff',
+          'font-size:0.75rem',
+          'font-weight:700',
+          'font-family:sans-serif',
+          'line-height:1',
+          'opacity:0.8',
+          'cursor:pointer',
+          'user-select:none',
+          'transition:opacity 0.15s,transform 0.15s,background 0.15s',
+          'flex-shrink:0',
+          'border:none',
+          'padding:0',
+        ].join(';');
+
+        // ── tooltip (position:fixed, appended to body) ────────────────
+        const tip = document.createElement('span');
+        tip.textContent = ann.text;
+        tip.style.cssText = [
+          'display:none',
+          'position:fixed',
+          'background:var(--sl-color-bg,#fff)',
+          'border:1px solid var(--sl-color-gray-4,#ccc)',
+          'border-radius:0.375rem',
+          'padding:0.35rem 0.65rem',
+          'font-size:0.8rem',
+          'line-height:1.5',
+          'white-space:nowrap',
+          'box-shadow:0 4px 16px rgba(0,0,0,0.18)',
+          'z-index:9999',
+          'color:var(--sl-color-text,#111)',
+          'font-family:var(--sl-font,sans-serif)',
+          'pointer-events:none',
+          'max-width:20rem',
+          'white-space:normal',
+        ].join(';');
+        document.body.appendChild(tip);
+
+        buttons.push(btn);
+        tips.push(tip);
+
+        function positionTip() {
+          const btnRect = btn.getBoundingClientRect();
+          tip.style.left = (btnRect.left + btnRect.width / 2) + 'px';
+          tip.style.top  = (btnRect.top - 8) + 'px';
+          tip.style.transform = 'translateX(-50%) translateY(-100%)';
+        }
+
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = btn.getAttribute('aria-expanded') === 'true';
+          closeAll();
+          if (!isOpen) {
+            positionTip();
+            tip.style.display = 'block';
+            btn.setAttribute('aria-expanded', 'true');
+            btn.textContent = '×';
+            btn.style.opacity = '1';
+            btn.style.transform = 'scale(1.15)';
+          }
+        });
+
+        bubble.appendChild(btn);
+        pre.appendChild(bubble);
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', closeAll, { capture: true });
+      // Re-position on scroll (since tips use position:fixed)
+      window.addEventListener('scroll', closeAll, { passive: true });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnnotations);
+  } else {
+    initAnnotations();
+  }
+</script>
+
+<style>
+  .ca-wrapper {
+    position: relative;
+  }
+</style>

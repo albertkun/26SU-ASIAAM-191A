@@ -1,0 +1,24 @@
+---
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  prev?: NavLink;
+  next?: NavLink;
+}
+
+const { prev, next } = Astro.props;
+---
+
+<nav class="lab-nav" aria-label="Lab navigation">
+  {prev
+    ? <a href={prev.href} class="lab-nav-btn lab-nav-prev">← {prev.label}</a>
+    : <span class="lab-nav-spacer"></span>
+  }
+  {next
+    ? <a href={next.href} class="lab-nav-btn lab-nav-next">{next.label} →</a>
+    : <span class="lab-nav-spacer"></span>
+  }
+</nav>

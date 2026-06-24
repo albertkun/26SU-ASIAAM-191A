@@ -11,6 +11,7 @@ interface Props {
 }
 
 const { entries, tocItems = [], nested = false } = Astro.props;
+const isLabsSection = Astro.url.pathname.includes('/labs/');
 
 function hasCurrentInEntries(es: any[]): boolean {
 	return es.some(e => e.type === 'link' ? e.isCurrent : hasCurrentInEntries(e.entries));
@@ -29,7 +30,7 @@ function hasCurrentInEntries(es: any[]): boolean {
 					>
 						<span>{entry.label}</span>
 					</a>
-					{entry.isCurrent && tocItems.length > 0 && (
+					{entry.isCurrent && !isLabsSection && tocItems.length > 0 && (
 						<ul class="toc-items">
 							{tocItems.map(item => (
 								<li>
