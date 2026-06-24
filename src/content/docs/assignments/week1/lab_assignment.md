@@ -1,4 +1,6 @@
-# Lab Assignment #1 - Map and Portfolio
+---
+title: "Lab Assignment #1 - Map and Portfolio"
+---
 
 ### Due 7/1
 Time to put your skills to the test and create a home page for the individual maps that you will be making this quarter. Describe some of your interests and include a map with some markers. This is your portfolio, so feel free toadd anything. If you made multiple HTML pages, please link them all to the `index.html` using the `<a href=""></a>` tag>.

@@ -1,4 +1,6 @@
-# Group Assignment 1: Repository and Readme
+---
+title: "Group Assignment 1: Repository and Readme"
+---
 
 !!! info "Group List"
     Find your name and group on the spreadsheet to remember which group you are in: [hhttps://docs.google.com/spreadsheets/d/1aINcIjzXKlqguP3uYRjAsgRSmF75AkDeY9GPAGQYi64/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1aINcIjzXKlqguP3uYRjAsgRSmF75AkDeY9GPAGQYi64/edit?usp=sharing)
