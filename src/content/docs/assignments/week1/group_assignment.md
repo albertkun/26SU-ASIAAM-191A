@@ -15,7 +15,7 @@ Find your name and group on the spreadsheet to remember which group you are in: 
 
 1. Have one person create a new repo for the group and invite everyone as collaborators.
    
-   - [Guide on how to create a new repo and invite](../../help/git_creating.md)
+   - [Guide on how to create a new repo and invite](/26SU-ASIAAM-191A/help/git_creating/)
 
 2. Add a `readme.md` to the repository that briefly describes the following in 1-2 sentences:
 

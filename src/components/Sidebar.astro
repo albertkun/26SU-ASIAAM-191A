@@ -43,7 +43,7 @@ const activeSidebar = currentGroup ? [currentGroup] : [];
 
 const tocItems = toc?.items
 	.filter(item => item.text.toLowerCase() !== 'overview')
-	.map(item => ({ id: item.id, text: item.text })) ?? [];
+	.map(item => ({ slug: item.slug, text: item.text })) ?? [];
 
 ---
 
