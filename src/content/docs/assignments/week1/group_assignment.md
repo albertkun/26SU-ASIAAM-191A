@@ -11,7 +11,7 @@ Find your name and group on the spreadsheet to remember which group you are in: 
 
 ## Due 7/1
 
-0. As a group **check-in** with me before 7/3 by making an appointment here: https://calendly.com/aa191a/office-hours or emailing me directly (albertkun@oarc.ucla.edu). 
+0. As a group **check-in** with me before 7/3 by making an appointment here: https://calendly.com/aa191a/office-hours or emailing me directly (albertk@asianam.ucla.edu). 
 
 1. Have one person create a new repo for the group and invite everyone as collaborators.
    
