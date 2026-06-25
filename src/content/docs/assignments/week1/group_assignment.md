@@ -25,8 +25,9 @@ Find your name and group on the spreadsheet to remember which group you are in: 
 
    - What technical and ethical problems could there be in developing this tool?
 
-!!! note "Markdown tip"
-    Markdown is text formatting that is used all over and commonly encountered on GitHub too! Since is your group's introduction to the world, make sure you use [Markdown formatting](https://help.github.com/features/mastering-markdown/) to style your content properly.  
+:::note[Markdown tip]
+Markdown is text formatting that is used all over and commonly encountered on GitHub too! Since is your group's introduction to the world, make sure you use [Markdown formatting](https://help.github.com/features/mastering-markdown/) to style your content properly.
+:::
 
 3. Post your group members and repository on the discussion board:
 
