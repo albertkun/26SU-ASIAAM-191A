@@ -17,7 +17,7 @@ Charting the course for the class and how it relates to GIS, data, and ethics.
 
 Learning how to use GitHub, VSCode, and some JavaScript.
 
-- [GITting Used to Web Development and JavaScript](/labs/week1/)
+- [GITting Used to Web Development and JavaScript](../../labs/week1/)
 
 
 ## Group Work
