@@ -1,0 +1,234 @@
+---
+title: "Styling your Portfolio"
+---
+
+import LabNav from '../../../../components/LabNav.astro';
+
+Starting with the Week 1 HTML and adding some list elements:
+
+```html title="index.html" showLineNumbers
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World with MapLibreGl</title>
+        <!-- hint: remember to change your page title! -->
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="styles/style.css">
+
+        <!-- MapLibreGL's css-->
+        <link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" />
+
+        <!-- MapLibreGL's JavaScript-->
+        <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    </head>
+    
+    <body>
+        <header>
+            Hello World
+            <!-- hint: you can make a menu with other links here if you'd like -->
+        </header>
+        
+        <main>
+            <div class="portfolio">
+                <!-- Portfolio content goes here -->
+                <img src="me.png">
+                <h2>Where I work</h2>
+                <ul>
+                    <li>Los Angeles Metro</li>
+                    <li>UCLA</li>
+                    <li>Yindee Games</li>
+                </ul>
+            </div>
+            <div id="map"></div>
+        </main>
+        <div id="footer">
+            Copyright(2026)
+        </div>
+        <script src="js/init.js"></script>
+    </body>
+</html>
+```
+
+### Fixing a footer bug from Week 1
+
+Last week, the `footer` was defined as an **ID** in the HTML (`<div id="footer">`), but selected in the CSS without an `#` ID selector:
+
+```css title="styles/style.css"
+/* ❌ This won't work — targets a <footer> element, not our <div id="footer"> */
+footer { 
+    grid-area: footer;
+}
+```
+
+To fix this, add the `#` ID selector:
+
+```css title="styles/style.css"
+/* ✅ This targets our <div id="footer"> */
+#footer {
+    grid-area: footer;
+}
+```
+
+## 🎨 Styling the Portfolio
+
+With the list added, you may notice the bullet points are misaligned — they appear off to the side of the portfolio box.
+
+### Not a pad(ding) idea!
+
+A simple fix is to add `padding-left` to the `ul` element:
+
+```css title="styles/style.css"
+ul {
+    padding-left: 30px;
+}
+```
+
+But since we're using CSS Grid, we can do better by making the portfolio itself a flex container:
+
+```css title="styles/style.css"
+.portfolio {
+    grid-area: portfolio;
+    display: flex;           /* makes children flex items */
+    flex-direction: column;  /* stacks children vertically */
+    justify-content: center; /* centers content vertically */
+    align-items: center;     /* centers content horizontally */
+}
+```
+
+:::note[What the `flex`?!]
+Flexbox (`display: flex`) is the predecessor to CSS Grid. While CSS Grid handles **2D layout** (rows and columns), Flexbox handles **1D layout** — distributing space among items in a single row or column. It's great for centering content inside a container.
+
+Read more on MDN: [CSS Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
+:::
+
+## ⚽ In-Class Exercise #3
+
+:::tip[Task]
+Add some styling to the `#footer` CSS — try adding `padding`, `background-color`, and `color` to make it stand out.
+:::
+
+<details>
+<summary><b>Solution</b></summary>
+
+```css title="styles/style.css"
+#footer {
+    grid-area: footer;
+    padding: 1rem;
+    background-color: #4677a0;
+    color: #fff;
+    text-align: center;
+}
+```
+
+</details>
+
+## 🏁 Checkpoint
+
+- Your portfolio section has a list of places you've worked or lived
+- The bullet points are properly aligned inside the portfolio box
+- The footer has some styling applied
+- The `#footer` CSS selector uses `#` to match the `id="footer"` in your HTML
+
+### Check your work
+
+```html title="index.html" showLineNumbers
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World with MapLibreGl</title>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" />
+        <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    </head>
+    
+    <body>
+        <header>Hello World</header>
+        
+        <main>
+            <div class="portfolio">
+                <img src="me.png">
+                <h2>Where I work</h2>
+                <ul>
+                    <li>Los Angeles Metro</li>
+                    <li>UCLA</li>
+                    <li>Yindee Games</li>
+                </ul>
+            </div>
+            <div id="map"></div>
+        </main>
+        <div id="footer">
+            Copyright(2026)
+        </div>
+        <script src="js/init.js"></script>
+    </body>
+</html>
+```
+
+```css title="styles/style.css" showLineNumbers
+* {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: aqua;
+}
+
+html, body {
+    height: 80vh;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+    grid-template-rows: auto 1fr auto;
+}
+
+main {
+    display: grid;
+    grid-template-areas:
+        "portfolio map";
+    grid-template-columns: 1fr 1fr;
+}
+
+header { 
+    grid-area: header;
+}
+
+main { 
+    grid-area: main;
+}
+
+.portfolio {
+    grid-area: portfolio;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#map { 
+    grid-area: map;
+    height: 80vh;
+}
+
+#footer {
+    grid-area: footer;
+    padding: 1rem;
+    background-color: #4677a0;
+    color: #fff;
+    text-align: center;
+}
+```
+
+<LabNav prev={{ href: "/labs/week1b/3/", label: "Adding Markers and Styling Popups" }} next={{ href: "/labs/week1b/5/", label: "Let's Git to Committing!" }} />

@@ -1,0 +1,128 @@
+---
+title: "Overview - MapLibRevisiting Portfolios"
+---
+
+import LabNav from '../../../../components/LabNav.astro';
+
+<img src="/26SU-ASIAAM-191A/labs/week1b/media/1moregoal.png" alt="" style="max-width:300px" />
+
+## Objectives
+
+:::tip[Goals]
+- Understand JavaScript variables and how they power your map
+- Add a map with markers and popups
+- Get your own MapTiler API key
+- Style your portfolio to look more professional
+- Commit and publish your work with Git and GitHub Pages
+:::
+
+:::caution[Reminder]
+This lab picks up right where Week 1 left off — make sure you have your HTML and CSS from Week 1 ready to go!
+:::
+
+### Lab outline
+
+1. [Basics of JavaScript](./0)
+2. [Adding a Map](./1)
+3. [The (API) KEY to BaseMaps](./2)
+4. [Adding Markers and Styling Popups](./3)
+5. [Styling your Portfolio](./4)
+6. [Let's Git to Committing!](./5)
+7. [Final Lab Code](./6)
+
+This lab builds on Week 1 — you'll learn JavaScript, add a map with markers, personalize it with your own API key, style your portfolio, and finally publish it all to GitHub Pages.
+
+## Starting Template Code
+
+Use your Week 1 HTML and CSS as the starting point, or copy from below:
+
+```html title="index.html" showLineNumbers
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World with MapLibreGl</title>
+        <!-- hint: remember to change your page title! -->
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    
+    <body>
+        <header>
+            Hello World
+            <!-- hint: you can make a menu with other links here if you'd like -->
+        </header>
+        
+        <main>
+            <div class="portfolio">
+                <!-- Portfolio content goes here -->
+                <img src="me.png">
+            </div>
+            <div id="map"></div>
+        </main>
+        <div id="footer">
+            Copyright(2026)
+        </div>
+    </body>
+</html>
+```
+
+```css title="styles/style.css" showLineNumbers
+* {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: aqua;
+}
+
+html, body {
+    height: 80vh;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+    grid-template-rows: auto 1fr auto;
+}
+
+main {
+    display: grid;
+    grid-template-areas:
+        "portfolio map";
+    grid-template-columns: 1fr 1fr;
+}
+
+header { 
+    grid-area: header;
+}
+
+main { 
+    grid-area: main;
+}
+
+.portfolio {
+    grid-area: portfolio;
+}
+
+#map { 
+    grid-area: map;
+    height: 80vh;
+}
+
+footer { 
+    grid-area: footer;
+}
+```
+
+<img src="/26SU-ASIAAM-191A/labs/week1b/media/me.png" alt="Example profile photo" style="max-width:300px" />
+
+<LabNav next={{ href: "/labs/week1b/0/", label: "Basics of JavaScript" }} />
