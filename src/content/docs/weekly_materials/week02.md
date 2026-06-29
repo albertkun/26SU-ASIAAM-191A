@@ -6,7 +6,7 @@ Date|Type|Description|Slides|Recording|
 |---|----|-----------|------|---------|
 |6/29|Lecture|Critical Cartography and Civil Society| | |
 |6/29|Lab|[MapLibRevisiting your portfolios](../../labs/week1b/)| | |
-|7/1|Lab|[JavaScript: Writing some FUNctions](../../labs/week2/)| | |
+|7/1|Lab|JavaScript: Writing some FUNctions|TBD|TBD |
 
 ## Lecture
 
@@ -24,7 +24,7 @@ Mariah Tso is a Diné woman, artist, and GIS Specialist for the [Ralph J. Bunche
 ## Lab
 
 - [MapLibRevisiting your portfolios](../../labs/week1b/)
-<!-- - [JavaScript: Writing some FUNctions](../../labs/week2/) -->
+- JavaScript: Writing some FUNctions
 
 ## Assignments
 

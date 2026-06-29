@@ -6,11 +6,11 @@ sidebar:
 tableOfContents: false
 ---
 
-## Weekly overview
 
 |Week|Topic|
 |----|-----|
 |#1|[GIS, Data, and Ethics](week01/)|
+|#2|[Humanizing Technology](week02/)|
 
 ## Course Materials
 
