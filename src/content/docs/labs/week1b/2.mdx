@@ -1,0 +1,107 @@
+---
+title: "The (API) KEY to BaseMaps"
+---
+
+import LabNav from '../../../../components/LabNav.astro';
+
+MapLibreGL is a powerful tool that allows you to create beautiful maps. However, it requires an **API key** to access the base map tiles. In this lab, you will learn how to get your own key and use it in your code.
+
+You may have noticed the key in the template code from Week 1:
+
+**Before (placeholder key — doesn't work):**
+
+```js
+style: 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL'
+```
+
+**After (a working key):**
+
+```js
+style: 'https://api.maptiler.com/maps/streets/style.json?key=wsyYBQjqRwKnNsZrtci1'
+```
+
+While you can use the shared key `wsyYBQjqRwKnNsZrtci1` for now, it is **strongly recommended** that you get your own API key. This way your map won't break if the shared key changes or gets removed.
+
+## Getting an API Key
+
+Sign up for a free account on [MapTiler](https://www.maptiler.com/). Once you have an account, follow these steps:
+
+1. Log in to your MapTiler account.
+
+2. Click on the **API Keys** tab in the top menu.
+
+<img src="/26SU-ASIAAM-191A/labs/week1b/media/maptilerapi1.png" alt="MapTiler API tab" style="max-width:500px" />
+
+3. Click on the **New Key** button.
+
+<img src="/26SU-ASIAAM-191A/labs/week1b/media/maptilerapi2.png" alt="New Key button" style="max-width:500px" />
+
+4. Enter a **Description** for your API key (e.g., `MapLibreGL Key for AA191A`).
+
+5. Under **Allowed HTTP Origins** add the following:
+   - `localhost:5500`
+   - `127.0.0.1:5500`
+   - `YOUR_GITHUB_USERNAME.github.io` (e.g. `albertkun.github.io`)
+
+:::note[What is a domain?]
+A domain is the address of a website, such as `localhost` or `github.io`. By restricting your API key to specific domains, you control where it can be used. After following these steps, your key will only work on your local development server and your GitHub Pages site — this protects it from unauthorized use.
+
+Read more on MDN: [Understanding domain names](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_domain_name)
+:::
+
+6. Check that your settings look similar to this, then click **Create**:
+
+<img src="/26SU-ASIAAM-191A/labs/week1b/media/maptilerapi3.png" alt="API key settings" style="max-width:500px" />
+
+7. Copy your API key:
+
+<img src="/26SU-ASIAAM-191A/labs/week1b/media/maptilerapi4.png" alt="Copy API key" style="max-width:500px" />
+
+8. Paste it into your `init.js`:
+
+```js title="js/init.js"
+// Initialize the map
+const map = new maplibregl.Map({
+    container: 'map', // container ID
+    style: 'https://api.maptiler.com/maps/streets/style.json?key=YOUR_KEY_GOES_HERE', // paste your key here
+    center: [-118.444, 34.0709], // Starting position [lng, lat]
+    zoom: 15 // Starting zoom level
+});
+```
+
+9. Save your changes and refresh the page. You should now see the base map!
+
+## Changing the Base Map Style
+
+Now that you have your own API key, you can switch to any map style you like. Browse available styles at [cloud.maptiler.com/maps](https://cloud.maptiler.com/maps/).
+
+<img src="/26SU-ASIAAM-191A/labs/week1b/media/maptilerapi5.png" alt="MapTiler styles gallery" style="max-width:500px" />
+
+Once you find one you like (you can even create your own!), scroll to the bottom of the style's page and copy the **Style URL**:
+
+<img src="/26SU-ASIAAM-191A/labs/week1b/media/maptilerapi6.png" alt="Copy style URL" style="max-width:500px" />
+
+For example:
+
+```
+https://api.maptiler.com/maps/streets-v2-light/style.json?key=YOUR_KEY_GOES_HERE
+```
+
+Paste that URL into the `style` property of your map object.
+
+## ⚽ In-Class Exercise #1
+
+:::tip[Task]
+1. Get your own MapTiler API key following the steps above.
+2. Replace the shared key in your `init.js` with your personal key.
+3. Change the map style to one you like from the MapTiler gallery.
+4. Verify your map still loads correctly.
+:::
+
+## 🏁 Checkpoint
+
+- You have your own MapTiler API key
+- Your `init.js` uses your personal key instead of the shared one
+- You can see your chosen base map style in the browser
+
+<LabNav prev={{ href: "/labs/week1b/1/", label: "Adding a Map" }} next={{ href: "/labs/week1b/3/", label: "Adding Markers and Styling Popups" }} />

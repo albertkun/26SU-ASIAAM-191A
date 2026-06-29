@@ -1,0 +1,196 @@
+---
+title: "Basics of JavaScript"
+---
+
+import CodeAnnotation from '../../../../components/CodeAnnotation.astro';
+import LabNav from '../../../../components/LabNav.astro';
+
+export const letConstCode = `let day = 8;
+const name = "Albert";`;
+
+In Week 1, we covered HTML and CSS — the structure and style of a webpage. This week we add JavaScript, starting with **variables** — the building blocks of all JavaScript code.
+
+Recall from the pre-lab [reading](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/The_web_and_web_standards#html_css_and_javascript) that a webpage is like a house:
+
+- HTML is the scaffolding/foundation of the house
+- CSS is the paint, carpets, etc. that makes the house look nice
+- JavaScript is the **appliances** that adds function to the house
+
+## What is JavaScript?
+
+JavaScript is like the scriptwriter behind the scenes, turning static web pages into dynamic, interactive stories that captivate the audience. While there are various frameworks like React.js and Vue.js that offer additional features, this class will focus on the basics of JavaScript, also known as "vanilla" JavaScript, following the ES6+ standards. [Learn more about ES6+ standards here](https://www.tutorialspoint.com/es6/es6_quick_guide.htm).
+
+In HTML, we use `<script>` tags to include JavaScript code. These tags can be placed in two main spots:
+
+1. Inside the `<head>` section: JavaScript here loads before anything else on the page. Good for libraries like MapLibreGL that need to be ready before the page shows.
+2. Right before the closing `</body>` tag: This is where you put JavaScript that interacts with the page content — since it loads after the HTML, all your page elements exist before the script tries to use them.
+
+Remember, the order in which scripts are loaded can make or break your webpage — imagine putting the ending of a mystery movie at the beginning!
+
+## It's a me Lego `Var`-io
+
+Variables are like **boxes** that hold information — think of them as the building blocks of instructions.
+
+Variables can hold **numbers**, **text**, or even collections of other variables! In programming we call these ==types==. To use a variable, you have to ==declare== it. In JavaScript, variables are automatically assigned **types** based on what you put in them.
+
+In JavaScript, all declarations and lines should end with a semicolon `;`, which is like a `. (period)` in English — it says "my statement is done."
+
+These are examples of a ==declaration==:
+
+```js
+var day = 8;
+var name = "Albert";
+```
+
+The `var` **keyword** tells the browser "Hey, this is a variable!" In this example, `day` is a **numeric** type with a value of `8` and `name` is a **string** type. Each type has different properties — for example you can add **numbers** together using `day + day`, but adding strings just concatenates them.
+
+:::note[What is a keyword?]
+In most coding languages, a **keyword** is a word that tells a program to treat the following text, numbers, or characters in a specific way. For example, `var myName` says treat `myName` as a variable. This means you **CANNOT** name a variable `var` — Jar Jar Binks' cousin Var Var Binks is **VARy** bad for JavaScript to see! (`var var` = 💥) Also note: you cannot use `spaces` in variable names!
+:::
+
+## Some more variable definitions
+
+Variables act like ==boxes== where you can **store** or **take** information:
+
+- `const` acts like a **locked safe** — you can't change what's inside after you define it
+- `let` is like a **regular box** — you can swap out the contents
+- `var` is **VARy** problematic — it can be both locked and unlocked depending on where it's declared
+
+Here are some of the types you'll use in JavaScript:
+
+```js
+// number
+let box1 = 5;
+let box2 = 5.0;
+
+// string
+let box3 = 'five';
+let box4 = "five";
+
+// string literal — uses backticks and ${variable} to embed another variable
+let box5 = `this is from box #4: ${box4}`;
+
+// array
+let box6 = [1, 2, 3, 4, 5]; 
+
+// object — stores variables together, can be of different types!
+let box7 = {"number": 'five', "value": 5};
+
+// boolean (true or false)
+let box8 = true;
+
+// null / empty
+let emptyBox;
+```
+
+To declare a variable (give it a value) you must use the ==`=`== symbol:
+
+```js
+let my_variable = "exist!";
+```
+
+:::note[Anatomy of a variable declaration]
+- `let` — the keyword declaring this is a variable
+- `my_variable` — the variable's name
+- `"exist!"` — the value
+- `;` — the end of the line in JavaScript
+:::
+
+### LET's a go!
+
+With JavaScript ES6, `let` and `const` were introduced to replace `var`. The recommended practice is to **no longer use `var`**. Both `let` and `const` are declared the same way:
+
+<CodeAnnotation
+  code={letConstCode}
+  lang="js"
+  annotations={[
+    { line: 1, text: "The `let` keyword **LETS** a variable CHANGE!" },
+    { line: 2, text: "The `const` keyword keeps a variable **CONST**ant!" },
+  ]}
+/>
+
+## Let vs Const vs Var
+
+:::caution[What is the difference?]
+
+1. `let` — the variable **can change** (mutable)
+2. `const` — the variable **cannot change** (constant)
+3. `var` — can be either depending on **where** it was declared. VERY PROBLEMATIC!
+:::
+
+Because `var` causes confusion by being both mutable and immutable depending on context, it was split into `let` and `const`.
+
+:::caution[Scopes: Local vs. Global]
+**Where** you `declare` a variable sets its **scope** — either local (limited to a function or block of code) or global (accessible anywhere). This is why `var` is dangerous: its scope rules are inconsistent.
+:::
+
+So, bye bye `var` and `LET` us welcome our new `CONST` variables!
+
+:::caution[TLDR]
+**DO NOT USE** `var` unless you specifically need to support Internet Explorer.
+:::
+
+## ⚽ In-Class Exercise #1
+
+:::tip[Task]
+1. In your `init.js`, add a `let` variable called `myName` and set it to your name.
+2. Add a `const` variable called `myZoom` and set it to a number between 10 and 20.
+3. Replace the `zoom: 15` in your map with `zoom: myZoom`.
+4. Open the browser console and check that your map still loads correctly.
+:::
+
+### Console.log()
+
+By itself, JavaScript does nothing visible. The most useful tool for testing your code is `console.log()` — it lets you print values to the browser console so you can see what's happening.
+
+Add the following anywhere in your `init.js`:
+
+```js
+console.log('Hello Asian Am 191! :)');
+```
+
+#### Nothing happened?! What!?
+
+Actually, you're about to unlock your full web developer potential!
+
+In Firefox, right-click anywhere on the page and click `Inspect Element`:
+
+<img src="/26SU-ASIAAM-191A/labs/week1/media/click_anywhere.png" alt="" />
+
+This opens the **Developer Toolbar**! Click on the **Console** tab:
+
+<img src="/26SU-ASIAAM-191A/labs/week1/media/console.png" alt="" />
+
+Your message is there!
+
+<img src="/26SU-ASIAAM-191A/labs/week1/media/console_log_worked.png" alt="" />
+
+## ⚽ In-Class Exercise #2
+
+:::tip[Task]
+Use `console.log()` to print the value of your `myName` variable to the console. Can you also log the `myZoom` value?
+:::
+
+## Connecting Variables to Your Map
+
+Look at your `init.js` — you're already using variables!
+
+```js
+const map = new maplibregl.Map({
+    container: 'map',
+    center: [-118.444, 34.0709],
+    zoom: 15
+});
+```
+
+`map` is a `const` that stores the entire map object. That's why later code can call `map.addLayer()`, `map.on()`, etc. — `map` holds a reference to the whole thing.
+
+In the next lab we'll use variables to store your personal API key, making your map uniquely yours and not dependent on someone else's key.
+
+## 🏁 Checkpoint
+
+- You understand the difference between `let`, `const`, and `var`
+- You can declare variables and log them to the browser console
+- You replaced a hardcoded value in your map with a `const` variable
+
+<LabNav prev={{ href: "/labs/week1b/", label: "Overview" }} next={{ href: "/labs/week1b/1/", label: "Adding a Map" }} />

@@ -1,0 +1,145 @@
+---
+title: "Adding a Map"
+---
+
+import LabNav from '../../../../components/LabNav.astro';
+
+## JavaScript and Maps
+
+To make our webpage interactive and add a map, we need JavaScript. [MapLibreGL](https://maplibre.org/) is a JavaScript library that handles all the complex map rendering for us — we just give it a container and some settings.
+
+:::note[The three pillars of the web]
+- HTML is the **structure** (the house itself)
+- CSS is the **style** (the paint and furniture)
+- JavaScript is the **behavior** (the appliances that make it work)
+:::
+
+### Step 1: Add MapLibreGL to your HTML
+
+In your `index.html`, add MapLibreGL's CSS and JavaScript inside the `<head>` section, right after your existing stylesheet link:
+
+```html
+<!-- MapLibreGL's css-->
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" />
+
+<!-- MapLibreGL's JavaScript-->
+<script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+```
+
+### Step 2: Add a map container
+
+In your `<main>` section, add a `<div>` with the id `map`. This is the empty box where the map will appear:
+
+```html
+<div id="map"></div>
+```
+
+### Step 3: Create init.js
+
+Create a new folder called `js` in your project, then inside it create a file called `init.js`. Add this code:
+
+```javascript title="js/init.js"
+// Initialize the map
+const map = new maplibregl.Map({
+    container: 'map', // container ID — matches <div id="map">
+    style: 'https://api.maptiler.com/maps/streets/style.json?key=wsyYBQjqRwKnNsZrtci1', // style URL
+    center: [-118.444, 34.0709], // starting position [lng, lat]
+    zoom: 15 // starting zoom level
+});
+
+// Add a marker to the map
+new maplibregl.Marker()
+    .setLngLat([-118.444, 34.0709])
+    .setPopup(new maplibregl.Popup({ offset: 25 })
+        .setHTML('Math Sciences 4328 aka the Technology Sandbox<br> is the lab where I used to work in '))
+    .addTo(map);
+```
+
+### Step 4: Link init.js in your HTML
+
+Right before the closing `</body>` tag in `index.html`, add:
+
+```html
+<script src="js/init.js"></script>
+```
+
+:::caution[Script order matters!]
+The MapLibreGL `<script>` goes in `<head>` so the library loads first. Your custom `init.js` goes at the **end of `<body>`** so the page elements (like `<div id="map">`) are ready before your script tries to use them. Think of it like plugging in appliances only after the house is built!
+:::
+
+## ⚽ In-Class Exercise #2
+
+:::tip[Task]
+The marker code uses coordinates `[-118.444, 34.0709]` (UCLA). Copy the marker block and add **2 more markers** for places meaningful to you. Give each a unique variable name like `marker2`, `marker3`.
+
+Use [https://www.latlong.net/](https://www.latlong.net/) to find coordinates for any location.
+:::
+
+## 🏁 Checkpoint
+
+- Your `index.html` has MapLibreGL CSS and JS added in `<head>`
+- Your `index.html` has `<div id="map">` inside `<main>`
+- Your `js/init.js` has the map initialization code
+- Your `js/init.js` is linked at the bottom of `<body>`
+- You can see a map in your browser via Live Preview
+
+### Check your work
+
+Your files should look like this before moving on:
+
+```html title="index.html" showLineNumbers
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World with MapLibreGl</title>
+        <!-- hint: remember to change your page title! -->
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="styles/style.css">
+
+        <!-- MapLibreGL's css-->
+        <link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" />
+
+        <!-- MapLibreGL's JavaScript-->
+        <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    </head>
+    
+    <body>
+        <header>
+            Hello World
+            <!-- hint: you can make a menu with other links here if you'd like -->
+        </header>
+        
+        <main>
+            <div class="portfolio">
+                <!-- Portfolio content goes here -->
+                <img src="me.png">
+            </div>
+            <div id="map"></div>
+        </main>
+        <div id="footer">
+            Copyright(2026)
+        </div>
+        <script src="js/init.js"></script>
+    </body>
+</html>
+```
+
+```javascript title="js/init.js"
+// Initialize the map
+const map = new maplibregl.Map({
+    container: 'map',
+    style: 'https://api.maptiler.com/maps/streets/style.json?key=wsyYBQjqRwKnNsZrtci1',
+    center: [-118.444, 34.0709],
+    zoom: 15
+});
+
+// Add a marker to the map
+new maplibregl.Marker()
+    .setLngLat([-118.444, 34.0709])
+    .setPopup(new maplibregl.Popup({ offset: 25 })
+        .setHTML('Math Sciences 4328 aka the Technology Sandbox<br> is the lab where I used to work in '))
+    .addTo(map);
+```
+
+<LabNav prev={{ href: "/labs/week1b/0/", label: "Basics of JavaScript" }} next={{ href: "/labs/week1b/2/", label: "The (API) KEY to BaseMaps" }} />

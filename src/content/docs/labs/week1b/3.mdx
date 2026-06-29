@@ -1,0 +1,188 @@
+---
+title: "Adding Markers and Styling Popups"
+---
+
+import LabNav from '../../../../components/LabNav.astro';
+
+The syntax for adding a marker in MapLibreGL is as follows:
+
+```js
+let longitude = -118.45;
+let latitude = 34.05;
+
+// Add a marker to the map
+const marker = new maplibregl.Marker()
+    .setLngLat([longitude, latitude])
+    .addTo(map);
+```
+
+In this snippet, `longitude` and `latitude` are variables holding the coordinates of the marker. You can add multiple markers by repeating this pattern with different coordinates.
+
+## Resources to find coordinates
+
+- **Google Maps**: Right-click on any location and select "What's here?" to get coordinates. [Google Maps](https://www.google.com/maps)
+- **OpenStreetMap**: Right-click on any location and select "Show address". [OpenStreetMap](https://www.openstreetmap.org)
+- **Get Lat Long**: Enter an address to get coordinates. [GetLatLong](https://www.latlong.net/)
+
+:::note[What is a geographic coordinate?]
+A coordinate is a pair of numbers that specifies a location on Earth's surface. Coordinates are given in **latitude** and **longitude**, measured in degrees.
+
+- **Latitude** specifies north-south position (like **altitude** goes up and down)
+- **Longitude** specifies east-west position (like something **long** stretching left to right)
+
+One easy memory trick: **Lat**itude sounds like l**a**dder — you go **up and down**. **Long**itude goes across — it's **long** like a horizontal line.
+:::
+
+:::caution[Reversed Coordinates!]
+In MapLibreGL, coordinates are in `[lng, lat]` order — the **opposite** of the usual `[lat, lng]` order used in most other contexts (like Google Maps). Always double-check the order when adding markers!
+:::
+
+## ⚽ In-Class Exercise #1
+
+:::tip[Task]
+Shorten the marker code by replacing the separate `longitude` and `latitude` variables with the coordinates placed directly inside `setLngLat()`. Use coordinates for your favorite place.
+:::
+
+<details>
+<summary><b>Solution</b></summary>
+
+```js
+// Add a marker to the map
+const marker = new maplibregl.Marker()
+    .setLngLat([-118.45, 34.05])
+    .addTo(map);
+```
+
+</details>
+
+## Adding Popups
+
+Popups appear when a user clicks a marker. Here's the basic syntax:
+
+```js
+const marker = new maplibregl.Marker()
+    .setLngLat([-118.45, 34.05])
+    .setPopup(new maplibregl.Popup({ offset: 25 })
+        .setHTML('Hello! This is an HTML popup — I can use any <b>HTML tags</b> here!'))
+    .addTo(map);
+```
+
+### Styling Popups with CSS
+
+You can add a class to the popup to style it:
+
+```js
+const marker = new maplibregl.Marker()
+    .setLngLat([-118.45, 34.05])
+    .setPopup(new maplibregl.Popup({ offset: 25 })
+        .setHTML('<div class="awesomePopup">Hello! This popup has a custom style.</div>'))
+    .addTo(map);
+```
+
+Then in your `styles/style.css`:
+
+```css
+.awesomePopup {
+    background-color: #f8f9fa;
+    color: #212529;
+    font-size: 16px;
+    padding: 10px;
+}
+```
+
+## ⚽ In-Class Exercise #2
+
+:::tip[Task]
+1. Add a marker for **your home neighborhood or a place you love** using the coordinates from any of the resources above.
+2. Add a popup to that marker with a short description.
+3. Style the popup using a CSS class of your choosing.
+:::
+
+<details>
+<summary><b>Solution (example)</b></summary>
+
+```js title="js/init.js"
+const marker = new maplibregl.Marker()
+    .setLngLat([-118.45, 34.05])
+    .setPopup(new maplibregl.Popup({ offset: 25 })
+        .setHTML('<div class="awesomePopup">My favorite coffee shop!</div>'))
+    .addTo(map);
+```
+
+```css title="styles/style.css"
+.awesomePopup {
+    background-color: #f8f9fa;
+    color: #212529;
+    font-size: 16px;
+    padding: 10px;
+}
+```
+
+</details>
+
+## 🏁 Checkpoint
+
+- You can add markers at specific coordinates on your map
+- You can attach popups with HTML content to markers
+- You can style popups using CSS classes
+
+### Check your work
+
+Your code should look something like this:
+
+```html title="index.html"
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World with MapLibreGl</title>
+        <!-- hint: remember to change your page title! -->
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="styles/style.css">
+
+        <!-- MapLibreGL's css-->
+        <link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" />
+
+        <!-- MapLibreGL's JavaScript-->
+        <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    </head>
+    
+    <body>
+        <header>
+            Hello World
+            <!-- hint: you can make a menu with other links here if you'd like -->
+        </header>
+        
+        <main>
+            <div class="portfolio">
+                <!-- Portfolio content goes here -->
+                <img src="me.png">
+            </div>
+            <div id="map"></div>
+        </main>
+        <div id="footer">
+            Copyright(2026)
+        </div>
+        <script src="js/init.js"></script>
+    </body>
+</html>
+```
+
+```javascript title="js/init.js"
+// Initialize the map
+const map = new maplibregl.Map({
+    container: 'map',
+    style: 'https://api.maptiler.com/maps/streets/style.json?key=wsyYBQjqRwKnNsZrtci1',
+    center: [-118.444, 34.0709],
+    zoom: 15
+});
+
+// Add a marker to the map
+new maplibregl.Marker()
+    .setLngLat([-118.444, 34.0709])
+    .setPopup(new maplibregl.Popup({ offset: 25 })
+        .setHTML('Math Sciences 4328 aka the Technology Sandbox<br> is the lab where I used to work in '))
+    .addTo(map);
+```
+
+<LabNav prev={{ href: "/labs/week1b/2/", label: "The (API) KEY to BaseMaps" }} next={{ href: "/labs/week1b/4/", label: "Styling your Portfolio" }} />
