@@ -17,7 +17,7 @@ Date|Type|Description|Slides|Recording|
 
 ### Visiting Voice: Mariah Tso (6/29)
 
-![](../../media/mariahtso.jpg)
+<img src="/26SU-ASIAAM-191A/media/mariahtso.jpg" alt="Mariah Tso" style="max-width:300px" />
 
 Mariah Tso is a Diné woman, artist, and GIS Specialist for the [Ralph J. Bunche Center](https://bunchecenter.ucla.edu/) and the [Million Dollar Hoods Project](https://milliondollarhoods.pre.ss.ucla.edu/).
 
