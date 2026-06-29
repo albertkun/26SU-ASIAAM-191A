@@ -43,10 +43,10 @@ Unless specified otherwise, all assignments are **due at the beginning of class*
 - [**Group Assignment #1: Repository and Readme**](../../assignments/week1/group_assignment/)
 - [Pre-lab #2](../../assignments/week2/prelab/)
 
-<!-- ### Due Monday 7/6 -->
+### Due Monday 7/6
 
-<!-- - [**Whose map? Who is empowered and who is disempowered?**](../../assignments/week2/reading/) -->
-<!-- - [Thinking Cap #2](../../assignments/week2/thinking_cap/) -->
+- [**Whose map? Who is empowered and who is disempowered?**](../../assignments/week2/reading/)
+- [Thinking Cap #2](../../assignments/week2/thinking_cap/)
 
 <!-- ### Due Wednesday 7/8 -->
 
