@@ -11,7 +11,3 @@ sidebar:
 |#1|[GITting down with labs and code](./week1/)|Git, HTML, CSS|
 |#1b|[MapLibRevisiting Portfolios](./week1b/)|JS, Portfolio, GitHub Pages|
 
-:::caution[Reminder!]
-Unless specified otherwise, all assignments are **due at the beginning of class**. Late assignments will be given half credit up until a week.
-:::
-
