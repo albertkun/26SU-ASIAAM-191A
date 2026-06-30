@@ -4,8 +4,8 @@ title: "Week 2 - Humanizing Technology"
 
 Date|Type|Description|Slides|Recording|
 |---|----|-----------|------|---------|
-|6/29|Lecture|Critical Cartography and Civil Society|TBD | TBD|
-|6/29|Lab|[MapLibRevisiting your portfolios](../../labs/week1b/)|TBD|TBD |
+|6/29|Lecture|Critical Cartography and Civil Society|TBD|[Here](https://ucla.zoom.us/rec/share/lVdAd988kJKXBfpLIZawpNtW66MXY8T3aqVJn7mPB2lRbSscwDJGdjjcPjVXVJl1.L07y13K6tS8gO8yx)|
+|6/29|Lab|[MapLibRevisiting your portfolios](../../labs/week1b/)|-|-|
 |7/1|Lab|JavaScript: Writing some FUNctions|TBD|TBD |
 
 ## Lecture
