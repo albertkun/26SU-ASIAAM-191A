@@ -3,7 +3,7 @@ import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.ast
 import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
 import SidebarNav from './SidebarNav.astro';
 
-const { sidebar, toc } = Astro.locals.starlightRoute;
+const { sidebar } = Astro.locals.starlightRoute;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const currentSection = Astro.url.pathname.replace(base, '').replace(/^\//, '').split('/')[0];
@@ -41,15 +41,11 @@ const currentGroup = sidebar.find(entry => {
 
 const activeSidebar = currentGroup ? [currentGroup] : [];
 
-const tocItems = toc?.items
-	.filter(item => item.text.toLowerCase() !== 'overview')
-	.map(item => ({ slug: item.slug, text: item.text })) ?? [];
-
 ---
 
 <SidebarPersister>
 	{activeSidebar.length > 0 && (
-		<SidebarNav entries={activeSidebar} tocItems={tocItems} />
+		<SidebarNav entries={activeSidebar} />
 	)}
 </SidebarPersister>
 

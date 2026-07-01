@@ -192,6 +192,86 @@ export default defineConfig({
             defer: true,
           },
         },
+        {
+          tag: 'script',
+          content: `
+(function () {
+  function initLightbox() {
+    // Build overlay once
+    if (document.getElementById('lightbox-overlay')) return;
+    const overlay = document.createElement('div');
+    overlay.id = 'lightbox-overlay';
+    overlay.className = 'lightbox-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Image lightbox');
+
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'lightbox-close';
+    closeBtn.setAttribute('aria-label', 'Close lightbox');
+    closeBtn.textContent = '×';
+
+    const img = document.createElement('img');
+    img.alt = '';
+
+    overlay.appendChild(closeBtn);
+    overlay.appendChild(img);
+    document.body.appendChild(overlay);
+
+    function close() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') close();
+    });
+
+    // Attach click handlers to all content images (exclude icons/avatars < 48px)
+    document.querySelectorAll('.sl-markdown-content img').forEach(function (el) {
+      if (el.closest('.lightbox-overlay')) return;
+      el.addEventListener('click', function () {
+        img.src = el.src;
+        img.alt = el.alt || '';
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Wrap-toggle icon: inject into the .copy toolbar next to the copy button
+    document.querySelectorAll('.sl-markdown-content figure.frame').forEach(function (fig) {
+      if (fig.querySelector('.ec-wrap-btn')) return;
+      const btn = document.createElement('button');
+      btn.className = 'ec-wrap-btn';
+      btn.title = 'Toggle line wrapping';
+      btn.setAttribute('aria-pressed', 'false');
+      btn.setAttribute('aria-label', 'Toggle line wrapping');
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h12a3 3 0 0 1 0 6H9l3-3m0 6-3-3"/></svg>';
+      btn.addEventListener('click', function () {
+        const on = fig.classList.toggle('ec-wrap-on');
+        btn.classList.toggle('active', on);
+        btn.setAttribute('aria-pressed', String(on));
+      });
+      const header = fig.querySelector('figcaption.header');
+      if (header) header.appendChild(btn);
+    });
+  }
+
+  // Run after each Starlight page navigation (View Transitions)
+  document.addEventListener('astro:page-load', initLightbox);
+  // Fallback for first load without View Transitions
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLightbox);
+  } else {
+    initLightbox();
+  }
+})();
+          `,
+        },
       ],
       customCss: ['./src/styles/custom.css'],
       components: {

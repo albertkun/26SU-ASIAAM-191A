@@ -4,9 +4,9 @@ title: "Week 2 - Humanizing Technology"
 
 Date|Type|Description|Slides|Recording|
 |---|----|-----------|------|---------|
-|6/29|Lecture|Critical Cartography and Civil Society|TBD|[Here](https://ucla.zoom.us/rec/share/lVdAd988kJKXBfpLIZawpNtW66MXY8T3aqVJn7mPB2lRbSscwDJGdjjcPjVXVJl1.L07y13K6tS8gO8yx)|
+|6/29|Lecture|Critical Cartography and Civil Society|-|[Here](https://ucla.zoom.us/rec/share/lVdAd988kJKXBfpLIZawpNtW66MXY8T3aqVJn7mPB2lRbSscwDJGdjjcPjVXVJl1.L07y13K6tS8gO8yx)|
 |6/29|Lab|[MapLibRevisiting your portfolios](../../labs/week1b/)|-|-|
-|7/1|Lab|JavaScript: Writing some FUNctions|TBD|TBD |
+|7/1|Lab|[JavaScript: Writing some FUNctions](../../labs/week2/)|TBD|TBD |
 
 ## Lecture
 
@@ -24,7 +24,7 @@ Mariah Tso is a Diné woman, artist, and GIS Specialist for the [Ralph J. Bunche
 ## Lab
 
 - [MapLibRevisiting your portfolios](../../labs/week1b/)
-- JavaScript: Writing some FUNctions
+- [JavaScript: Writing some FUNctions](../../labs/week2/)
 
 ## Assignments
 

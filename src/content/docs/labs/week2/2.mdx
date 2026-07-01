@@ -1,0 +1,243 @@
+---
+title: "Events in the Fire KingDOM"
+---
+
+import CodeAnnotation from '../../../../components/CodeAnnotation.astro';
+import LabNav from '../../../../components/LabNav.astro';
+
+export const createButtonsAnnotated = `function createButtons(lat,lng,title){
+    const newButton = document.createElement("button");
+    newButton.id = "button"+title;
+    newButton.innerHTML = title;
+    newButton.setAttribute("lat",lat);
+    newButton.setAttribute("lng",lng);
+    newButton.addEventListener('click', function(){
+        map.flyTo({
+            center: [lng,lat],
+        })
+    })
+    document.getElementById("contents").appendChild(newButton);
+}`;
+
+:::tip[Objective]
+Make a button that we can click on to fly to a location for each of the markers you made.
+:::
+
+1. [Add a place for the buttons to go](#add-a-place-for-the-buttons-to-go)
+2. [Create the function to add buttons that also moves the map](#create-the-function-to-add-buttons-and-move-the-map)
+3. [Call the new function in our `addMarker` function](#call-the-createbuttons-in-our-addmarker-function)
+
+### The HTM-Elements: Ava`<tag>` the last Airbender
+
+Remember, when you see tags that have an `open` and `/end` in HTML, like `<body></body>`, they are referred to as elements, so for example:
+
+```html
+<water>Katara</water>
+<air>Aang</air>
+<earth>Toph</earth>
+<fire>Zuko</fire>
+```
+
+Above we have four elements. Each element has a `content`, for example, the `earth` element's content is `Toph`. Unfortunately, despite how exciting those elements are, the most common HTML element is the `<div></div>` element, which is a generic container.
+
+This is not an element: `<link>` because there is no `/link` to close it.
+
+Elements can contain other elements, for example:
+
+```html
+<kingdom>
+    <earth>Toph</earth>
+</kingdom>
+```
+
+Here `Toph` is inside the `earth` element, which is inside the `kingdom` element.
+
+Reminder that all tags can have attributes:
+
+```html
+<kingdom>
+    <earth attribute="valueForTheAttribute">Toph</earth>
+</kingdom>
+```
+
+The `DOM` (Document **Object** Model) is how HTML elements are treated as `objects` that can be manipulated by **JavaScript**. The `DOM` has an API (Application Programming Interface) which **JavaScript** uses to interact with the elements.
+
+The `DOM` is a tree structure, which means that the `document` is the root of the DOM tree, and all elements are children of the `document`.
+
+:::tip[DOM Tree]
+Just think of the `DOM` as the foundation of our `HTML` house and the `elements` are the rooms where we can use JavaScript appliances to interact with them. Anything outside the `<html>` element (i.e. after the `</html>`) is not part of the `DOM` so you can't use JavaScript to access it.
+:::
+
+:::note[Creating elements in the `DOM`?!]
+To create HTML elements with JavaScript you need to use the [createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) method.
+:::
+
+## Add a place for the buttons to go
+
+### A `contents` container
+
+Our buttons need a **place** to go, so let's add a `<div>` with an ID called `contents` for our map.
+
+:::note[`divs` vs. `spans`, what's the `DIV`fference?]
+`divs` are generic `HTML elements` that stand for `division` of content, you can think of them as boxes of content. `Spans` are like divs, but for text content.
+Check out [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web) for more information:
+
+- [`elements`](https://developer.mozilla.org/en-US/docs/Glossary/Element)
+- [`divs`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div)
+- [`spans`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span)
+:::
+
+Add a new `<div></div>` element and give it an **ID** attribute of `contents` like the following:
+
+```html
+<div id="contents"></div>
+```
+
+And let's add it after our portfolio div. Our current `index.html` should look like the following:
+
+```html title="index.html" showLineNumbers
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World with MapLibreGl</title>
+        <!-- hint: remember to change your page title! -->
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="styles/style.css">
+
+        <!-- MapLibreGL's css-->
+        <link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" />
+
+        <!-- MapLibreGL's JavaScript-->
+        <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    </head>
+
+    <body>
+        <header>
+            Hello World
+            <!-- hint: you can make a menu with other links here if you'd like -->
+        </header>
+
+        <main>
+            <div class="portfolio">
+                <div id="contents"></div>
+                <!-- Portfolio content goes here -->
+                <h2>Where I've lived in LA</h2>
+                <ul>
+                    <li>UCLA</li>
+                    <li>Westwood</li>
+                    <li>Koreatown</li>
+                </ul>
+            </div>
+            <div id="map"></div>
+        </main>
+        <div id="footer">
+            Copyright(2026)
+        </div>
+        <script src="js/init.js"></script>
+    </body>
+</html>
+```
+
+### Prepping the CSS
+
+Let's incorporate our new `div` that has the `id` of `contents` into our CSS now.
+
+:::note[Reminder: IDs vs. Classes]
+- IDs: There can only be ONE unique ID on an HTML page and in **CSS** you refer to it with a `#`, like `#contents`.
+- Classes: There can be multiple classes on an HTML page and in **CSS** you refer to it with a `.`
+:::
+
+```css title="styles/style.css"
+#contents{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+```
+
+## Create the function to add buttons and move the map
+
+Next we will add our new function. Notice how we are using the `lat`, `lng`, and `title` from the `addMarker` function? That's why it was helpful to do step one first.
+
+<CodeAnnotation
+  code={createButtonsAnnotated}
+  lang="js"
+  annotations={[
+    { line: 2, text: "Creates a new button `element`" },
+    { line: 3, text: "Gives the button a unique `id`" },
+    { line: 4, text: "Gives the button a `title`" },
+    { line: 5, text: "Sets the `latitude`" },
+    { line: 6, text: "Sets the `longitude`" },
+    { line: 9, text: "Tells MapLibre where to `flyTo()`, which is the longitude/latitude" },
+    { line: 12, text: "This targets the `id` where the buttons should be added — in this case the div with the id `contents`!" },
+  ]}
+/>
+
+## Call the `createButtons()` in our `addMarker` function
+
+Remember, the only way functions work is if they are called, so the last step is to call the `createButtons()` in our `addMarker()` function.
+
+```js title="js/init.js" {7}
+function addMarker(lat,lng,title,message){
+    let popup_message = `<h2>${title}</h2> <h3>${message}</h3>`
+    new maplibregl.Marker()
+        .setLngLat([lng, lat])
+        .setPopup(new maplibregl.Popup().setHTML(popup_message))
+        .addTo(map)
+    createButtons(lat,lng,title);
+    return message
+}
+```
+
+Try clicking the button on the webpage and it should fly to the location of that marker!
+
+## 🏁 Final Checkpoint
+
+- You should have a button that when clicked, moves the map to the location of the marker.
+- You should have a button for each marker you have created.
+
+Your code should look like this:
+
+```js title="js/init.js" showLineNumbers
+// Initialize the map
+const map = new maplibregl.Map({
+    container: 'map', // container ID
+    style: 'https://api.maptiler.com/maps/streets-v2-light/style.json?key=wsyYBQjqRwKnNsZrtci1', // Your style URL
+    center: [-118.4430,34.0691], // Starting position [lng, lat]
+    zoom: 15 // Starting zoom level
+});
+
+function addMarker(lat,lng,title,message){
+    let popup_message = `<h2>${title}</h2> <h3>${message}</h3>`
+    new maplibregl.Marker()
+        .setLngLat([lng, lat])
+        .setPopup(new maplibregl.Popup()
+            .setHTML(popup_message))
+        .addTo(map)
+    createButtons(lat,lng,title);
+    return message
+}
+
+function createButtons(lat,lng,title){
+    const newButton = document.createElement("button");
+    newButton.id = "button"+title;
+    newButton.innerHTML = title;
+    newButton.setAttribute("lat",lat);
+    newButton.setAttribute("lng",lng);
+    newButton.addEventListener('click', function(){
+        map.flyTo({
+            center: [lng,lat],
+        })
+    })
+    document.getElementById("contents").appendChild(newButton);
+}
+
+addMarker(34.07089198374384, -118.4382362706527, "UCLA", "Where I lived on campus")
+addMarker(34.05811237642655, -118.44350206574538, "Westwood", "Where I lived in Westwood off campus")
+addMarker(34.06135445908777, -118.30375584669582, "Koreatown", "Where I currently live.")
+
+```
+
+<LabNav prev={{ href: "/labs/week2/1/", label: "JavaScript Functions" }} next={{ href: "/labs/week2/3/", label: "Final Template Code" }} />

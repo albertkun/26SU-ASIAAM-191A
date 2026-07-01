@@ -1,3 +1,44 @@
+/* Lightbox — clicks on content images open a full-size overlay */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.85);
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox-overlay.open {
+  display: flex;
+}
+.lightbox-overlay img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  cursor: default;
+}
+.lightbox-close {
+  position: fixed;
+  top: 1rem;
+  right: 1.25rem;
+  font-size: 2rem;
+  line-height: 1;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.lightbox-close:hover { opacity: 1; }
+
+/* Make content images look clickable */
+.sl-markdown-content img {
+  cursor: zoom-in;
+}
+
 /* UCLA blue branding */
 :root {
   --sl-nav-height: 5.7rem;
@@ -134,6 +175,35 @@ html[data-has-hero] .card-grid {
   vertical-align: middle;
   width: 1.1em;
   height: 1.1em;
+}
+
+
+/* Code block wrap toggle icon — sits in the figcaption title bar, right side */
+figcaption.header {
+  display: flex;
+  align-items: center;
+}
+.ec-wrap-btn {
+  margin-left: auto;
+  padding: 0.2em 0.35em;
+  background: transparent;
+  border: none;
+  color: inherit;
+  opacity: 0.4;
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 3px;
+}
+.ec-wrap-btn:hover,
+.ec-wrap-btn:focus-visible { opacity: 0.85; }
+.ec-wrap-btn.active { opacity: 1; }
+.ec-wrap-btn svg { width: 1em; height: 1em; }
+
+figure.ec-wrap-on pre,
+figure.ec-wrap-on pre code {
+  white-space: pre-wrap;
+  overflow-x: visible;
+  word-break: break-all;
 }
 
 /* Prev / Next lab navigation bar */
