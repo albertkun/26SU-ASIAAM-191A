@@ -6,7 +6,7 @@ Date|Type|Description|Slides|Recording|
 |---|----|-----------|------|---------|
 |6/29|Lecture|Critical Cartography and Civil Society|-|[Here](https://ucla.zoom.us/rec/share/lVdAd988kJKXBfpLIZawpNtW66MXY8T3aqVJn7mPB2lRbSscwDJGdjjcPjVXVJl1.L07y13K6tS8gO8yx)|
 |6/29|Lab|[MapLibRevisiting your portfolios](../../labs/week1b/)|-|-|
-|7/1|Lab|[JavaScript: Writing some FUNctions](../../labs/week2/)|TBD|TBD |
+|7/1|Lab|[JavaScript: Writing some FUNctions](../../labs/week2/)|[Here](../../materials/AA191_S_W2_Lab_2.pdf)|[Here](https://ucla.zoom.us/rec/share/F0mquFvL2P8_EYvAJzWMoOLeGOI_NqMc4QVxr0KLLwHL160FneD4d3AfrxOs4mBQ.Kgfn6SZLS1X0yHqU)|
 
 ## Lecture
 
@@ -48,7 +48,7 @@ Unless specified otherwise, all assignments are **due at the beginning of class*
 - [**Whose map? Who is empowered and who is disempowered?**](../../assignments/week2/reading/)
 - [Thinking Cap #2](../../assignments/week2/thinking_cap/)
 
-<!-- ### Due Wednesday 7/8 -->
+### Due Wednesday 7/8
 
-<!-- - [Lab Assignment #2](../../assignments/week2/lab_assignment/) -->
-<!-- - [Group Assignment #2](../../assignments/week2/group_assignment/) -->
+- [**Lab Assignment #2**](../../assignments/week2/lab_assignment/)
+- [**Group Assignment #2**](../../assignments/week2/group_assignment/)
