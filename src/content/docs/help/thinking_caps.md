@@ -5,7 +5,7 @@ title: "How to Submit a Thinking Cap Discussion"
 ## Part 1: Posting your own discussion
 
 :::caution
-Due at 2pm PST on Mondays, but to be eligible for extra credit you must submit at **2pm PST on Sundays**.
+Due at 3:15pm PST on Mondays, but to be eligible for extra credit you must submit at **3:15pm PST on Sundays**.
 :::
 1. Make sure you are signed into your GitHub account. <img src="/26SU-ASIAAM-191A/help/media/thinkingcap0.png" alt="./media/thinkingcap0.png">
 2. Go to the [course website](https://albertkun.github.io/26SU-ASIAAM-191A/)
