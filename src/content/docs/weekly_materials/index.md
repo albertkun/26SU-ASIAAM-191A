@@ -11,6 +11,7 @@ tableOfContents: false
 |----|-----|
 |#1|[GIS, Data, and Ethics](week01/)|
 |#2|[Humanizing Technology](week02/)|
+|#3|[Society, Technology, and Ethics](week03/)|
 
 ## Course Materials
 
@@ -20,4 +21,6 @@ tableOfContents: false
 |1|Hello World (Wide) Web Development: GITting down with labs and code|Lab|[Here](../materials/AA191_S_W1_Lab_1.pdf)|[Here](https://ucla.zoom.us/rec/share/9QNfIi1BA3iO-B3eLgfIJc5B40WSnMq0h8UDtBtGfnDSu6snGHAk74VkXPUTHVTm.Z2KtT-dfsKjofRKK)|
 |2| Humanizing Technology|Lecture|-|[Here](https://ucla.zoom.us/rec/share/61WudPRN1vEF870EJnAsFjNw0zpGHi0LpOB6TE9M2tO_5m3eS8JX6f1GRKhfenoh.fyuTspVxRkto3ktd)|
 |2|JavaScript: Writing some FUNctions|Lab|[Here](../materials/AA191_S_W2_Lab_2.pdf)|[Here](https://ucla.zoom.us/rec/share/F0mquFvL2P8_EYvAJzWMoOLeGOI_NqMc4QVxr0KLLwHL160FneD4d3AfrxOs4mBQ.Kgfn6SZLS1X0yHqU)|
+|3|Connecting the dots of technology and ethics|Lecture|-|-|
+|3|For-loops and Geo-J-cieON|Lab|-|-|
 

@@ -10,3 +10,4 @@ sidebar:
 |#1|[GITting down with labs and code](./week1/)|Git, HTML, CSS|
 |#1b|[MapLibRevisiting Portfolios](./week1b/)|JS, GitHub Pages|
 |#2|[JavaScript FUNctions](./week2/)|JS,HTML|
+<!-- |#3|For-loops and Geo-J-cieON|JS, GeoJSON, APIs| -->
