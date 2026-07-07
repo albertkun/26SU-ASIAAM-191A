@@ -4,7 +4,7 @@ title: "Week 3 - Society, Technology, and Ethics"
 
 Date|Type|Description|Slides|Recording|
 |---|----|-----------|------|---------|
-|7/6|Lecture|Connecting the dots of technology and ethics|TBD|TBD|
+|7/6|Lecture|Connecting the dots of technology and ethics|[Here](../../materials/AA191_S_W3_Lecture_3.pdf)|[Here](https://ucla.zoom.us/rec/share/WcKvHT0fGdr09qprpoDYQ81MG0utuusRIm_OvVhFoTTve0iqMBbI8sn3eIwj6Do.npCIqG-z3G-Q2UVg)|
 |7/8|Lab|For-loops and Geo-J-cieON|TBD|TBD|
 
 ## Lecture
@@ -34,12 +34,12 @@ Yoh Kawano is a digital humanist and associate professor at [Reitaku University 
 - [**Lab Assignment #2**](../../assignments/week2/lab_assignment/)
 - [**Group Assignment #2**](../../assignments/week2/group_assignment/)
 
-<!-- ### Due Monday 7/13
+### Due Monday 7/13
 
 - [**Finish the weekly reading**](../../assignments/week3/reading/)
 - [Thinking Cap #3](../../assignments/week3/thinking_cap/)
 
-### Due Wednesday 7/15
+<!-- ### Due Wednesday 7/15
 
 - [**Lab Assignment #3**](../../assignments/week3/lab_assignment/)
 - [**Group Assignment #3**](../../assignments/week3/group_assignment/)
