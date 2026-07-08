@@ -1,0 +1,179 @@
+---
+title: "Overview - For-hoops and Geo-J-cieON"
+---
+
+import LabNav from '../../../../components/LabNav.astro';
+
+Adding functionality to our [MapLibreGL](https://maplibre.org/maplibre-gl-js/docs/) map with GeoJSON!
+
+<img src="/26SU-ASIAAM-191A/labs/week3/media/intro.png" alt="For-loops and GeoJSON intro" style="max-width:300px" />
+
+:::tip[Goals]
+- Create a GeoJSON file online and add it to the map with JavaScript
+- Understand how JavaScript works with HTML and CSS
+- Understand how JavaScript variables, functions, and methods work together
+:::
+
+## Lab outline
+
+1. [Creating a GeoJSON file](./1)
+2. [Fetch and Then Statements](./2)
+3. [For-Loops](./3)
+4. [Final Template Code](./4)
+
+## Starting Template Code for Lab #3
+
+Use the following template code or your Lab Assignment #2:
+
+```html title="index.html" showLineNumbers
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World with MapLibreGl</title>
+        <!-- hint: remember to change your page title! -->
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="styles/style.css">
+
+        <!-- MapLibreGL's css-->
+        <link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" />
+
+        <!-- MapLibreGL's JavaScript-->
+        <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    </head>
+
+    <body>
+        <header>
+            Hello World
+            <!-- hint: you can make a menu with other links here if you'd like -->
+        </header>
+
+        <main>
+            <div class="portfolio">
+                <div id="contents"></div>
+                <!-- Portfolio content goes here -->
+                <h2>Where I've lived in LA</h2>
+                <ul>
+                    <li>UCLA</li>
+                    <li>Westwood</li>
+                    <li>Koreatown</li>
+                </ul>
+            </div>
+            <div id="map"></div>
+        </main>
+        <div id="footer">
+            Copyright(2026)
+        </div>
+        <script src="js/init.js"></script>
+    </body>
+</html>
+```
+
+```js title="js/init.js" showLineNumbers
+// Initialize the map
+const map = new maplibregl.Map({
+    container: 'map', // container ID
+    style: 'https://api.maptiler.com/maps/streets-v2-light/style.json?key=wsyYBQjqRwKnNsZrtci1', // Your style URL
+    center: [-118.4430,34.0691], // Starting position [lng, lat]
+    zoom: 15 // Starting zoom level
+});
+
+function addMarker(lat,lng,title,message){
+    let popup_message = `<h2>${title}</h2> <h3>${message}</h3>`
+    new maplibregl.Marker()
+        .setLngLat([lng, lat])
+        .setPopup(new maplibregl.Popup()
+            .setHTML(popup_message))
+        .addTo(map)
+    createButtons(lat,lng,title);
+    return message
+}
+
+function createButtons(lat,lng,title){
+    const newButton = document.createElement("button");
+    newButton.id = "button"+title;
+    newButton.innerHTML = title;
+    newButton.setAttribute("lat",lat);
+    newButton.setAttribute("lng",lng);
+    newButton.addEventListener('click', function(){
+        map.flyTo({
+            center: [lng,lat],
+        })
+    })
+    document.getElementById("contents").appendChild(newButton);
+}
+
+addMarker(34.07089198374384, -118.4382362706527, "UCLA", "Where I lived on campus")
+addMarker(34.05811237642655, -118.44350206574538, "Westwood", "Where I lived in Westwood off campus")
+addMarker(34.06135445908777, -118.30375584669582, "Koreatown", "Where I currently live.")
+```
+
+```css title="styles/style.css" showLineNumbers
+* {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: aqua;
+}
+
+html, body {
+    height: 80vh;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    grid-template-rows: auto 1fr auto;
+}
+
+main {
+    display: grid;
+    grid-template-areas:
+        "portfolio map";
+    grid-template-columns: 1fr 1fr;
+    grid-area: main;
+}
+
+header {
+    grid-area: header;
+}
+
+.portfolio {
+    grid-area: portfolio;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#map {
+    grid-area: map;
+    height: 80vh;
+}
+
+#footer {
+    grid-area: footer;
+    padding: 1rem;
+    background-color: #4677a0;
+    color: #fff;
+    text-align: center;
+}
+
+#contents{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+```
+
+<LabNav next={{ href: "/labs/week3/1/", label: "Creating a GeoJSON" }} />

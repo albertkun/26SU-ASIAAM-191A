@@ -9,15 +9,18 @@ sidebar:
 
 | Assignment | Type | Due |
 |------------|------|-----|
-| [**Lab #2**](week2/lab_assignment/) | Lab | Wednesday 7/8 |
-| [**Group Assignment #2**](week2/group_assignment/) | Group Assignment | Wednesday 7/8 |
-| [**Weekly Reading #3**](reading/) | Reading | Monday 7/13 |
-| [**Thinking Cap #3**](thinking_cap/) | Thinking Cap | Monday 7/13 |
+| [**Weekly Reading #3**](week3/reading/) | Reading | Monday 7/13 |
+| [**Thinking Cap #3**](week3/thinking_cap/) | Thinking Cap | Monday 7/13 |
+| [**Lab #3**](week3/lab_assignment/) | Lab | Wednesday 7/15 |
+| [**Group Assignment #3**](week3/group_assignment/) | Group Assignment | Wednesday 7/15 |
+| [**Pre-Lab (Survey Design)**](week3/prelab/) | Pre-Lab | Wednesday 7/15 |
 
 ## Past Assignments
 
 | Assignment | Type | Due |
 |------------|------|-----|
+| [**Lab #2**](week2/lab_assignment/) | Lab | Wednesday 7/8 |
+| [**Group Assignment #2**](week2/group_assignment/) | Group Assignment | Wednesday 7/8 |
 | [**Thinking Cap #2**](week2/thinking_cap/) | Thinking Cap | Monday 7/6 |
 | [**Weekly Reading #2**](week2/reading/) | Reading | Monday 7/6 |
 | [**Lab #1**](week1/lab_assignment/) | Lab | Wednesday 7/1 |

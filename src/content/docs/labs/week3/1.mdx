@@ -1,0 +1,119 @@
+---
+title: "Creating a GeoJSON file"
+---
+
+import LabNav from '../../../../components/LabNav.astro';
+
+Learning how to connect information from our surveys to our map will be key for our class projects, so first we will practice by creating a GeoJSON file of our own!
+
+## The power of people-based web mapping
+
+Let's put to practice what web development and GIS can do for empowering our own stories.
+
+Head over to [GeoJSON.io](http://www.geojson.io/):
+
+- [http://www.geojson.io/](http://www.geojson.io/)
+
+Click on the ==marker== ⬤ tool:
+
+![marker tool](/26SU-ASIAAM-191A/labs/week3/media/geojson1.png)
+
+Click on a location of interest to you:
+
+![click a location](/26SU-ASIAAM-191A/labs/week3/media/geojson2.png)
+
+Click inside the  ==`first`== column and call it ==`place`==:
+
+![name the column 'place' by clicking ](/26SU-ASIAAM-191A/labs/week3/media/geojson3.png)
+
+Type in a description for the `place`, in this case I called it ==home==.
+
+<img src="/26SU-ASIAAM-191A/labs/week3/media/geojson4.png" alt="home description" />
+
+Zoom out by pressing the ➖ button or ++minus++ key:
+
+![zoom out](/26SU-ASIAAM-191A/labs/week3/media/geojson8.png)
+
+Click the ==edit== ✏️ button:
+
+![edit button](/26SU-ASIAAM-191A/labs/week3/media/geojson9.png)
+
+Hold ==space== and drag the marker to adjust its location:
+
+![move the marker](/26SU-ASIAAM-191A/labs/week3/media/geojson5.png)
+
+Click out off of the marker onto the map to deselect it:
+
+![deselect marker](/26SU-ASIAAM-191A/labs/week3/media/geojson6.png)
+
+When **deselected** the table at the bottom should not be visible and the marker will be dark (not blue):
+
+![save edits](/26SU-ASIAAM-191A/labs/week3/media/geojson6.png)
+
+Zoom out by pressing ➖ button or the ++scrolling++ on your mouse wheel:
+
+![zoom out](/26SU-ASIAAM-191A/labs/week3/media/geojson7.png)
+
+Click the marker to select it:
+
+![select again](/26SU-ASIAAM-191A/labs/week3/media/geojson8a.png)
+
+The panel should pop-up along with an indicator saying ==1 feature== has been selected :
+
+![select again](/26SU-ASIAAM-191A/labs/week3/media/geojson8b.png)
+
+Add a new column called ==color==, we will use color the marker later.
+
+![add color column](/26SU-ASIAAM-191A/labs/week3/media/geojson9.png)
+
+Use a CSS friendly color name, like ==red==:
+
+![add color column](/26SU-ASIAAM-191A/labs/week3/media/geojson10.png)
+
+Optional: You can use the style panel and check the ==marker color== to select a color, just be sure to copy that value into our ==color== property too:
+
+![add color column](/26SU-ASIAAM-191A/labs/week3/media/geojson_extra.png)
+
+Save your file by going to the top menu's ==Export== option:
+
+![save menu](/26SU-ASIAAM-191A/labs/week3/media/geojson10b.png)
+Leave it as ==GeoJSON== (but know there is other formats available!)
+
+![save menu](/26SU-ASIAAM-191A/labs/week3/media/geojson_format.png)
+
+Check the ==Indent & format== option:
+
+![save menu](/26SU-ASIAAM-191A/labs/week3/media/geojson11.png)
+
+
+Click ==Export== to save the file:
+
+![export](/26SU-ASIAAM-191A/labs/week3/media/geojson12.png)
+
+
+Download the file to your computer:
+
+<img src="/26SU-ASIAAM-191A/labs/week3/media/geojson14.png" alt="download file" style="max-width:300px" />
+
+Copy the file into your project folder:
+
+![copy into project](/26SU-ASIAAM-191A/labs/week3/media/geojson15.png)
+
+### ⚽ In-Class Exercise #1 - Leaving your mark(er) on the map!
+
+Go back and add more points to your GeoJSON file.
+
+:::tip[Tasks]
+1. Add some points into your GeoJSON file
+2. Save the file and add it to your `week3` folder
+:::
+
+After finishing the exercise, think about how empowering it was for you to be able to add data to the map yourselves. Whether you were clicking random spots or trying to find your old favorite places to visit, the ability to mark things is a reclaiming of mapping for yourself. This sense of staking a claim is what is meant when we refer to "empowering community voices".
+
+## 🏁 Checkpoint - Check your GeoJSON
+
+1. Make sure your GeoJSON file is in your `week3` folder!
+
+2. **Take note of the filename!** The default from [https://geojson.io](https://geojson.io) is `untitled.geojson`, but you can change it to whatever you want.
+
+<LabNav prev={{ href: "/labs/week3/", label: "Overview" }} next={{ href: "/labs/week3/2/", label: "Fetch and Then Statements" }} />
