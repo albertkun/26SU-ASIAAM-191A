@@ -5,7 +5,7 @@ title: "Week 3 - Society, Technology, and Ethics"
 Date|Type|Description|Slides|Recording|
 |---|----|-----------|------|---------|
 |7/6|Lecture|Connecting the dots of technology and ethics|[Here](../../materials/AA191_S_W3_Lecture_3.pdf)|[Here](https://ucla.zoom.us/rec/share/WcKvHT0fGdr09qprpoDYQ81MG0utuusRIm_OvVhFoTTve0iqMBbI8sn3eIwj6Do.npCIqG-z3G-Q2UVg)|
-|7/8|Lab|For-loops and Geo-J-cieON|TBD|TBD|
+|7/8|Lab|For-loops and Geo-J-cieON|[Here](../../materials/AA191_S_W3_Lab_3.pdf)|[Here](https://ucla.zoom.us/rec/share/TVwaMXyPv2DwuxuswaGG21fNpWtGNcRgB5N1pOXAaWAQLCi9w6HLyn6IKEwYZsCC.VGrYS2zmk4kWxxW4)|
 
 ## Lecture
 
