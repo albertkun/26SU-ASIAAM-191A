@@ -1,5 +1,5 @@
 ---
-title: "Survey Design (pre-lab for next week)"
+title: "Survey Design"
 sidebar:
   label: "Pre-Lab (Survey Design)"
   order: 1

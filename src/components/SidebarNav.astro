@@ -21,12 +21,14 @@ function firstHref(e: any): string | undefined {
 }
 
 // The "overview" page of a group: the child link whose URL is a path-prefix of
-// every other entry in the group (i.e. the directory's index page).
+// every other entry in the group (i.e. the directory's index page). A group with
+// only an index page (no siblings, e.g. a week whose assignments aren't posted
+// yet) still collapses to that single link rather than an empty dropdown.
 function findOverview(es: any[]): any | undefined {
 	const links = es.filter(e => e.type === 'link');
 	return links.find(l => {
 		const others = es.filter(e => e !== l);
-		return others.length > 0 && others.every(o => {
+		return others.every(o => {
 			const h = firstHref(o);
 			return h != null && h.startsWith(l.href);
 		});
