@@ -1,6 +1,5 @@
 ---
 title: "Thinking Cap #4"
-draft: true
 sidebar:
   label: "Thinking Cap #4"
   order: 3
