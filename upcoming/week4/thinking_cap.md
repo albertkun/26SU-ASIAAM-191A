@@ -12,7 +12,7 @@ sidebar:
 ## What do you think about design justice? Would open-source projects benefit from considering it? How might you apply Design Justice in your designs going forward?
 :::
 
-Read this week's [reading on Design Justice](reading.md) and reflect on how design justice is a way to connect justice to design on a practical level.
+Read this week's [reading on Design Justice](../reading.md) and reflect on how design justice is a way to connect justice to design on a practical level.
 
 ## Part 1 - Respond
 
