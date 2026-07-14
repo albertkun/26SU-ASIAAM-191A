@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-## Due 7/15 (pre-lab for next week)
+## Due 7/15
 
 :::note[⌛ Reading time]
 15 - 25 minutes
