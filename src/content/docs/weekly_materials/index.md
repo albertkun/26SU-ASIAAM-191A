@@ -24,8 +24,8 @@ tableOfContents: false
 |2|JavaScript: Writing some FUNctions|Lab|[Here](../materials/AA191_S_W2_Lab_2.pdf)|[Here](https://ucla.zoom.us/rec/share/F0mquFvL2P8_EYvAJzWMoOLeGOI_NqMc4QVxr0KLLwHL160FneD4d3AfrxOs4mBQ.Kgfn6SZLS1X0yHqU)|
 |3|Connecting the dots of technology and ethics|Lecture|[Here](../materials/AA191_S_W3_Lecture_3.pdf)|[Here](https://ucla.zoom.us/rec/share/WcKvHT0fGdr09qprpoDYQ81MG0utuusRIm_OvVhFoTTve0iqMBbI8sn3eIwj6Do.npCIqG-z3G-Q2UVg)|
 |3|For-loops and Geo-J-cieON|Lab|[Here](../materials/AA191_S_W3_Lab_3.pdf)|[Here](https://ucla.zoom.us/rec/share/TVwaMXyPv2DwuxuswaGG21fNpWtGNcRgB5N1pOXAaWAQLCi9w6HLyn6IKEwYZsCC.VGrYS2zmk4kWxxW4)|
-<!-- Week 4 materials — uncomment once slides/recording are posted (paths are placeholders):
-|4|Ethical Software and Developing for Civil Society|Lecture|[Here](../materials/AA191_S_W4_Lecture_4.pdf)|TBD|
+|4|Ethical Software and Developing for Civil Society|Lecture|[Here](../materials/AA191_S_W4_Lecture_4.pdf)|[Here](https://ucla.zoom.us/rec/share/sqxwjr94X8nTqI-WitXvTAjn09M3622Wg5-guA1CvCDCJUQoUbRABHuWMLSoJjUu.0wLIYrIj0OWY4yst)|
+<!-- Week 4 lab — uncomment once lab slides/recording are posted:
 |4|Google FORMulating Community-Based Empowerment|Lab|[Here](../materials/AA191_S_W4_Lab_4.pdf)|TBD|
 -->
 

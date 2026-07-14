@@ -4,7 +4,7 @@ title: "Week 4 - Open Source and Web Mapping"
 
 Date|Type|Description|Slides|Recording|
 |---|----|-----------|------|---------|
-|7/13|Lecture|Ethical Software and Developing for Civil Society|TBD|TBD|
+|7/13|Lecture|Ethical Software and Developing for Civil Society|[Here](../../materials/AA191_S_W4_Lecture_4.pdf)|[Here](https://ucla.zoom.us/rec/share/sqxwjr94X8nTqI-WitXvTAjn09M3622Wg5-guA1CvCDCJUQoUbRABHuWMLSoJjUu.0wLIYrIj0OWY4yst)|
 |7/15|Lab|Google FORMulating Community-Based Empowerment|TBD|TBD|
 
 ## Lecture
