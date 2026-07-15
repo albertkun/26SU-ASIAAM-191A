@@ -11,3 +11,4 @@ sidebar:
 |#1b|[MapLibRevisiting Portfolios](./week1b/)|JS, GitHub Pages|
 |#2|[JavaScript FUNctions](./week2/)|JS,HTML|
 |#3|[For-loops and Geo-J-cieON](./week3/)|JS, GeoJSON, APIs|
+|#4|[Loops and Google FORMulating Data](./week4/)|Forms, Conditionals, APIs|

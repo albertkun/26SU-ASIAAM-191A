@@ -1,0 +1,199 @@
+---
+title: "Creating a new Google Form"
+---
+
+import LabNav from '../../../../components/LabNav.astro';
+
+Navigate to Google Forms and click on "Blank":
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms1.png" alt="Google Forms blank" style="max-width:500px" />
+
+Give a title to your Google Form by clicking on "Untitled Form":
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms2.png" alt="Untitled Form" style="max-width:500px" />
+
+Add a little description about the survey form here. For our example we will be collecting stories about vaccinations during COVID-19.
+
+## Adding a Google Form Question
+
+Click on the "Add Question" button to add a question:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms4.png" alt="Add Question" style="max-width:500px" />
+
+Start typing "Location" and Google will automatically guess the question type for you.
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms5.png" alt="Location question type" style="max-width:500px" />
+
+You can fill in descriptions below the question to help with answering by clicking on the "more" triple dots:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms5a.png" alt="More options" style="max-width:500px" />
+
+Then going to description:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms5b.png" alt="Description option" style="max-width:500px" />
+
+And typing out a help description:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms5c.png" alt="Help description" style="max-width:500px" />
+
+You can check the "required" mark to make this question necessary to move on.
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms6.png" alt="Required toggle" style="max-width:500px" />
+
+## Conditional Questions
+
+Add a relevant question to help guide the user about the survey, `Do you speak English fluently`?
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms7.png" alt="Do you speak English fluently question" style="max-width:500px" />
+
+Click on the ==`triple dots ...`==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms8.png" alt="Triple dots menu" style="max-width:500px" />
+
+Select ==`Go to section based on answer`==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms9.png" alt="Go to section based on answer" style="max-width:500px" />
+
+## Adding new sections
+
+Add a new section:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms10.png" alt="Add new section" style="max-width:500px" />
+
+Title it == Language Details ==
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms11.png" alt="Language Details section" style="max-width:500px" />
+
+Add one question on == What language do you primary speak at home? ==
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms12.png" alt="Primary language question" style="max-width:500px" />
+
+And another on == What is your age? ==
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms13.png" alt="Age question" style="max-width:500px" />
+
+Go back to the question == Do you speak English fluently? == and for ==No==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms14.png" alt="No branch" style="max-width:500px" />
+
+Choose == Go to Section 2 ==.
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms15.png" alt="Go to Section 2" style="max-width:500px" />
+
+Scroll to the bottom and add a new section:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms16a.png" alt="Add section at bottom" style="max-width:500px" />
+
+Call it == Vaccination Story == and add a new question:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms16b.png" alt="Vaccination Story section" style="max-width:500px" />
+
+Add the question:
+
+> == Would you be comfortable with sharing your story? ==
+>
+>    - Yes
+>
+>    - No
+
+Make it a required question.
+
+### ⚽In-class Exercise #1 - Open Ended Questions
+
+:::tip[Task]
+1. Add two open-ended questions to your form
+:::
+
+:::tip[Bonus]
+Feel free to make a branching question to the `open-ended questions`, so if some one chooses "No" they submit the form and finish.
+:::
+
+<details>
+<summary><b>Answer</b></summary>
+
+Some open-ended questions can be the following:
+
+> How did you make the appointment?
+
+> How did you get to the location?
+
+Make sure they are both `Paragraph` answer types:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms17.png" alt="Paragraph answer type" style="max-width:500px" />
+
+</details>
+
+## Wrapping the form up
+
+Go back to `Do you speak English fluently` and make == Yes == go to `Section 3`:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms18.png" alt="Yes branch" style="max-width:500px" />
+
+Your final form should look something like this:
+
+https://forms.gle/E8xBqKLJNJyvxGcK8
+
+### Sharing your form
+
+Click the == Send == button to share your form
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms19.png" alt="Send button" style="max-width:500px" />
+
+### Embeding your form
+
+Under the `Send` button menu, click on the ==Embed== tab
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms20.png" alt="Embed tab" style="max-width:500px" />
+
+Copy the Embeded HTML by clicking the == Copy == button:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms21.png" alt="Copy embed HTML" style="max-width:500px" />
+
+Go back to `index.html` and paste the embedded HTML into the `contents` div:
+
+```html title="index.html" showLineNumbers {3}
+<div class="portfolio">
+    <div id="contents"></div>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfcElv5dlXInR7XHQz27_OcYJlWcIUr-GBbc-ocefWlGd1uXg/viewform?embedded=true" width="640" height="654" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+</div>
+```
+
+### Funky Survey Styles
+
+Because of the width and height of the form being set to **640** and **654**, it will not fit in the `contents` div. It is recommended to set the width to 100% and the height to 100%, like this:
+
+```html
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfcElv5dlXInR7XHQz27_OcYJlWcIUr-GBbc-ocefWlGd1uXg/viewform?embedded=true"
+width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">
+Loading…</iframe>
+```
+
+In our `index.html` file, it should look like this:
+
+```html title="index.html" showLineNumbers {4}
+<div class="portfolio">
+    <div id="contents">
+    </div>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfcElv5dlXInR7XHQz27_OcYJlWcIUr-GBbc-ocefWlGd1uXg/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+</div>
+```
+
+### Accessing the Responses
+
+Click on `Responses`:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms22.png" alt="Responses tab" style="max-width:500px" />
+
+Click on the Google Spreadsheet button:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms23.png" alt="Google Spreadsheet button" style="max-width:500px" />
+
+Change the title and click on `Create` button:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms24.png" alt="Create spreadsheet" style="max-width:500px" />
+
+Open the response Google Sheet by clicking open or the Google Sheets icon:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms25.png" alt="Open Google Sheet" style="max-width:500px" />
+
+<LabNav prev={{ href: "/labs/week4/", label: "Overview" }} next={{ href: "/labs/week4/2/", label: "Geocoding with Google Sheets" }} />

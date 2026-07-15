@@ -44,6 +44,10 @@ const ICON_MAP = {
   'fontawesome-brands-firefox-browser':{ icon: 'fa6-brands:firefox-browser',          title: 'Firefox' },
   'smile':                             { icon: 'twemoji:slightly-smiling-face',       title: '' },
   'man-facepalming-tone1':             { icon: 'twemoji:person-facepalming',          title: '' },
+  'material-content-save':             { icon: 'mdi:content-save',                    title: 'Save' },
+  'material-timer-outline':            { icon: 'mdi:timer-outline',                   title: 'Triggers' },
+  'heavy-plus-sign':                   { icon: 'mdi:plus-circle',                     title: 'Add' },
+  'thinking':                          { icon: 'twemoji:thinking-face',               title: '' },
 };
 
 function rehypeIcons() {

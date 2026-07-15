@@ -1,0 +1,344 @@
+---
+title: "Geocoding with Google Sheets and Google Apps Script"
+---
+
+import CodeAnnotation from '../../../../components/CodeAnnotation.astro';
+import LabNav from '../../../../components/LabNav.astro';
+
+export const geocodeScript = `function myFunction() {
+    let sheet = SpreadsheetApp.getActiveSheet();
+
+    let range = sheet.getDataRange();
+    let cells = range.getValues();
+
+    let latitudes = [['lat']];
+    let longitudes = [['lng']];
+
+    for (let i = 0; i < cells.length; i++) {
+        // change cells[i][2] if your address is not in column 'C', for example cells[i][1] for column 'B' or cells[i][3] for column D
+
+        addressColumn = cells[i][2]
+        let lat = lng = 0;
+
+        if (i > 0) {
+            if (addressColumn) {
+                let address = addressColumn;
+                console.log(address)
+                if (address) {
+                    let geocoder = Maps.newGeocoder().geocode(address);
+                    let res = geocoder.results[0];
+                    if (res) {
+                        lat = res.geometry.location.lat;
+                        lng = res.geometry.location.lng;
+                    }
+                }
+            }
+            latitudes.push([lat]);
+            longitudes.push([lng]);
+        }
+    }
+    sheet.getRange('D1') // this is your latitude column
+        .offset(0, 0, latitudes.length)
+        .setValues(latitudes);
+    sheet.getRange('E1') // this is your longitude column
+        .offset(0, 0, longitudes.length)
+        .setValues(longitudes);
+    Utilities.sleep(5000)
+}`;
+
+## Revisiting Functions
+
+Open up your Google Sheet from part 1.
+
+Go to column for `Location` and remember what column it is, for me it is `C`:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_0a.png" alt="Location column" style="max-width:500px" />
+
+Next, add two columns, one for `lat` and another for `lng`:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_0b.png" alt="lat and lng columns" style="max-width:500px" />
+
+Now click on ==Extensions==
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleAppScript1.png" alt="Extensions menu" style="max-width:500px" />
+
+Now click on ==Apps Script==
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleAppScript2.png" alt="Apps Script" style="max-width:500px" />
+
+When you first launch, you will see a blank ==myFunction()== select it and get ready to paste over it:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_0d.png" alt="Blank myFunction" style="max-width:500px" />
+
+## Google Apps Script for Geocoding
+
+Copy and paste the following code into the entire script:
+
+<CodeAnnotation
+  code={geocodeScript}
+  lang="js"
+  title="Google's Script Editor"
+  annotations={[
+    { line: 7, text: "This defines the column as latitude to be `lat`." },
+    { line: 8, text: "This defines the column as longitude to be `lng`." },
+    { line: 13, text: "`cells[i][2]` — the `2` is the number that your **address** column is in, minus 1! You have to subtract 1 because JavaScript starts counting at `0`! For example, column A is `0`." },
+    { line: 33, text: "Make sure this column letter matches your **latitude** column!" },
+    { line: 36, text: "Make sure this column letter matches your **longitude** column!" },
+  ]}
+/>
+
+:::note[JavaScript arrays start at 0]
+Most programming languages have two types of indexing, `0` indexed or `1` indexed, which means the number that they start counting lists from. **JavaScript** is `0` indexed, meaning a list with **4** things starts from `0` and ends at `3`, like this: `[0,1,2,3]`.
+
+This is important when we call items from a list and want to get the right item from it! For example, we have to get the fourth item in the example array like this, `let theFourthItem = myArray[3]`.
+:::
+
+Click on the ==Save Icon :material-content-save:== to save your script:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleAppScript3.png" alt="Save icon" style="max-width:500px" />
+
+Click on the ==Run== button to test the script:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_4.png" alt="Run button" style="max-width:500px" />
+
+You should get a prompt asking for `Authorization`, click ==Review permissions==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleAppScript4.png" alt="Review permissions" style="max-width:500px" />
+
+Select your ==Google Account== to continue:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_12.png" alt="Select Google Account" style="max-width:300px" />
+
+Click on ==Advanced==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_13.png" alt="Advanced" style="max-width:300px" />
+
+Click on ==Go to Untitled Project (unsafe)==
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_14.png" alt="Go to Untitled Project" style="max-width:300px" />
+
+Click on ==Allow==
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_15.png" alt="Allow" style="max-width:300px" />
+
+:::note[Do you trust yourself? :thinking:]
+Essentially, anyone can write Google Scripts, so Google is making sure that the script is associated with your account before giving it access to this particular spreadsheet.
+:::
+
+Click on ==Save==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_16.png" alt="Save" style="max-width:300px" />
+
+If it ran successfully then you should now see `latitude` and `longitude` filled in the Google Sheet!
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_5.png" alt="Latitude and longitude filled in" style="max-width:500px" />
+
+## Geocoding on each submission with a trigger
+
+Go back to the Google Scripts and click on the ==triggers icon :material-timer-outline:==
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_3.png" alt="Triggers icon" style="max-width:500px" />
+
+Click on ==:heavy-plus-sign: **Add Trigger==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_6.png" alt="Add Trigger" style="max-width:500px" />
+
+Click on ==Select event type==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_7.png" alt="Select event type" style="max-width:500px" />
+
+Change to ==On Form Submit== so that everytime the the form gets submitted a new record gets latitude/longitude added too!
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_8.png" alt="On Form Submit" style="max-width:500px" />
+
+Click ==Save==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_9.png" alt="Save trigger" style="max-width:500px" />
+
+A pop-up should appear, but if you have a pop-up blocker like on FireFox, then you may have to click on `Options`:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_10.png" alt="Pop-up blocker options" style="max-width:500px" />
+
+Then ==Allow== this particular popup to appear.
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_11.png" alt="Allow popup" style="max-width:300px" />
+
+:::note[Authorization again?]
+This is the same authorization as before, but it is for the `Trigger` not the application!
+:::
+
+Select your ==Google Account== to continue:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_12.png" alt="Select Google Account" style="max-width:300px" />
+
+Click on ==Advanced==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_13.png" alt="Advanced" style="max-width:300px" />
+
+Click on ==Go to Untitled Project (unsafe)==
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_14.png" alt="Go to Untitled Project" style="max-width:300px" />
+
+Click on ==Allow==
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_15.png" alt="Allow" style="max-width:300px" />
+
+Click on ==Save==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_16.png" alt="Save" style="max-width:300px" />
+
+Congratulations, now each time a form gets submitted you will be able to map the locations:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/gs_17.png" alt="Trigger success" style="max-width:500px" />
+
+### ⚽In-class Exercise #2 - Test your form!
+
+:::tip[Tasks]
+1. Add 2-3 locations to your Google Form and see if the new locations work.
+2. Check to see if the locations are accurate or not!
+3. What type of locations do not show up?
+:::
+
+<details>
+<summary><b>Answer</b></summary>
+
+Locations that do not show up are those that are blank or are not able to be located by the Google Geocoder.
+
+</details>
+
+## Publishing your survey
+
+Now that our data is able to be geocoded, the final step is to publish the spreadsheet so we can bring it into our HTML file through JavaScript next week.
+
+Go to ==File==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleForms35.png" alt="File menu" style="max-width:500px" />
+
+Click on ==Sharing==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleSheetsPublish1.png" alt="Sharing" style="max-width:500px" />
+
+Click on ==Publish to web==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleSheetsPublish2.png" alt="Publish to web" style="max-width:500px" />
+
+Click on ==Webpage==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleSheetsPublish3.png" alt="Webpage" style="max-width:500px" />
+
+Choose ==CSV==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleSheetsPublish4.png" alt="CSV" style="max-width:500px" />
+
+Click ==Publish==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleSheetsPublish5.png" alt="Publish" style="max-width:500px" />
+
+If this warning pops-up click on ==OK==:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleSheetsPublish6.png" alt="OK warning" style="max-width:500px" />
+
+Copy the URL in the address bar:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/googleSheetsPublish7.png" alt="Copy URL" style="max-width:500px" />
+
+### Lets add a `dataUrl` variable
+
+Create a new `dataUrl` variable to store the URL of the data, first we can test this by assigning it to `map.geojson` and see if it works:
+
+```js title="js/init.js" showLineNumbers {1,5}
+const dataUrl = "map.geojson";
+
+// When the map is fully loaded, start adding GeoJSON data
+map.on('load', function() {
+    fetch(dataUrl)
+        .then(response => response.json())
+        .then(data => {
+            processData(data); // Call processData with the fetched data
+        });
+});
+```
+
+using the URL you copied from the Google Sheet:
+
+```js title="js/init.js"
+const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSNq8_prhrSwK3CnY2pPptqMyGvc23Ckc5MCuGMMKljW-dDy6yq6j7XAT4m6GG69CISbD6kfBF0-ypS/pub?output=csv"
+```
+
+And let's change the `map.geojson` to `dataUrl`:
+
+## 🏁 Checkpoint
+
+Your `init.js` should look like the following:
+
+```js title="js/init.js" showLineNumbers
+// declare variables
+let mapOptions = {'centerLngLat': [-118.444,34.0709],'startingZoomLevel':5}
+
+const map = new maplibregl.Map({
+    container: 'map', // container ID
+    style: 'https://api.maptiler.com/maps/streets-v2-light/style.json?key=wsyYBQjqRwKnNsZrtci1', // Your style URL
+    center: mapOptions.centerLngLat, // Starting position [lng, lat]
+    zoom: mapOptions.startingZoomLevel // Starting zoom level
+});
+
+function addMarker(lat,lng,title,message){
+    let popup_message = `<h2>${title}</h2> <h3>${message}</h3>`
+    new maplibregl.Marker()
+        .setLngLat([lng, lat])
+        .setPopup(new maplibregl.Popup()
+            .setHTML(popup_message))
+        .addTo(map)
+    createButtons(lat,lng,title);
+    return message
+}
+
+function createButtons(lat,lng,title){
+    const newButton = document.createElement("button");
+    newButton.id = "button"+title;
+    newButton.innerHTML = title;
+    newButton.setAttribute("lat",lat);
+    newButton.setAttribute("lng",lng);
+    newButton.addEventListener('click', function(){
+        map.flyTo({
+            center: [lng,lat],
+        })
+    })
+    document.getElementById("contents").appendChild(newButton);
+}
+
+const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSNq8_prhrSwK3CnY2pPptqMyGvc23Ckc5MCuGMMKljW-dDy6yq6j7XAT4m6GG69CISbD6kfBF0-ypS/pub?output=csv"
+
+// When the map is fully loaded, start adding GeoJSON data
+map.on('load', function() {
+    fetch(dataUrl)
+        .then(response => response.json())
+        .then(data => {
+            processData(data); // Call processData with the fetched data
+        });
+});
+
+function processData(results){
+    //console.log(results) //for debugging: this can help us see if the results are what we want
+    results.features.forEach(feature => {
+        //console.log(feature) // for debugging: are we seeing each feature correctly?
+        // assumes your geojson has a "title" and "message" attribute
+        let coordinates = feature.geometry.coordinates;
+        let longitude = coordinates[0];
+        let latitude = coordinates[1];
+        let title = feature.properties.title;
+        let message = feature.properties.message;
+        addMarker(latitude,longitude,title,message);
+    });
+};
+```
+
+If you see an error like this:
+
+<img src="/26SU-ASIAAM-191A/labs/week4/media/error.png" alt="Fetch error" />
+
+Then, suprisingly, you are on the right track!
+
+We can now move onto looping through the data and adding markers to the map!
+
+<LabNav prev={{ href: "/labs/week4/1/", label: "Creating a Google Form" }} next={{ href: "/labs/week4/3/", label: "Connecting to our Google Sheet with papa parse" }} />
