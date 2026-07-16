@@ -5,7 +5,7 @@ title: "Week 4 - Open Source and Web Mapping"
 Date|Type|Description|Slides|Recording|
 |---|----|-----------|------|---------|
 |7/13|Lecture|Ethical Software and Developing for Civil Society|[Here](../../materials/AA191_S_W4_Lecture_4.pdf)|[Here](https://ucla.zoom.us/rec/share/sqxwjr94X8nTqI-WitXvTAjn09M3622Wg5-guA1CvCDCJUQoUbRABHuWMLSoJjUu.0wLIYrIj0OWY4yst)|
-|7/15|Lab|Google FORMulating Community-Based Empowerment|TBD|TBD|
+|7/15|Lab|Google FORMulating Community-Based Empowerment|[Here](../../materials/AA191_S_W4_Lab_4.pdf)|[Here](https://ucla.zoom.us/rec/share/AL6lIhzFyNZGuhFFE7ViMFG6k2K-2grNwUC5U64GZz7sqSPGkRI0kjTfhO9hCo57.ZjATb5jXJ8A9ux3P)|
 
 ## Lecture
 
@@ -14,11 +14,7 @@ Date|Type|Description|Slides|Recording|
 
 ## Lab
 
-- Google FORMulating Community-Based Empowerment
-
-<!-- Lab page not up yet — uncomment when published:
 - [Google FORMulating Community-Based Empowerment](../../labs/week4/)
--->
 
 ## Assignments
 

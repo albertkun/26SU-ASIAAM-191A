@@ -9,7 +9,7 @@ sidebar:
 
 | Assignment | Type | Due |
 |------------|------|-----|
-| [**Group Assignment #3**](week3/group_assignment/) | Group Assignment | Wednesday 7/20 |
+| [**Group Assignment #3**](week3/group_assignment/) | Group Assignment | Monday 7/20 |
 | [**Weekly Reading #4**](week4/reading/) | Reading | Monday 7/20 |
 | [**Thinking Cap #4**](week4/thinking_cap/) | Thinking Cap | Monday 7/20 |
 | [**Lab #4**](week4/lab_assignment/) | Lab | Wednesday 7/22 |
