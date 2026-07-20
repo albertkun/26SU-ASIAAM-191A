@@ -13,6 +13,7 @@ tableOfContents: false
 |#2|[Humanizing Technology](week02/)|
 |#3|[Society, Technology, and Ethics](week03/)|
 |#4|[Open Source and Web Mapping](week04/)|
+|#5|[Human-Centered Design](week05/)|
 
 ## Course Materials
 
@@ -26,5 +27,10 @@ tableOfContents: false
 |3|For-loops and Geo-J-cieON|Lab|[Here](../materials/AA191_S_W3_Lab_3.pdf)|[Here](https://ucla.zoom.us/rec/share/TVwaMXyPv2DwuxuswaGG21fNpWtGNcRgB5N1pOXAaWAQLCi9w6HLyn6IKEwYZsCC.VGrYS2zmk4kWxxW4)|
 |4|Ethical Software and Developing for Civil Society|Lecture|[Here](../materials/AA191_S_W4_Lecture_4.pdf)|[Here](https://ucla.zoom.us/rec/share/sqxwjr94X8nTqI-WitXvTAjn09M3622Wg5-guA1CvCDCJUQoUbRABHuWMLSoJjUu.0wLIYrIj0OWY4yst)|
 |4|Google FORMulating Community-Based Empowerment|Lab|[Here](../materials/AA191_S_W4_Lab_4.pdf)|[Here](https://ucla.zoom.us/rec/share/AL6lIhzFyNZGuhFFE7ViMFG6k2K-2grNwUC5U64GZz7sqSPGkRI0kjTfhO9hCo57.ZjATb5jXJ8A9ux3P)|
+|5|Putting the "us" in design justice|Lecture|TBD|TBD|
+<!-- Week 5 materials — uncomment once slides/recording are posted (paths are placeholders):
+|5|Putting the "us" in design justice|Lecture|[Here](../materials/AA191_S_W5_Lecture_5.pdf)|TBD|
+|5|Final Finishing Touches|Lab|[Here](../materials/AA191_S_W5_Lab_5.pdf)|TBD|
+-->
 
 
