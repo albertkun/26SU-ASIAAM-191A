@@ -1,6 +1,5 @@
 ---
 title: "Group Assignment #4: Rough Draft"
-draft: true
 sidebar:
   label: "Group Assignment #4"
   order: 1
