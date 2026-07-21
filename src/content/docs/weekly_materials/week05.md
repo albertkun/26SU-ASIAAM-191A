@@ -4,7 +4,7 @@ title: "Week 5 - Human-Centered Design"
 
 Date|Type|Description|Slides|Recording|
 |---|----|-----------|------|---------|
-|7/20|Lecture|Putting the "us" in design justice|TBD|TBD|
+|7/20|Lecture|Putting the "us" in design justice|[Here](../../materials/AA191_S_W5_Lecture_5.pdf)|[Here](https://ucla.zoom.us/rec/share/lpzrMTk3g6Zo0CfITNzxZAuJ0AUmbo0f_gZ7iGjmfZVfsdLDxYnDTXzBYePwfaeQ.u-YjtdIP_QjCX-nt)|
 |7/22|Lab|Final Finishing Touches|TBD|TBD|
 
 ## Lecture
