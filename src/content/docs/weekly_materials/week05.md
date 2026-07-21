@@ -15,7 +15,7 @@ Date|Type|Description|Slides|Recording|
 
 <img src="/26SU-ASIAAM-191A/media/hillarychin.jpg" alt="Hillary Chin" style="max-width:250px" />
 
-Hillary Chin is a first-gen Chinese-American brand designer, digital artist and printmaker. She worked as the creative director for the Rae for LA campaign in 2026 Los Angeles Mayoral Primary Election and was a senior designer at Asana.
+Hillary Chin is a first-generation Chinese-American brand designer, digital artist and printmaker. She worked as the creative director for the Rae for LA campaign in 2026 Los Angeles Mayoral Primary Election and was a senior designer at Asana.
 
 
 ## Lab
