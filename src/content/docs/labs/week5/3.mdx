@@ -1,0 +1,288 @@
+---
+title: "Positioning our legend with CSS Grid"
+---
+
+import LabNav from '../../../../components/LabNav.astro';
+
+Before we add any more features, let's revisit **CSS Grid** — a powerful way to control how our content relates to each other. Right now our legend (the filter checkboxes we built in the last step) lives off to the side in the `portfolio` column. In this lab, we'll use CSS Grid to lift that legend *on top of the map* and pin it into a corner, just like the legends you see on professional web maps.
+
+Remember, the flexibility of grid makes sure that specific rows or columns can be targeted no matter what content we add later.
+
+## Revisiting layouts with CSS Grid
+
+Anytime you see `display: grid` in CSS, like the following, a CSS grid is in use there:
+
+```css title="styles/style.css"
+body{
+    display: grid;
+}
+```
+
+And anytime you see `grid-area`, that means this HTML element is being placed *inside* a grid container. For example, our map already uses one:
+
+```css title="styles/style.css"
+#map{
+	height: 80vh;
+	grid-area: map;
+}
+```
+
+At this point, it may help to think of CSS Grid as adding grid-lines to a piece of paper, where the piece of paper is our webpage, and `grid-area` is the content we wish to add to the grid.
+
+:::note[CSS Grid vs. flexbox]
+CSS Grid (Grid) is different from flexbox, which is another way to control the layout of content. Flexbox only lets you control **"rows"** *or* **"columns"** and is good for that. Grid is good for controlling **both** "rows" *and* "columns" at the same time. You can read more about the differences in this CSS-Tricks article: [https://css-tricks.com/css-grid-replace-flexbox/](https://css-tricks.com/css-grid-replace-flexbox/)
+:::
+
+In order to put content that fits *inside* our grid-lines, we need to make sure the HTML content and `div`s we want to align are within the areas that the grid covers!
+
+## Moving our legend onto the map
+
+Back in the last step, our `#legend` div lived inside the `#contents` div in the `portfolio` column. To turn it into a map overlay, let's **move it inside the `#map` div** in our `index.html`:
+
+```html title="index.html" {8}
+        <main>
+            <div class="portfolio">
+                <div id="contents">
+                </div>
+            </div>
+            <div id="map">
+                <div id="legend"></div>
+            </div>
+        </main>
+```
+
+:::tip[Why this still works]
+Our `createFilterUI()` function from the last step finds the legend with `document.getElementById("legend")` and appends the checkboxes into it. Because it targets the element by its **id**, it keeps working no matter *where* the `#legend` div lives — so simply moving it onto the map is enough!
+:::
+
+## What Z-heck?
+
+Unfortunately, the MapLibre GL map draws itself on a higher **z-index** than our legend `div`, so right now the legend hides *behind* the map. If you think of a webpage as height being the y-value and width being the x-value, then the stacking of content (what sits on top of what) is controlled by the **z-index**.
+
+Basically, a **z-index** is a value that controls which layers sit on top of other layers in a webpage.
+
+Let's fix this in our `style.css` and make some other nice tweaks in the process:
+
+```css title="styles/style.css"
+#legend{
+    z-index: 9999;
+    background-color: white;
+    padding: 10px;
+    position: relative;
+}
+```
+
+:::note[Why `position: relative`?]
+The `z-index` property only takes effect on elements that are **positioned** (anything that isn't the default `position: static`). Adding `position: relative` is the smallest change that "activates" our `z-index: 9999` without actually moving the legend.
+:::
+
+## Turning our `#map` into a 3×3 grid
+
+Now let's turn the map itself into a **3 by 3 grid** so we have nine cells to drop our legend into:
+
+```css title="styles/style.css"
+#map{
+	height: 80vh;
+	grid-area: map;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+```
+
+:::note[Wait — won't this break the map?]
+Nope! MapLibre GL draws its map canvas with `position: absolute`, which takes it *out* of the grid flow, so the map still fills the whole `#map` div. Only our normal-flow children (like `#legend`) get placed into the grid cells.
+:::
+
+### Reminder: Inspecting our grid
+
+Remember, in Firefox you can right-click, choose **Inspect Element**, and in the **Inspector** go to **Layout** and check the box next to `#map` to see the grid overlaid on your map. This is a great way to *see* the nine cells you just created.
+
+### Why the `minmax(0, 1fr)` instead of just `1fr`?
+
+If you use `1fr`, you run the risk of images and other content overflowing and not respecting the grid when a cell is empty. `minmax(0, 1fr)` says "this track can shrink all the way to 0, but grow to share the free space evenly." You can read more about it here: [https://css-tricks.com/preventing-a-grid-blowout/](https://css-tricks.com/preventing-a-grid-blowout/)
+
+### Reminder: Justifying and aligning our content
+
+While we're in `#map`, let's make sure content sits neatly in the *middle* of each grid cell by using `align-items: center` and `justify-items: center`. `align-items` controls **vertical** alignment and `justify-items` controls **horizontal** alignment. You can read more here: [https://www.digitalocean.com/community/tutorials/css-align-justify](https://www.digitalocean.com/community/tutorials/css-align-justify)
+
+```css title="styles/style.css"
+#map{
+	height: 80vh;
+	grid-area: map;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	grid-template-rows: repeat(3, minmax(0, 1fr));
+	align-items: center;
+	justify-items: center;
+}
+```
+
+### Alternative positions for align / justify!
+
+Sometimes you'll want to change the vertical alignment and horizontal justification of an item in CSS Grid, so here is a table describing some of the common possibilities:
+
+| Style | Property | Target | Description |
+| --- | --- | --- | --- |
+| `align-items:` | `start;` | vertical | top align an item in the row |
+| `align-items:` | `center;` | vertical | middle align an item in the row |
+| `align-items:` | `end;` | vertical | bottom align an item in the row |
+| `justify-items:` | `start;` | horizontal | left justify an item in the column |
+| `justify-items:` | `center;` | horizontal | middle justify an item in the column |
+| `justify-items:` | `end;` | horizontal | right justify an item in the column |
+
+For example, if you want the content in our css-grid to be **left** aligned, you would use the following:
+
+```css title="styles/style.css"
+#map{
+	height: 80vh;
+	grid-area: map;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	grid-template-rows: repeat(3, minmax(0, 1fr));
+	align-items: center;
+	justify-items: start;  /* "left" can also work here */
+}
+```
+
+## Positioning our grid HTML elements without grid-areas
+
+Instead of *naming* areas like we have done in the past with `grid-area` for the header, map, etc.:
+
+```css title="styles/style.css"
+#map{
+	height: 80vh;
+	grid-area: map;
+}
+```
+
+We can generically specify **where** an HTML element should go using the `grid-column` and `grid-row` CSS properties.
+
+Let's practice this by pinning the legend to the **bottom-left** corner of our 3×3 map grid, using the following CSS selector for `#legend`:
+
+```css title="styles/style.css" {5,6}
+#legend{
+    z-index: 9999;
+    background-color: white;
+    padding: 10px;
+    grid-column: 1; /*! */
+    grid-row: 3; /*! */
+    position: relative;
+}
+```
+
+Notice how `grid-column: 1` specifies the first column and `grid-row: 3` specifies the last row in our 3×3 layout — the bottom-left cell.
+
+To **span** multiple rows or columns, on top of specifying a number you can do `grid-column: 1 / span 2;`, which will make the content stretch across 2 columns from left to right!
+
+```css title="styles/style.css"
+#legend{
+    z-index: 9999;
+    background-color: white;
+    padding: 10px;
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    position: relative;
+}
+```
+
+## ⚽ In-class Exercise #1 - Getting CSS-Griddy with it!
+
+Practice using CSS Grid to change the location of the legend to the **top-right** corner of the map. Try to make it span more than 1 column or row.
+
+**Tasks**
+
+1. Move our legend to the **top-right** corner of the `#map` div.
+2. **Bonus:** See if you can right-align the legend and make it span all 3 columns.
+
+<details>
+<summary>Answer</summary>
+
+```css title="styles/style.css"
+#legend{
+    z-index: 9999;
+    background-color: white;
+    padding: 10px;
+    grid-column: 3;   /* right-most column */
+    grid-row: 1;      /* top row */
+    position: relative;
+}
+```
+
+For the bonus, span all three columns and push the content to the right:
+
+```css title="styles/style.css"
+#map{
+	/* ...existing grid properties... */
+	justify-items: end;   /* right-align items in their cells */
+}
+
+#legend{
+    z-index: 9999;
+    background-color: white;
+    padding: 10px;
+    grid-column: 1 / span 3;   /* span all 3 columns */
+    grid-row: 1;
+    position: relative;
+}
+```
+
+</details>
+
+## Toggling markers — the MapLibre GL way
+
+In Leaflet-based labs, this is where you'd wire the legend up to turn layers on and off with `map.addLayer()` and `map.removeLayer()`. MapLibre GL works a little differently for our case: instead of Leaflet "feature groups," we're using **HTML markers** that each carry a category class (`marker-negative` or `marker-notNegative`).
+
+The good news is we already did the wiring in the last step! Our `createCheckboxForCategory()` function attached an event listener to each checkbox, and that listener calls `toggleMarkersVisibility()`:
+
+```js title="js/init.js"
+function toggleMarkersVisibility(category, isVisible) {
+    const markers = document.querySelectorAll(`.marker-${category}`);
+    markers.forEach(marker => {
+        marker.style.display = isVisible ? '' : 'none';
+    });
+}
+```
+
+Think of this as the MapLibre GL equivalent of Leaflet's add/remove layer: rather than adding or removing a layer from the map, we **hide or show** every marker in a category by toggling its CSS `display`. Because the checkboxes now live inside the legend on top of the map, clicking them filters the markers *right where the user is looking*. 🎉
+
+## Checkpoint
+
+After moving the legend onto the map and styling the grid, your `index.html` `<main>` and your `#map` / `#legend` CSS should look like this:
+
+```html title="index.html"
+        <main>
+            <div class="portfolio">
+                <div id="contents">
+                </div>
+            </div>
+            <div id="map">
+                <div id="legend"></div>
+            </div>
+        </main>
+```
+
+```css title="styles/style.css"
+#map{
+	height: 80vh;
+	grid-area: map;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	grid-template-rows: repeat(3, minmax(0, 1fr));
+	align-items: center;
+	justify-items: center;
+}
+
+#legend{
+	z-index: 9999;
+	background-color: white;
+	padding: 10px;
+	grid-column: 1;
+	grid-row: 3;
+	position: relative;
+}
+```
+
+The complete `index.html`, `init.js`, and `style.css` for the whole lab are on the next page!
+
+<LabNav prev={{ href: "/labs/week5/2/", label: "Adding categories in our addMarker() function" }} next={{ href: "/labs/week5/4/", label: "Final Template Code" }} />

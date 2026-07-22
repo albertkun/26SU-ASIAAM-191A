@@ -12,3 +12,4 @@ sidebar:
 |#2|[JavaScript FUNctions](./week2/)|JS,HTML|
 |#3|[For-loops and Geo-J-cieON](./week3/)|JS, GeoJSON, APIs|
 |#4|[Loops and Google FORMulating Data](./week4/)|Forms, Conditionals, APIs|
+|#5|[Final Finishing Touches](./week5/)|Refactoring, Conditionals, CSS, Feature Groups|

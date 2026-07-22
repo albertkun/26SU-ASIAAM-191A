@@ -1,0 +1,212 @@
+---
+title: "Overview - Final Finishing Touches"
+---
+
+import LabNav from '../../../../components/LabNav.astro';
+
+Today's lab we will focus on touching up our mapplication, and then use MapLibreGL [`Feature groups`](https://leafletjs.com/reference.html#featuregroup) to style our map content.
+
+`Feature groups` are like containers that you can use to group your map content. For this lab we will be creating two layers for our survey question of `"What is your opinion of data centers?"`
+
+One group will be for `negative` opinions and another group for everything that is `notNegative` (positive or neutral).
+
+<img src="/26SU-ASIAAM-191A/labs/week5/media/intro.png" alt="Feature groups intro" style="max-width:300px" />
+
+:::tip[Goals]
+- Refactor our map code to clean up messy UI elements
+- Use conditional statements to add content into MapLibreGL `FeatureGroups`
+- Use CSS to style our markers and layout
+:::
+
+## Lab outline
+
+1. [Final Touch ups](./1)
+2. [Adding categories and legend in our `addMarker()` function](./2)
+3. [Positioning our legend with CSS Grid](./3)
+4. [Final Template Code](./4)
+
+Start by creating a `week5` folder in your lab assignments repo.
+
+## Starting template code for lab #5
+
+```html title="index.html" showLineNumbers
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World with MapLibreGl</title>
+        <!-- hint: remember to change your page title! -->
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="styles/style.css">
+
+        <!-- MapLibreGL's css-->
+        <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.0.0/dist/maplibre-gl.css" />
+
+		<!-- MapLibreGL's JavaScript-->
+		<script src="https://unpkg.com/maplibre-gl@5.0.0/dist/maplibre-gl.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    </head>
+    
+    <body>
+        <header>
+			Data Center Stories
+        </header>
+        
+        <main>
+			<div class="portfolio">
+				<div id="contents">
+				</div>
+				<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfypZxO6r_hy7KZ7JdmExYmFLPJttMo7HvGtygzyy9o-Q_V-w/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+			</div>
+            <div id="map"></div>
+        </main>
+        <div id="footer">
+            Copyright(2026)
+        </div>
+        <script src="js/init.js"></script>
+    </body>
+</html>
+```
+
+```js title="js/init.js" showLineNumbers
+// declare variables
+let mapOptions = {'centerLngLat': [-118.444,34.0709],'startingZoomLevel':5}
+
+const map = new maplibregl.Map({
+	container: 'map', // container ID
+	style: 'https://api.maptiler.com/maps/streets-v2-light/style.json?key=wsyYBQjqRwKnNsZrtci1', // Your style URL
+	center: mapOptions.centerLngLat, // Starting position [lng, lat]
+	zoom: mapOptions.startingZoomLevel // Starting zoom level
+});
+
+function addMarker(data){
+	let popup_message;
+	let lng = data['Longitude'];
+	let lat = data['Latitude'];
+	if (data['What is your opinion of data centers?'] == "Negative"){
+		popup_message = `<h2>Negative</h2> <h3>Location: ${data['Data Center Location']}</h3> <p>Experience: ${data['What has your experience been?']}</p>`
+	}
+	else{
+		popup_message = `<h2>Not Negative</h2> <h3>Location: ${data['Data Center Location']}</h3> <p>Experience: ${data['What has your experience been?']}</p>`
+	}
+	new maplibregl.Marker()
+		.setLngLat([lng, lat])
+		.setPopup(new maplibregl.Popup()
+			.setHTML(popup_message))
+		.addTo(map)
+	createButtons(lat,lng,data['Data Center Location']);
+}
+
+function createButtons(lat,lng,title){
+    const newButton = document.createElement("button");
+    newButton.id = "button"+title; 
+    newButton.innerHTML = title;
+    newButton.setAttribute("lat",lat);
+    newButton.setAttribute("lng",lng);
+    newButton.addEventListener('click', function(){
+        map.flyTo({
+			center: [lng,lat],
+		})
+    })
+    document.getElementById("contents").appendChild(newButton);
+}
+
+const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQZk7AOGiwqBa7xk71h-M0aULJCWehUXSidxzbyN5AjSy3DCul2nnG2EksK-gyxT_GPdkaPzdAMSZtJ/pub?output=csv"
+
+// When the map is fully loaded, start adding GeoJSON data
+map.on('load', function() {
+    // Use PapaParse to fetch and parse the CSV data from a Google Forms spreadsheet URL
+    Papa.parse(dataUrl, {
+        download: true, // Tells PapaParse to fetch the CSV data from the URL
+        header: true, // Assumes the first row of your CSV are column headers
+        complete: function(results) {
+            // Process the parsed data
+            processData(results.data); // Use a new function to handle CSV data
+        }
+    });
+});
+
+function processData(results){
+	console.log(results) //for debugging: this can help us see if the results are what we want
+	results.forEach(feature => {
+		//console.log(feature) // for debugging: are we seeing each feature correctly?
+		// assumes your csv has a "Data Center Location" and "What has your experience been?" attribute
+		// let coordinates = feature.geometry.coordinates;
+		let longitude = feature['Longitude']
+		let latitude = feature['Latitude'];
+		let title = feature['Data Center Location'];
+		let message = feature['What has your experience been?'];
+		addMarker(feature);
+	});
+};
+```
+
+```css title="styles/style.css" showLineNumbers
+
+* {
+	font-family: Arial, sans-serif;
+	margin: 0; 
+	padding: 0; 
+	box-sizing: border-box;
+}
+
+html {
+	background-color: aqua;
+}
+
+
+html, body {
+	height: 80vh;
+	padding: 1rem;
+	box-sizing: border-box;
+}
+
+
+body {
+	display: grid; 
+	grid-template-areas: 
+		"header" 
+		"main"   
+		"footer"; 
+	grid-template-rows: auto 1fr auto;
+}
+
+main {
+	display: grid;
+	grid-template-areas:
+		"portfolio map";
+	grid-template-columns: 1fr 1fr;
+}
+
+header { 
+	grid-area: header;
+}
+
+main { 
+	grid-area: main;
+}
+
+.portfolio {
+	grid-area: portfolio;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+
+#map { 
+	grid-area: map;
+	height: 80vh;
+}
+
+#footer {
+	grid-area: footer;
+	padding: 5px; 
+	background-color: #4677a0;
+	color: #fff;
+	text-align: center; 
+}
+```
+
+<LabNav next={{ href: "/labs/week5/1/", label: "Final Touch ups" }} />

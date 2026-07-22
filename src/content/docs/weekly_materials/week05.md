@@ -41,4 +41,3 @@ Hillary Chin is a first-generation Chinese-American brand designer, digital arti
 ### Due Wednesday 7/29
 
 - [Final Thinking Cap](../../assignments/week5/thinking_cap/)
--->

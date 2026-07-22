@@ -14,6 +14,13 @@ sidebar:
 <!-- | [**Final Thinking Cap**](week5/thinking_cap/) | Thinking Cap | Wednesday 7/29 | -->
 
 
+## Final Project
+
+| Assignment | Type | Due |
+|------------|------|-----|
+| [**Final Group Assignment**](final/) | Final Project | Wednesday 7/29 |
+
+
 ## Past Assignments
 
 | Assignment | Type | Due |

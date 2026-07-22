@@ -1,0 +1,323 @@
+---
+title: "Final Touch ups"
+---
+
+import LabNav from '../../../../components/LabNav.astro';
+
+The goal of this lab is to clean up our code and make it more readable. We will be removing unused variables and making our code more user-friendly. This will make it easier for us to debug and maintain our code in the future.
+
+## Using variables to make our code more readable
+
+In our `init.js` file's `addMarker()` function, we have a lot of variables that are not used from the last lab's final template.
+
+We will clean up the following functions:
+
+- `processData()`
+- `addMarker()`
+- `createButtons()`
+
+In that order!
+
+## Refactor `processData()`
+
+In the `processData()` function, we have the following variables that are not used:
+
+```js title="js/init.js" showLineNumbers
+function processData(results){
+	results.forEach(feature => {
+		let longitude = feature['Longitude']
+		let latitude = feature['Latitude'];
+		let title = feature['Data Center Location'];
+		let message = feature['What has your experience been?'];
+		addMarker(feature);
+	});
+};
+```
+
+Let's clean up our code by removing these unused variables.
+
+```js title="js/init.js" showLineNumbers
+function processData(results){
+	results.forEach(feature => {
+		addMarker(feature);
+	});
+};
+```
+
+## Refactor `addMarker()`
+
+In the `addMarker()` function, there are some unused variables, but more importantly we can make new variables using the survey data in mind to make our code more readable.
+
+**Before:**
+
+```js title="js/init.js" showLineNumbers
+function addMarker(data){
+	let popup_message;
+	let lng = data['Longitude'];
+	let lat = data['Latitude'];
+	if (data['What is your opinion of data centers?'] == "Negative"){
+		popup_message = `<h2>Negative</h2> <h3>Location: ${data['Data Center Location']}</h3> <p>Experience: ${data['What has your experience been?']}</p>`
+	}
+	else{
+		popup_message = `<h2>Not Negative</h2> <h3>Location: ${data['Data Center Location']}</h3> <p>Experience: ${data['What has your experience been?']}</p>`
+	}
+	new maplibregl.Marker()
+		.setLngLat([lng, lat])
+		.setPopup(new maplibregl.Popup()
+			.setHTML(popup_message))
+		.addTo(map)
+	createButtons(lat,lng,data['Data Center Location']);
+}
+```
+
+**After:**
+
+```js title="js/init.js" showLineNumbers
+function addMarker(data){
+	let longitude = data['Longitude']
+	let latitude = data['Latitude'];
+	let dataCenterLocation = data['Data Center Location'];
+	let experience = data['What has your experience been?'];
+	let popup_message;
+	if (data['What is your opinion of data centers?'] == "Negative"){
+		popup_message = `<h2>Negative</h2> <h3>Location: ${dataCenterLocation}</h3> <p>Experience: ${experience}</p>`
+	}
+	else{
+		popup_message = `<h2>Not Negative</h2> <h3>Location: ${dataCenterLocation}</h3> <p>Experience: ${experience}</p>`
+	}
+	new maplibregl.Marker()
+		.setLngLat([longitude, latitude])
+		.setPopup(new maplibregl.Popup()
+			.setHTML(popup_message))
+		.addTo(map)
+	createButtons(latitude,longitude,dataCenterLocation);
+}
+```
+
+Feel free to choose your own variable names, but make sure they are descriptive and make your code more readable. Most importantly, keep a consistent naming convention!
+
+### Refactor `createButtons()`
+
+In the `createButtons()` function, buttons are being created even when there is no location. As indicated by this tiny little button:
+
+<img src="/26SU-ASIAAM-191A/labs/week5/media/image.png" alt="Empty button created for a user without a title" />
+
+We can clean up our code by only creating buttons for entries that actually have a location.
+
+**Before:**
+
+```js title="js/init.js" showLineNumbers
+function createButtons(lat,lng,title){
+    const newButton = document.createElement("button");
+    newButton.id = "button"+title; 
+    newButton.innerHTML = title;
+    newButton.setAttribute("lat",lat);
+    newButton.setAttribute("lng",lng);
+    newButton.addEventListener('click', function(){
+        map.flyTo({
+			center: [lng,lat],
+		})
+    })
+    document.getElementById("contents").appendChild(newButton);
+}
+```
+
+**After:**
+
+```js title="js/init.js" showLineNumbers
+function createButtons(lat,lng,title){
+	if (!title){
+		return;
+	}
+	
+	const newButton = document.createElement("button");
+	newButton.id = "button"+title; 
+	newButton.innerHTML = title;
+	newButton.setAttribute("lat",lat);
+	newButton.setAttribute("lng",lng);
+	newButton.addEventListener('click', function(){
+		map.flyTo({
+			center: [lng,lat],
+		})
+	})
+	document.getElementById("contents").appendChild(newButton);
+}
+```
+
+What we did was we just told the function to return if the title is empty. This way, we only create buttons for entries that have a location.
+
+## Refactor the Survey Button
+
+Speaking of buttons, we should probably move our survey iframe into a button as well. This will make our UI cleaner and more readable.
+
+```html title="index.html" showLineNumbers
+	<header>
+		Data Center Stories
+		<a href="https://forms.gle/B6ASNW3ETjitqXDd6" target="_blank">
+			<button id="surveyButton">Take the Survey</button>
+		</a>
+	</header>
+     <!-- truncated for brevity -->
+
+	<main>
+		<div class="portfolio">
+			<div id="contents">
+			</div>
+				<!-- deleted iframe for survey -->
+		</div>
+		<div id="map"></div>
+	</main>
+```
+
+## Conclusion
+
+We have cleaned up our code to make it more readable and user-friendly. This will make it easier for us to debug and maintain our code in the future. Remember, the most important thing is to keep your code clean and readable so that others and yourself can understand it easily.
+
+Now that we have cleaned up our code, we can move on to adding more features to our map!
+
+## Checkpoint
+
+```init.js``` should look like this:
+
+```js title="js/init.js" showLineNumbers
+
+let mapOptions = {'centerLngLat': [-118.444,34.0709],'startingZoomLevel':5}
+
+const map = new maplibregl.Map({
+    container: 'map',
+    style: 'https://api.maptiler.com/maps/streets-v2-light/style.json?key=wsyYBQjqRwKnNsZrtci1',
+    center: mapOptions.centerLngLat,
+    zoom: mapOptions.startingZoomLevel
+});
+
+function addMarker(data){
+	let longitude = data['Longitude']
+	let latitude = data['Latitude'];
+	let dataCenterLocation = data['Data Center Location'];
+	let experience = data['What has your experience been?'];
+	let opinion = data['What is your opinion of data centers?']
+    let popup_message;
+    if (data['What is your opinion of data centers?'] == "Negative"){
+        popup_message = `<h2>Negative</h2> <h3>Location: ${dataCenterLocation}</h3> <p>Experience: ${experience}</p>`
+    }
+    else{
+        popup_message = `<h2>Not Negative</h2> <h3>Location: ${dataCenterLocation}</h3> <p>Experience: ${experience}</p>`
+    }
+    new maplibregl.Marker()
+        .setLngLat([longitude, latitude])
+        .setPopup(new maplibregl.Popup()
+            .setHTML(popup_message))
+        .addTo(map)
+    createButtons(latitude,longitude,dataCenterLocation);
+}
+
+function createButtons(lat,lng,title){
+	if (!title){
+		return;
+	}
+    const newButton = document.createElement("button");
+    newButton.id = "button"+title; 
+    newButton.innerHTML = title;
+    newButton.setAttribute("lat",lat);
+    newButton.setAttribute("lng",lng);
+    newButton.addEventListener('click', function(){
+        map.flyTo({
+            center: [lng,lat],
+        })
+    })
+    document.getElementById("contents").appendChild(newButton);
+}
+
+const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQZk7AOGiwqBa7xk71h-M0aULJCWehUXSidxzbyN5AjSy3DCul2nnG2EksK-gyxT_GPdkaPzdAMSZtJ/pub?output=csv"
+
+map.on('load', function() {
+
+    Papa.parse(dataUrl, {
+        download: true,
+        header: true,
+        complete: function(results) {
+        
+            processData(results.data);
+        }
+    });
+});
+
+function processData(results){
+    results.forEach(feature => {
+        addMarker(feature);
+    });
+};
+
+// Assuming your categories are 'Negative' and 'Not Negative'
+function createFilterUI() {
+    const categories = ['Negative', 'Not Negative'];
+    const filterGroup = document.getElementById('filter-group') || document.createElement('div');
+    filterGroup.setAttribute('id', 'filter-group');
+    filterGroup.className = 'filter-group';
+    document.body.appendChild(filterGroup);
+
+    categories.forEach(category => {
+        const input = document.createElement('input');
+        input.type = 'checkbox';
+        input.id = category;
+        input.checked = true;
+        filterGroup.appendChild(input);
+
+        const label = document.createElement('label');
+        label.setAttribute('for', category);
+        label.textContent = category;
+        filterGroup.appendChild(label);
+
+        input.addEventListener('change', function(e) {
+            const markers = document.querySelectorAll(`.marker-${category}`);
+            markers.forEach(marker => {
+                marker.style.display = e.target.checked ? '' : 'none';
+            });
+        });
+    });
+}
+```
+
+```html title="index.html" showLineNumbers
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World with MapLibreGl</title>
+        <!-- hint: remember to change your page title! -->
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="styles/style.css">
+
+        <!-- MapLibreGL's css-->
+        <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.0.0/dist/maplibre-gl.css" />
+
+        <!-- MapLibreGL's JavaScript-->
+        <script src="https://unpkg.com/maplibre-gl@5.0.0/dist/maplibre-gl.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    </head>
+
+    <body>
+        <header>
+            Data Center Stories
+			<a href="https://forms.gle/B6ASNW3ETjitqXDd6" target="_blank">
+				<button id="surveyButton">Take the Survey</button>
+			</a>
+		</header>
+
+        <main>
+            <div class="portfolio">
+                <div id="contents">
+                </div>
+
+			</div>
+            <div id="map"></div>
+        </main>
+        <div id="footer">
+            Copyright(2026)
+        </div>
+        <script src="js/init.js"></script>
+    </body>
+</html>
+```
+
+<LabNav prev={{ href: "/labs/week5/", label: "Overview" }} next={{ href: "/labs/week5/2/", label: "Adding categories in our addMarker() function" }} />
