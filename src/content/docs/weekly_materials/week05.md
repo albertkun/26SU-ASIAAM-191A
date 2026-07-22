@@ -20,11 +20,7 @@ Hillary Chin is a first-generation Chinese-American brand designer, digital arti
 
 ## Lab
 
-- Final Finishing Touches
-
-<!-- Lab page not up yet — uncomment when published:
 - [Final Finishing Touches](../../labs/week5/)
--->
 
 ## Assignments
 
@@ -38,7 +34,6 @@ Hillary Chin is a first-generation Chinese-American brand designer, digital arti
 
 - [Lab Assignment #4](../../assignments/week4/lab_assignment/)
 
-<!-- Uncomment when Week 5 assignments go live (also delete `draft: true` from the files in assignments/week5/):
 ### Due Monday 7/27
 
 - [Group Assignment #4: Rough Draft](../../assignments/week5/group_assignment/)
