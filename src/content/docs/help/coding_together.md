@@ -25,7 +25,7 @@ Run this once in that terminal:
 git config --global pull.ff only
 ```
 
-This tells git not to try to automatically merge your local copy with the GitHub copy when they've both changed. Instead of dropping you into a merge conflict, it will stop with a message like `fatal: Not possible to fast-forward, aborting.` That error is expected — it just means come get help (screenshot it, email, Discord, or office hours).
+This tells git not to try to automatically merge your local copy with the GitHub copy when they've both changed. Instead of dropping you into a merge conflict, it will stop with a message like `fatal: Not possible to fast-forward, aborting.` That error is expected, just reach out if you can't continue.
 
 ## Every time you work
 
