@@ -6,6 +6,7 @@ Date|Type|Description|Slides|Recording|
 |---|----|-----------|------|---------|
 |7/20|Lecture|Putting the "us" in design justice|[Here](../../materials/AA191_S_W5_Lecture_5.pdf)|[Here](https://ucla.zoom.us/rec/share/lpzrMTk3g6Zo0CfITNzxZAuJ0AUmbo0f_gZ7iGjmfZVfsdLDxYnDTXzBYePwfaeQ.u-YjtdIP_QjCX-nt)|
 |7/22|Lab|Final Finishing Touches|[Here](../../materials/AA191_S_W5_Lab_5.pdf)|[Here](https://ucla.zoom.us/rec/share/CcyNDynYsikJfeJf14zfANpoxaSmcilZarTepooNCX7RlibbS4CbdG3lfN91-rQf.BCHjFSdbpyr1gXyT)|
+|7/24|Lab Extra|Coding Together: Collaboration|[Here](/26SU-ASIAAM-191A/help/git_collaboration.pdf)|-|
 
 ## Lecture
 
@@ -21,6 +22,10 @@ Hillary Chin is a first-generation Chinese-American brand designer, digital arti
 ## Lab
 
 - [Final Finishing Touches](../../labs/week5/)
+
+## Extra
+
+- [Coding Together: Collaboration](../../help/coding_together/)
 
 ## Assignments
 
