@@ -7,6 +7,8 @@ title: "Coding Together"
 
 When you're working on a group project, more than one person is touching the same code. This guide covers the one-time safety net you should set up, the rhythm you should follow every time you work, and the three ways groups in this class actually work together.
 
+You can also check out the [slides on Coding Together](/26SU-ASIAAM-191A/help/git_collaboration.pdf) for a visual walkthrough of these same steps.
+
 ## One-time setup: avoid most merge conflicts before they happen
 
 Open a terminal in VS Code: click the `...` menu in the top toolbar, then **Terminal** → **New Terminal** (or press `Ctrl+Shift+` ` `).
