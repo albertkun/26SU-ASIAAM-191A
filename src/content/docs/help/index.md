@@ -38,7 +38,11 @@ Below are step-by-step guides on getting started with the course.
 
 5. [Committing code to GitHub in VS Code](git_commit/)
 
-<!-- ### [6. Git Forking in VS Code](git_forking.md) -->
+6. [Coding Together: ways to collaborate with your group](coding_together/)
+
+7. [Quickstart for Live Share](live_share/)
+
+<!-- ### [8. Git Forking in VS Code](git_forking.md) -->
 
 <!-- ### Extra
 ## [2. Working with Remote Updates in VS Code](git_fetch_remote_upstream.md) -->
