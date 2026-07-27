@@ -14,6 +14,7 @@ tableOfContents: false
 |#3|[Society, Technology, and Ethics](week03/)|
 |#4|[Open Source and Web Mapping](week04/)|
 |#5|[Human-Centered Design](week05/)|
+|#6|[Beyond Web Development and GIS for Social Change](week06/)|
 
 ## Course Materials
 
@@ -29,5 +30,9 @@ tableOfContents: false
 |4|Google FORMulating Community-Based Empowerment|Lab|[Here](../materials/AA191_S_W4_Lab_4.pdf)|[Here](https://ucla.zoom.us/rec/share/AL6lIhzFyNZGuhFFE7ViMFG6k2K-2grNwUC5U64GZz7sqSPGkRI0kjTfhO9hCo57.ZjATb5jXJ8A9ux3P)|
 |5|Putting the "us" in design justice|Lecture|[Here](../materials/AA191_S_W5_Lecture_5.pdf)|[Here](https://ucla.zoom.us/rec/share/lpzrMTk3g6Zo0CfITNzxZAuJ0AUmbo0f_gZ7iGjmfZVfsdLDxYnDTXzBYePwfaeQ.u-YjtdIP_QjCX-nt)|
 |5|Final Finishing Touches|Lab|[Here](../materials/AA191_S_W5_Lab_5.pdf)|[Here](https://ucla.zoom.us/rec/share/CcyNDynYsikJfeJf14zfANpoxaSmcilZarTepooNCX7RlibbS4CbdG3lfN91-rQf.BCHjFSdbpyr1gXyT)|
+<!-- Week 6 materials — uncomment once slides/recording are posted (paths are placeholders):
+|6|Collaborating with GitHub and Plugins|Lab|[Here](../materials/AA191_S_W6_Lab_6.pdf)|TBD|
+|6|Beyond Web Development and GIS for Social Change|Lecture|[Here](../materials/AA191_S_W6_Lecture_6.pdf)|TBD|
+-->
 
 
