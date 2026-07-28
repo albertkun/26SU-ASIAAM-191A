@@ -9,7 +9,6 @@ sidebar:
 
 | Assignment | Type | Due |
 |------------|------|-----|
-| [**Group Assignment #4: Rough Draft**](week5/group_assignment/) | Group Assignment | Monday 7/27 |
 | [**Final Thinking Cap**](week5/thinking_cap/) | Thinking Cap | Wednesday 7/29 |
 
 
@@ -24,6 +23,7 @@ sidebar:
 
 | Assignment | Type | Due |
 |------------|------|-----|
+| [**Group Assignment #4: Rough Draft**](week5/group_assignment/) | Group Assignment | Monday 7/27 |
 | [**Lab #4**](week4/lab_assignment/) | Lab | Wednesday 7/22 |
 | [**Group Assignment #3**](week3/group_assignment/) | Group Assignment | Monday 7/20 |
 | [**Weekly Reading #4**](week4/reading/) | Reading | Monday 7/20 |
