@@ -6,10 +6,15 @@ sidebar:
 ---
 
 :::note[Prompt]
-## What are your thoughts about the future of web development for civil society? Which visiting voice or moment left the most impact on you? What connections to people (if any) would you like to maintain from this class going forward?
+
+What are your thoughts about the future of web development for civil society? 
+
+Which visiting voice or moment left the most impact on you? 
+
+What connections to people (if any) would you like to maintain from this class going forward?
+
 :::
 
-As we wrap up the course, take some time to reflect on where we started and how far you've come — from your first "Hello World" to building a community empowerment mapplication.
 
 ## Part 1 - Respond
 
