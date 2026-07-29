@@ -5,12 +5,6 @@ sidebar:
   order: 6
 ---
 
-<!-- STAGED — confirm before publishing:
-     - Due date/time (inferred Wed 7/29 from the schedule; 24SU parallel was rough draft Mon → final that Wed).
-     - Individual group evaluation form link (24SU used forms.office.com/r/YxKpVnj3DG — replace with the 26SU form).
-     - Presentation slot sign-up sheet link (24SU-specific Google Sheet — replace with the 26SU sheet).
-     - Submission discussion thread number (guessed #15, continuing from Group #4's #13). -->
-
 ### Due Wednesday 7/29 ~5pm - 7pm
 
 As our course nears the end, the final group project is the way to practice implementing the skills and ethical frameworks in the class. Your task as a group is to work together to complete the community empowerment web application based off of the rough draft from earlier in week 6. The final project should be fully functional with no bugs and must have an intuitive interface for the user stories outlined in the project memo.
@@ -94,6 +88,6 @@ Overall, you should be pitching the project to the audience, not simply demoing 
 ## Submission
 
 - [Select a presentation slot on the final sign-up sheet](https://docs.google.com/spreadsheets/d/1aINcIjzXKlqguP3uYRjAsgRSmF75AkDeY9GPAGQYi64/edit?gid=425068309#gid=425068309)
-- [Separately take the individual group evaluation]([https://cloud.albertmaps.com/apps/forms/s/QrXw3xG7Jt63BZeBJMT3JcMg](https://cloud.albertmaps.com/apps/forms/s/QrXw3xG7Jt63BZeBJMT3JcMg))
+- [Separately take the individual group evaluation](https://cloud.albertmaps.com/apps/forms/s/QrXw3xG7Jt63BZeBJMT3JcMg)
 - Post your group's repository and website link in this thread:
   - [Discussion forum for the Final Project](https://github.com/albertkun/26SU-ASIAAM-191A/discussions/15)
